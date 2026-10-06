@@ -76,9 +76,7 @@ async function connectBLE() {
 	}
 
 	let options = {
-		filters: [
-			{ namePrefix: deviceName }
-		],
+		acceptAllDevices: true,
 		optionalServices: [bleService]
 	}
 	try {
