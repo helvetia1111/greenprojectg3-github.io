@@ -20,7 +20,7 @@ function isWebBluetoothEnabled() {
 function getDeviceInfo() {
 	let options = {
 		filters: [
-			{ name: deviceName }
+			{ namePrefix: deviceName }
 		],
 		optionalServices: [bleService]
 	}
