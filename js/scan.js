@@ -69,10 +69,28 @@ function connectGATT() {
 	.catch(error => {console.error(error) })
 }
 
-function a() {
-	alert(password.value)
+async function writeData(val) {
+	try {
+		await gattCharacteristic.writeValueWithResponse(val)
+	} catch (error) {
+		console.error('書き込みに失敗しました: ', error)
+	}
 }
 
-let password = document.getElementById("password");
+function test() {
+	const str = 'test'
+	const encoder = new TextEncoder()
+	const encoded = encoder.encode(str)
+
+	writeData(encoded)
+	.then(_ => {
+		consol.log('Write ...')
+	})
+	.catch(error => {
+		console.log('[Error]: ' + error)
+	})
+}
+}
+
 let button = document.getElementById("button")
-button.addEventListener("click", a)
+button.addEventListener("click", test)
