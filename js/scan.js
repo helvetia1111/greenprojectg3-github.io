@@ -85,7 +85,7 @@ function test() {
 	//writeData(encoded)
 	gattCharacteristic.writeValue(encoded)
 	.then(_ => {
-		consol.log('Write ...')
+		console.log('Write ...')
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
