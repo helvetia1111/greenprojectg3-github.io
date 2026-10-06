@@ -45,7 +45,7 @@ function read() {
 	})
 }
 
-function connectGATT() {
+await function connectGATT() {
 	if (bluetoothDeviceDetected.gatt.connected && gattCharacteristic) {
 		return Promise.resolve()
 	}
@@ -53,7 +53,7 @@ function connectGATT() {
 	return bluetoothDeviceDetected.gatt.connect()
 	.then(server => {
 		console.log('Getting GATT Service...')
-		return server.getPrimaryService(bleService)
+		return await server.getPrimaryService(bleService)
 	})
 	.then(service => {
 		console.log('Getting GATT Characteristic...')
