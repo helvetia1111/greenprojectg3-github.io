@@ -5,7 +5,7 @@ var bluetoothDeviceDetected
 var gattCharacteristic
 
 document.querySelector('#scan').addEventListener('click', function() {
-	if (isWebBluetoothEnabled()) { read() }
+	if (isWebBluetoothEnabled()) { scan() }
 })
 
 function isWebBluetoothEnabled() {
@@ -33,13 +33,9 @@ function getDeviceInfo() {
 	})
 }
 
-function read() {
+function scan() {
 	return (bluetoothDeviceDetected ? Promise.resolve() : getDeviceInfo())
 	.then(connectGATT)
-	.then(_ => {
-		console.log('Reading UV Index...')
-		return gattCharacteristic.readValue()
-	})
 	.catch(error => {
 		console.log('Waiting to start reading: ' + error)
 	})
@@ -78,8 +74,6 @@ async function writeData(val) {
 		else {
 			await gattCharacteristic.writeValueWithResponse(val)
 		}
-		
-		//await gattCharacteristic.writeValue(val)
 	} catch (error) {
 		console.error('書き込みに失敗しました: ', error)
 	}
