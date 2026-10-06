@@ -71,7 +71,12 @@ function connectGATT() {
 
 async function writeData(val) {
 	try {
-		await gattCharacteristic.writeValueWithResponse(val)
+		if (gattCharacteristic.properties.writeWithoutResponse) {
+			await gattCharacteristic.writeValueWithoutResponse(val)
+		}
+		else {
+			await gattCharacteristic.writeValueWithResponse(val)
+		}
 	} catch (error) {
 		console.error('書き込みに失敗しました: ', error)
 	}
