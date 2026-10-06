@@ -94,6 +94,6 @@ function next() {
 }
 
 let button = document.getElementById("next")
-button.addEventListener("click", function(event)) {
+button.addEventListener("click", function(event) {
 	if (isWebBluetoothEnabled()) { next() }
 })
