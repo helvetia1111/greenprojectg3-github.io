@@ -90,7 +90,6 @@ function test() {
 		console.log('[Error]: ' + error)
 	})
 }
-}
 
 let button = document.getElementById("button")
 button.addEventListener("click", test)
