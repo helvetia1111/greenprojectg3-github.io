@@ -1,5 +1,5 @@
 var deviceName = 'DA14531_TEST'
-var bleService = '50499688-e043-4442-a383-aceb7170bb4a'
+var bleService = "50499688-e043-4442-a383-aceb7170bb4a"
 var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
 var bluetoothDeviceDetected
 var gattCharacteristic
@@ -76,11 +76,14 @@ async function connectBLE() {
 	}
 
 	let options = {
-		acceptAllDevices: true,
+		filters: [{ namePrefix: deviceName}],
 		optionalServices: [bleService]
 	}
 	try {
-		bluetoothDeviceDetected = await navigator.bluetooth.requestDevice(options)
+		bluetoothDeviceDetected = await navigator.bluetooth.requestDevice({
+			filters: [{ namePrefix: deviceName }],
+			optionalServices: [bleService]
+		})
 
 		const server = await bluetoothDeviceDetected.gatt.connect()
 
