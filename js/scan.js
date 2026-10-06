@@ -105,15 +105,14 @@ function getNc() {
 			})
 		}
 
-		gattCh.readValue()
-		.then(value => {
-			console.log('read... ' + value.getUint8(0))
-		})
-		.catch(error => {
-			console.log('read error: ' + error)
-		})
+		return gattCh.readValue()
 	})
-	.catch(error => {console.error(error)})
+	.then(value => {
+		console.log('read... ' + value.getUint8(0))
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
 }
 
 function next() {
