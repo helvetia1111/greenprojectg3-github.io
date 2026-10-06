@@ -87,8 +87,8 @@ function test() {
 	const encoder = new TextEncoder()
 	const encoded = encoder.encode(str)
 
-	//writeData(encoded)
-	gattCharacteristic.writeValue(encoded)
+	writeData(encoded)
+	//gattCharacteristic.writeValue(encoded)
 	.then(_ => {
 		console.log('Write ...')
 	})
