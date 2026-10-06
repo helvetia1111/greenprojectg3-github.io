@@ -84,6 +84,34 @@ function getNc() {
 	return gattService.getCharacteristic(bleCh)
 	.then(ch => {
 		gattCh = ch
+
+		const val = Uint8Array.of(1)
+		if (gattCh.properties.writeWithoutResponse) {
+			gattCh.writeValueWithoutResponse(val)
+			.then(_ => {
+				console.log('write 1...')
+			})
+			.catch(error => {
+				console.log('error: ' + error)
+			})
+		}
+		else {
+			gattCh.writeValueWithResponse(val)
+			.then(_ => {
+				console.log('write 1...')
+			})
+			.catch(error => {
+				console.log('error: ' + error)
+			})
+		}
+
+		gattCh.readValue()
+		.then(value => {
+			console.log('read... ' + value.getUint8(0))
+		})
+		.catch(error => {
+			console.log('read error: ' + error)
+		})
 	})
 	.catch(error => {console.error(error)})
 }
@@ -102,33 +130,6 @@ function next() {
 	})
 
 	getNc()
-	const val = Uint8Array.of(1)
-	if (gattCh.properties.writeWithoutResponse) {
-		gattCh.writeValueWithoutResponse(val)
-		.then(_ => {
-			console.log('write 1...')
-		})
-		.catch(error => {
-			console.log('error: ' + error)
-		})
-	}
-	else {
-		gattCh.writeValueWithResponse(val)
-		.then(_ => {
-			console.log('write 1...')
-		})
-		.catch(error => {
-			console.log('error: ' + error)
-		})
-	}
-
-	gattCh.readValue()
-	.then(value => {
-		console.log('read... ' + value.getUint8(0))
-	})
-	.catch(error => {
-		console.log('read error: ' + error)
-	})
 }
 
 let button = document.getElementById("next")
