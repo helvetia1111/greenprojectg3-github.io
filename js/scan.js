@@ -69,47 +69,17 @@ function connectGATT() {
 	.catch(error => {console.error(error) })
 }
 
-let isConnected = false
-async function connectBLE() {
-	if (isConnected) {
-		return
-	}
-
-	let options = {
-		filters: [{ namePrefix: deviceName}],
-		optionalServices: [bleService]
-	}
-	try {
-		bluetoothDeviceDetected = await navigator.bluetooth.requestDevice({
-			filters: [{ name: [deviceName] }],
-			optionalServices: [bleService]
-		})
-
-		const server = await bluetoothDeviceDetected.gatt.connect()
-
-		const service = await server.getPrimaryService(bleService)
-
-		gattCharacteristic = await service.getCharacteristic(bleCharacteristic)
-
-		isConnected = true;
-
-		console.log("Connected");
-	} catch (error) {
-		console.log(error);
-	}
-}
-
 async function writeData(val) {
 	try {
-		/*
+		
 		if (gattCharacteristic.properties.writeWithoutResponse) {
 			await gattCharacteristic.writeValueWithoutResponse(val)
 		}
 		else {
 			await gattCharacteristic.writeValueWithResponse(val)
 		}
-		*/
-		await gattCharacteristic.writeValue(val)
+		
+		//await gattCharacteristic.writeValue(val)
 	} catch (error) {
 		console.error('書き込みに失敗しました: ', error)
 	}
