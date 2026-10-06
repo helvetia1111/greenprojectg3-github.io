@@ -57,10 +57,7 @@ function connectGATT() {
 	})
 	.then(characteristic => {
 		gattCharacteristic = characteristic
-		return gattCharacteristic.readValue()
-	})
-	.then(value => {
-		console.log('Value is ' + value.getUint8(0))
+		button.disable = false
 	})
 	.catch(error => {console.error(error) })
 }
