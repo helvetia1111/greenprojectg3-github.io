@@ -79,13 +79,12 @@ async function writeData(val) {
 	}
 }
 
-function test() {
-	const str = 'test'
+function next() {
+	const str = 'greenprg3'
 	const encoder = new TextEncoder()
 	const encoded = encoder.encode(str)
 
 	writeData(encoded)
-	//gattCharacteristic.writeValue(encoded)
 	.then(_ => {
 		console.log('Write ...')
 	})
@@ -94,5 +93,5 @@ function test() {
 	})
 }
 
-let button = document.getElementById("button")
-button.addEventListener("click", test)
+let button = document.getElementById("next")
+button.addEventListener("click", next)
