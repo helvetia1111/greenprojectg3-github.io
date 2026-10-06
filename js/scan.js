@@ -1,8 +1,11 @@
 var deviceName = 'H126B01_'
 var bleService = "50499688-e043-4442-a383-aceb7170bb4a"
 var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
+var bleCh = 'aaa9a54b-f70a-450a-baa2-67d921508d12'
 var bluetoothDeviceDetected
+var gattService
 var gattCharacteristic
+var gattCh
 
 document.querySelector('#scan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scan() }
@@ -53,6 +56,7 @@ function connectGATT() {
 	})
 	.then(service => {
 		console.log('Getting GATT Characteristic...')
+		gattService = service
 		return service.getCharacteristic(bleCharacteristic)
 	})
 	.then(characteristic => {
@@ -76,6 +80,14 @@ async function writeData(val) {
 	}
 }
 
+function getNc() {
+	return gattService.getCharacteristic(bleCh)
+	.then(ch => {
+		gattCh = ch
+	})
+	.catch(error => {console.error(error)})
+}
+
 function next() {
 	const str = 'greenprg3'
 	const encoder = new TextEncoder()
@@ -87,6 +99,24 @@ function next() {
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
+	})
+
+	getNc()
+	const val = Uint8Array.of(1)
+	gattCh.writeValueWithResponse(val)
+	.thcn(_ => {
+		console.log('write 1...')
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+
+	gattCh.readValue()
+	.then(value => {
+		console.log('read... ' + value.getUint8(0))
+	})
+	.catch(error => {
+		console.log('read error: ' + error)
 	})
 }
 
