@@ -1,0 +1,234 @@
+.balloon1 {
+	position: relative;
+	display: inline-block;
+	margin: 1.5em 0;
+	padding: 7px 10px;
+	min-width: 120px;
+	max-width: 100%;
+	color: #555;
+	font-size: 16px;
+	background: #e0edff;
+	border-radius: 15px;
+}
+
+.balloon1:before {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -15px
+	border: 15px solid transparent;
+	border-top: 15px solid #e0edff;
+}
+
+.balloon1 p {
+	margin: 0;
+	padding: 0;
+}
+
+.base {
+	font-size: 50px;
+}
+
+.mainbutton form {
+	display: inline-block;
+	margin: 0 30px 40px 0;
+}
+
+.mainbutton input {
+	font-size: 50px;
+	width: 420px;
+}
+
+.mainbutton button {
+	font-size: 50px;
+	width: 420px;
+}
+
+.timebutton {
+	display: inline-block;
+	margin: 0 30px 40px 0;
+}
+.timebutton input {
+	font-size: 50px;
+	width: 340px;
+}
+.timebutton button {
+	font-size: 50px;
+	width: 340px;
+}
+
+.backbutton {
+	display: inline-block;
+	margin: 30px 30px 40px 0;
+	font-size: 50px;
+	width: 420px;
+}
+
+.messbutton {
+	font-size: 50px;
+	width: 560px;
+}
+.messbutton form {
+	display: inline-block;
+	margin: 0 30px 40px 0;
+}
+.messbutton button {
+	font-size: 50px;
+	width: 560px;
+}
+
+.errorstopbutton {
+	font-size: 50px;
+	width: 640px;
+}
+
+.setbutton button {
+	font-size: 50px;
+	width: 420px;
+	margin: 80px 0 0 0;
+}
+.setbutton input[type="button"] {
+	font-size: 50px;
+	width: 420px;
+	margin: 80px 0 0 0;
+}
+
+.table {
+	font-size: 44px;
+}
+
+.time_set {
+	font-size: 50px;
+}
+.time_set select {
+	font-size: 50px;
+}
+.time_set input {
+	font-size: 50px;
+	width: 120px;
+}
+
+.text_set {
+	font-size: 50px;
+	margin: 0 0 10px 0;
+}
+.text_set input {
+	font-size: 50px;
+	width: 80%;
+}
+
+.message_set {
+	font-size: 50px;
+	margin: -10px 0 20px 0;
+}
+.message_set input {
+	font-size: 50px;
+	width: 80%;
+	margin: -10px 0 20px 0;
+}
+
+.addr_set {
+	font-size: 50px;
+	margin: 0 0 10px 0;
+}
+.addr_set input {
+	font-size: 50px;
+	width: 80px;
+}
+
+.flow_error {
+	font-size: 46px;
+}
+.flow_error input {
+	font-size: 50px;
+	width: 60px;
+}
+
+.check {
+	margin: 0 0 30px 10px;
+	font-size: 50px;
+}
+.check label {
+	padding-left: 50px;
+	font-size: 50px;
+	line-height: 48px;
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	margin: 0 10px 0 0
+}
+.check label:before {
+	content: '';
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	background-color: #fff;
+	box-shadow: inset 1px 2px 3px 0px #000;
+	border-radius: 6px 6px 6px 6px;
+}
+.check input[type=checkbox] {
+	display: none;
+}
+.check input[type=checkbox]:checked + label:before {
+	content: '\2713';
+	font-size: 50px;
+	color: #fff;
+	background-color: #555;
+}
+.check input[type=number] {
+	font-size: 50px;
+	width: 80px;
+}
+
+.radio {
+	font-size: 50px;
+	margin: 20px 0 30px 10px;
+}
+.radio label {
+	padding: 0 0 0 50px;
+	font-size: 50px;
+	line-height: 48px;
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+}
+.radio label:before {
+	content: '';
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #555;
+	border-radius: 50%;
+}
+.radio input[type="radio"] {
+	display: none;
+}
+.radio input[type="radio"]:checked + label:after {
+	content: '';
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	background-color: #fff;
+	border-radius: 50%;
+}
+.radio input[type="tel"] {
+	font-size: 50px;
+        width: 120px;
+}
+.radio input[type="number"] {
+	font-size: 50px;
+	width: 120px;
+}
+
+.antenna_str {
+	font-size: 50px;
+	white-space: pre-line;
+}
+
