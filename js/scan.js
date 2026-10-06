@@ -81,7 +81,7 @@ async function connectBLE() {
 	}
 	try {
 		bluetoothDeviceDetected = await navigator.bluetooth.requestDevice({
-			filters: [{ namePrefix: [deviceName] }],
+			filters: [{ name: [deviceName] }],
 			optionalServices: [bleService]
 		})
 
