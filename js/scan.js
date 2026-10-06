@@ -79,7 +79,7 @@ async function writeData(val) {
 			await gattCharacteristic.writeValueWithResponse(val)
 		}
 		*/
-		gattCharacteristic.writeValue(val)
+		await gattCharacteristic.writeValue(val)
 	} catch (error) {
 		console.error('書き込みに失敗しました: ', error)
 	}
