@@ -5,7 +5,7 @@ var bluetoothDeviceDetected
 var gattCharacteristic
 
 document.querySelector('#scan').addEventListener('click', function() {
-	if (isWebBluetoothEnabled()) { read() }
+	if (isWebBluetoothEnabled()) { connectBLE() }
 })
 
 function isWebBluetoothEnabled() {
@@ -45,7 +45,7 @@ function read() {
 	})
 }
 
-await function connectGATT() {
+function connectGATT() {
 	if (bluetoothDeviceDetected.gatt.connected && gattCharacteristic) {
 		return Promise.resolve()
 	}
@@ -53,7 +53,7 @@ await function connectGATT() {
 	return bluetoothDeviceDetected.gatt.connect()
 	.then(server => {
 		console.log('Getting GATT Service...')
-		return await server.getPrimaryService(bleService)
+		return server.getPrimaryService(bleService)
 	})
 	.then(service => {
 		console.log('Getting GATT Characteristic...')
@@ -67,6 +67,33 @@ await function connectGATT() {
 		console.log('Value is ' + value.getUint8(0))
 	})
 	.catch(error => {console.error(error) })
+}
+
+let isConnected = false
+async function connectBLE() {
+	if (isConnected) {
+		return
+	}
+
+	let options = {
+		filters: [
+			{ name: deviceName }
+		],
+		optionalServices: [bleService]
+	}
+	try {
+		bluetoothDeviceDetected = await navigator.bluetooth.requestDevice(options)
+
+		const server = await bluetoothDeviceDetected.gatt.connect()
+
+		const service = await server.getPrimaryService(bleService)
+
+		gattCharacteristic = await service.getCharacteristic(bleCharacteristic)
+
+		isConnected = true;
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 async function writeData(val) {
