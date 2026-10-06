@@ -5,7 +5,7 @@ var bluetoothDeviceDetected
 var gattCharacteristic
 
 document.querySelector('#scan').addEventListener('click', function() {
-	if (isWebBluetoothEnabled()) { connectBLE() }
+	if (isWebBluetoothEnabled()) { read() }
 })
 
 function isWebBluetoothEnabled() {
@@ -20,7 +20,7 @@ function isWebBluetoothEnabled() {
 function getDeviceInfo() {
 	let options = {
 		filters: [
-			{ namePrefix: deviceName }
+			{ name: deviceName }
 		],
 		optionalServices: [bleService]
 	}
