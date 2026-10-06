@@ -57,7 +57,7 @@ function connectGATT() {
 	})
 	.then(characteristic => {
 		gattCharacteristic = characteristic
-		button.disable = false
+		button.disabled = false
 	})
 	.catch(error => {console.error(error) })
 }
