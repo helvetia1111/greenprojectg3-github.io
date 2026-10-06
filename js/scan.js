@@ -91,6 +91,8 @@ async function connectBLE() {
 		gattCharacteristic = await service.getCharacteristic(bleCharacteristic)
 
 		isConnected = true;
+
+		console.log("Connected");
 	} catch (error) {
 		console.log(error);
 	}
