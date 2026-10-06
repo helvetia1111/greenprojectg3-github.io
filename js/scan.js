@@ -103,13 +103,24 @@ function next() {
 
 	getNc()
 	const val = Uint8Array.of(1)
-	gattCh.writeValueWithResponse(val)
-	.thcn(_ => {
-		console.log('write 1...')
-	})
-	.catch(error => {
-		console.log('error: ' + error)
-	})
+	if (gattCh.properties.writeWithoutResponse) {
+		gattCh.writeValueWithoutResponse(val)
+		.thcn(_ => {
+			console.log('write 1...')
+		})
+		.catch(error => {
+			console.log('error: ' + error)
+		})
+	}
+	else {
+		gattCh.writeValueWithResponse(val)
+		.thcn(_ => {
+			console.log('write 1...')
+		})
+		.catch(error => {
+			console.log('error: ' + error)
+		})
+	}
 
 	gattCh.readValue()
 	.then(value => {
