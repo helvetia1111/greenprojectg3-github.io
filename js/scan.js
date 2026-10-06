@@ -105,7 +105,7 @@ function next() {
 	const val = Uint8Array.of(1)
 	if (gattCh.properties.writeWithoutResponse) {
 		gattCh.writeValueWithoutResponse(val)
-		.thcn(_ => {
+		.then(_ => {
 			console.log('write 1...')
 		})
 		.catch(error => {
@@ -114,7 +114,7 @@ function next() {
 	}
 	else {
 		gattCh.writeValueWithResponse(val)
-		.thcn(_ => {
+		.then(_ => {
 			console.log('write 1...')
 		})
 		.catch(error => {
