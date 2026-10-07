@@ -115,6 +115,7 @@ function next() {
 	const encoder = new TextEncoder()
 	const encoded = encoder.encode(str)
 
+	/*
 	writeData(encoded)
 	.then(_ => {
 		console.log('Write ...')
@@ -122,6 +123,7 @@ function next() {
 	.catch(error => {
 		console.log('[Error]: ' + error)
 	})
+	*/
 
 	getNc()
 }
