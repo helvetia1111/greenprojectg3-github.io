@@ -85,6 +85,7 @@ function getNc() {
 	.then(ch => {
 		gattCh = ch
 
+		/*
 		const val = Uint8Array.of(1)
 		if (gattCh.properties.writeWithoutResponse) {
 			return gattCh.writeValueWithoutResponse(val)
@@ -92,11 +93,15 @@ function getNc() {
 		else {
 			return gattCh.writeValueWithResponse(val)
 		}
+		*/
+		return gattCh.readValue()
 	})
+		/*
 	.then(_ => {
 		console.log('write 1...')
 		return gattCh.readValue()
 	})
+	*/
 	.then(value => {
 		console.log('read... ' + value.getUint8(0))
 	})
