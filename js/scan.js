@@ -2,6 +2,7 @@ var deviceName = 'H126B01_'
 var bleService = "50499688-e043-4442-a383-aceb7170bb4a"
 var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
 var bleCh = 'aaa9a54b-f70a-450a-baa2-67d921508d12'
+var typeCh = '5ea393b0-d1da-4eb3-bc00-b622f2d548d5'
 var bluetoothDeviceDetected
 var gattService
 var gattCharacteristic
@@ -127,8 +128,16 @@ function next() {
 	.then(value => {
 		console.log('read... ' + value.getUint8(0))
 		if (value.getUint8(0) == 1) {
-			location.href = "views/main.html";
+			//location.href = "views/main.html";
+			return gattService.getCharacteristic(typeCh)
 		}
+		Promise.resolve()
+	})
+	.then(ch => {
+		return ch.readValue()
+	})
+	.then(type => {
+		console.log('type... ' + type.getUint8(0))
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
