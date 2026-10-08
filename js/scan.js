@@ -139,7 +139,22 @@ function next() {
 	//getNc()
 }
 
+function updateFormAction(actionU) {
+	form.action = actionU;
+}
+
 let button = document.getElementById("next")
 button.addEventListener("click", function(event) {
 	if (isWebBluetoothEnabled()) { next() }
+})
+
+let test = document.getElementById("test")
+test.addEventListener("click", function(event) {
+	event.preventDefault()
+
+	const au = 'main'
+
+	updateFormAction(au)
+
+	form.submit()
 })
