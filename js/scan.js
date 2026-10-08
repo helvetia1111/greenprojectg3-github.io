@@ -118,12 +118,20 @@ function next() {
 	writeData(encoded)
 	.then(_ => {
 		console.log('Write ...')
+		return gattService.getCharacteristic(bleCh)
+	})
+	.then(ch => {
+		gattCh = ch
+		return gattCh.readValue()
+	})
+	.then(value => {
+		console.log('read... ' + value.getUint8(0))
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
 	})
 
-	getNc()
+	//getNc()
 }
 
 let button = document.getElementById("next")
