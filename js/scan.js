@@ -111,7 +111,8 @@ function getNc() {
 }
 
 function next() {
-	const str = 'greenprg3'
+	//const str = 'greenprg3'
+	const str = ''
 	const encoder = new TextEncoder()
 	const encoded = encoder.encode(str)
 
