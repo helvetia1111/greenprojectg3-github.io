@@ -152,7 +152,7 @@ let test = document.getElementById("test")
 test.addEventListener("click", function(event) {
 	event.preventDefault()
 
-	const au = 'main'
+	const au = 'views/main'
 
 	updateFormAction(au)
 
