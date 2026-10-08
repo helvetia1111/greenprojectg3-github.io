@@ -126,6 +126,8 @@ function next() {
 	})
 	.then(value => {
 		console.log('read... ' + value.getUint8(0))
+		if (value.getUint8(0) == 1) {
+		}
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
