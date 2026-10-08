@@ -7,8 +7,6 @@ var gattService
 var gattCharacteristic
 var gattCh
 
-const form = document.getElementById('scanForm')
-
 document.querySelector('#scan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scan() }
 })
@@ -129,7 +127,7 @@ function next() {
 	.then(value => {
 		console.log('read... ' + value.getUint8(0))
 		if (value.getUint8(0) == 1) {
-			location.href = "./views/main.html";
+			location.href = "views/main.html";
 		}
 	})
 	.catch(error => {
@@ -148,13 +146,3 @@ button.addEventListener("click", function(event) {
 	if (isWebBluetoothEnabled()) { next() }
 })
 
-let test = document.getElementById("test")
-test.addEventListener("click", function(event) {
-	event.preventDefault()
-
-	const au = './views/main'
-
-	updateFormAction(au)
-
-	form.submit()
-})
