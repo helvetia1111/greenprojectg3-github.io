@@ -7,6 +7,8 @@ var gattService
 var gattCharacteristic
 var gattCh
 
+const form = document.getElementById('scanForm')
+
 document.querySelector('#scan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scan() }
 })
