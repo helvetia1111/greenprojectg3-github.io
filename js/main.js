@@ -53,7 +53,7 @@ btnMonitor.addEventListener("click", function(event) {
 	})
 	.then(stateCh => {
 		monStateCh = stateCh
-		return service.getCharacteristic(monValChUUID)
+		return monService.getCharacteristic(monValChUUID)
 	})
 	.then(valCh => {
 		monValCh = valCh
