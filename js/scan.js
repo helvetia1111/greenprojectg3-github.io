@@ -139,6 +139,7 @@ function next() {
 	.then(type => {
 		Type = type.getUint8(0)
 		console.log('type... ' + gType)
+		location.href = "views/main.html";
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
