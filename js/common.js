@@ -1,1 +1,1 @@
-export var gType = 0
+var gType = 0
