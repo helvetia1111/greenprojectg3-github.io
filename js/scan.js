@@ -142,6 +142,9 @@ function next() {
 		if (Type == 0) {
 			location.href = "views/main.html";
 		}
+		else {
+			location.href = "views/mainT.html";
+		}
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
