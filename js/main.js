@@ -51,15 +51,14 @@ btnMonitor.addEventListener("click", function(event) {
 		monService = service
 		return service.getCharacteristic(monStateChUUID)
 	})
-	/*
 	.then(stateCh => {
 		monStateCh = stateCh
 		return service.getCharacteristic(monValChUUID)
 	})
 	.then(valCh => {
 		monValCh = valCh
+		readSystemTime()
 	})
-	*/
 	.catch(error => {
 		console.log('error: ' + error)
 	})
