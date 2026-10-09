@@ -1,12 +1,4 @@
 function monitor() {
-	const Type = localStorage.getItem('Type');
-	console.log('type... ' + Type)
-	if (Type == 0) {
-		//location.href = "views/monitor.html"
-	}
-	else {
-	}
-
 	return gattService.getCharacteristic(bleCh)
 	.then(ch => {
 		return ch.readValue()
