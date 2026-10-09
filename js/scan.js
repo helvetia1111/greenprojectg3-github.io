@@ -1,5 +1,3 @@
-import { gType } from './common.js'
-
 var deviceName = 'H126B01_'
 var bleService = "50499688-e043-4442-a383-aceb7170bb4a"
 var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
