@@ -58,6 +58,7 @@ function connectGATT() {
 	.then(service => {
 		console.log('Getting GATT Characteristic...')
 		gattService = service
+		localStorage.setItem('Service', service);
 		return service.getCharacteristic(bleCharacteristic)
 	})
 	.then(characteristic => {
