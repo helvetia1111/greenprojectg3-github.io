@@ -23,11 +23,11 @@ async function writeStateMonitor(state) {
 	try {
 		if (monStateCh.writeValueWithoutResponse) {
 			await monStateCh.writeValueWithoutResponse(val)
-			console.log('write ' + val.getUint8(0))
+			console.log('write ' + val[0])
 		}
 		else {
 			await monStateCh.writeValueWithResponse(val)
-			console.log('write ' + val.getUint8(0))
+			console.log('write ' + val[0])
 		}
 	} catch (error) {
 		console.error('書き込みに失敗しました: ', error)
