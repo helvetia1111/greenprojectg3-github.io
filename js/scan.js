@@ -12,7 +12,7 @@ const scan = document.getElementById("scan")
 scan.style.display = "block"
 
 document.querySelector('#btnScan').addEventListener('click', function() {
-	if (isWebBluetoothEnabled()) { scan() }
+	if (isWebBluetoothEnabled()) { scanBle() }
 })
 
 function isWebBluetoothEnabled() {
@@ -40,7 +40,7 @@ function getDeviceInfo() {
 	})
 }
 
-function scan() {
+function scanBle() {
 	return (bluetoothDeviceDetected ? Promise.resolve() : getDeviceInfo())
 	.then(connectGATT)
 	.catch(error => {
