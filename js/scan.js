@@ -4,6 +4,7 @@ var monServiceUUID = 'd809bf63-38a0-4a10-99b4-079c41d401bb'
 var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
 var bleCh = 'aaa9a54b-f70a-450a-baa2-67d921508d12'
 var typeCh = '5ea393b0-d1da-4eb3-bc00-b622f2d548d5'
+var monStateChUUID = '971d283e-c157-4284-8bed-bf31198bf5d7'
 var bluetoothDeviceDetected
 var gattServer
 var gattService
@@ -95,7 +96,10 @@ function connectGATT() {
 		return server.getPrimaryService(monServiceUUID)
 	})
 	.then(monService => {
-		return monService.getCharacteristic(bleCharacteristic)
+		return monService.getCharacteristic(monStateChUUID)
+	})
+	.then(monStateCh => {
+		monCh = monStateCh
 	})
 	.catch(error => {console.error(error) })
 }
@@ -184,8 +188,18 @@ function next() {
 	.then(type => {
 		gType = type.getUint8(0)
 		console.log('type... ' + gType)
-		//localStorage.setItem('Type', Type);
-		dispMain()
+		//dispMain()
+
+		const val = Uint8Array.of(1)
+		if (monCh.properties.writeWithoutResponse) {
+			return monCh.writeValueWithoutResponse(val)
+		}
+		else {
+			return monCh.writeValueWithResponse(val)
+		}
+	})
+	.then(_ => {
+		console.log('test')
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
