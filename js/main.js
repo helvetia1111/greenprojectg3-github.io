@@ -1,4 +1,4 @@
-import { gType } from './scan.js'
+import { gType } from './common.js'
 
 function test() {
   console.log('type... ' + gType)
