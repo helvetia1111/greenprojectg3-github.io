@@ -1,3 +1,6 @@
+var time_flag
+var systime
+
 function dispMonitor() {
 	main1.style.display = "none"
 	main2.style.display = "none"
