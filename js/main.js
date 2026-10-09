@@ -7,7 +7,7 @@ function monitor() {
 	else {
 	}
 
-	return service.getCharacteristic(bleCh)
+	return gattService.getCharacteristic(bleCh)
 	.then(ch => {
 		return ch.readValue()
 	})
