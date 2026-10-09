@@ -37,6 +37,7 @@ function readMonitor(state) {
 
 let btnMonitor = document.getElementById("monitor")
 btnMonitor.addEventListener("click", function(event) {
+	/*
 	return gattServer.getPrimaryService(monServiceUUID)
 	.then(service => {
 		monService = service
@@ -50,5 +51,6 @@ btnMonitor.addEventListener("click", function(event) {
 		monValCh = valCh
 		readMonitor(1)
 	})
-	//dispMonitor()
+	*/
+	dispMonitor()
 })
