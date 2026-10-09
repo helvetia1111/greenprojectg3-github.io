@@ -136,16 +136,18 @@ function getNc() {
 	})
 }
 
-function dispMain(type) {
+function dispMain() {
 	scan.style.display = "none"
 	main1.style.display = "block"
 	main2.style.display = "block"
 	main5.style.display = "block"
-	if (type == 0) {
+	if (gType == 0) {
 		main3.style.display = "block"
 		main4.style.display = "block"
 	}
 }
+
+var gType = 0
 
 function next() {
 	const str = 'greenprg3'
@@ -172,10 +174,10 @@ function next() {
 		return ch.readValue()
 	})
 	.then(type => {
-		Type = type.getUint8(0)
-		console.log('type... ' + Type)
+		gType = type.getUint8(0)
+		console.log('type... ' + gType)
 		//localStorage.setItem('Type', Type);
-		dispMain(Type)
+		dispMain()
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
