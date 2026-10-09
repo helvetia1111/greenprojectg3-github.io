@@ -9,6 +9,7 @@ var gattServer
 var gattService
 var gattCharacteristic
 var gattCh
+var monCh
 
 const scan = document.getElementById("scan")
 scan.style.display = "block"
@@ -91,6 +92,10 @@ function connectGATT() {
 	.then(characteristic => {
 		gattCharacteristic = characteristic
 		button.disabled = false
+		return server.getPrimaryService(monServiceUUID)
+	})
+	.then(monService => {
+		return monService.getCharacteristic(bleCharacteristic)
 	})
 	.catch(error => {console.error(error) })
 }
