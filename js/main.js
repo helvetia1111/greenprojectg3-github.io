@@ -1,5 +1,3 @@
-import { gType } from './common.js'
-
 function test() {
   console.log('type... ' + gType)
 }
