@@ -3,40 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>main</title>
-	<link rel="stylesheet" href="/static/main.css" type="text/css" />
+	<link rel="stylesheet" href="../css/main.css" type="text/css" />
 </head>
 <body>
 	<div class="mainbutton" >
-		<form action="monitor" method="post" >
-			<input value="モニタ" type="submit" />
-		</form>
+		<input value="モニタ" type="button" id="monitor"/>
 
-		<form action="operation" method="post" >
-			<button name="ope" value="0" type="submit">運転</button>
-		</form>
+		<button name="ope" value="0" type="button" id="operation">運転</button>
 	</div>
 
 	<div class="mainbutton" >
-		<form action="set" method="post" >
-			<input value="設定" type="submit" />
-		</form>
+		<input value="設定" type="button" id="setting"/>
 
-		<form action="mail" method="post" >
-			<input value="E-mail設定" type="submit" />
-		</form>
+		<input value="E-mail設定" type="submit" id="email"/>
 	</div>
 
 	<div class="messbutton" >
-		<form action="mail_message" method="post" >
-			<button name="ope" value="0" type="submit">送信メッセージ設定</button>
-		</form>
+		<button name="ope" value="0" type="button" id="message">送信メッセージ設定</button>
 	</div>
 
-	<div class="mainbutton" >
-		<form action="toami" method="post" >
-			<button name="ope" value="0" type="submit">TOAMI設定</button>
-		</form>
-	</div>
-
+	<script type="text/javascript" src="../js/main.js"></script>
 </body>
 </html>
