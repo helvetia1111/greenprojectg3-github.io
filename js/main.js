@@ -23,9 +23,11 @@ async function writeStateMonitor(state) {
 	try {
 		if (monStateCh.writeValueWithoutResponse) {
 			await monStateCh.writeValueWithoutResponse(val)
+			console.log('write ' + val.getUint8(0))
 		}
 		else {
 			await monStateCh.writeValueWithResponse(val)
+			console.log('write ' + val.getUint8(0))
 		}
 	} catch (error) {
 		console.error('書き込みに失敗しました: ', error)
@@ -67,7 +69,11 @@ btnMonitor.addEventListener("click", function(event) {
 	})
 	.then(valCh => {
 		monValCh = valCh
-		readSystemTime()
+		//readSystemTime()
+		writeStateMonitor(1)
+	})
+	.then(_ => {
+		console.log('write state monitor...')
 	})
 	.catch(error => {
 		console.log('error: ' + error)
