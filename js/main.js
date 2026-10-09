@@ -18,7 +18,7 @@ function dispMonitor() {
 	monitor2.style.display = "block"
 }
 
-async function readMonitor(state) {
+async function writeStateMonitor(state) {
 	const val = Uint8Array.of(state)
 	try {
 		if (monStateCh.writeValueWithoutResponse) {
@@ -27,17 +27,27 @@ async function readMonitor(state) {
 		else {
 			await monStateCh.writeValueWithResponse(val)
 		}
-		const value = await monValCh.readValue();
-		return value
 	} catch (error) {
 		console.error('書き込みに失敗しました: ', error)
 	}
 }
 
+async function readValueMonitor() {
+	try {
+		return　await monValCh.readValue()
+	} catch (error) {
+		console.error('読み込みに失敗しました: ', error)
+	}
+}
+
 function readSystemTime(){
-	return readMonitor(1)
+	return writeStateMonitor(1)
+	.then(_ => {
+		console.log('write state monitor...')
+		return readValueMonitor()
+	})
 	.then(value => {
-		console.log('read... ' + value.getUint32(0))
+		console.log('read val... ' + value.getUint32(0))
 	})
 	.catch(error => {
 		console.log('error: ' + error)
