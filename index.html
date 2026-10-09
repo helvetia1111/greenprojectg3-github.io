@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
 <body>
+	<!-- スキャン ----------------------->
     <div class="base" id="scan">
         <input type="button" value="Scan" id="btnScan" class="base"></input>
         <br />
         <input type="button" value="次へ" id="btnNext" class="base" disabled></input>
     </div>
 
+	<!-- メイン ----------------------->
     <div class="mainbutton" id="main1">
 		<input value="モニタ" type="button" id="monitor"/>
 
@@ -43,7 +45,95 @@
 	<div class="messbutton" id="main5">
 		<button name="ope" value="0" type="button" id="message">送信メッセージ設定</button>
 	</div>
-    
+
+	<!-- モニタ ----------------------->
+	<div class="mainbutton" id="monitor1">
+		<input value="戻る" type="submit" />
+	</div>
+
+	<table class="table" border="1" style="border-collapse: collapse" id="monitor2">
+		<tr>
+			<td>システム時間</td>
+			<td id="systemTime></td>
+		</tr>
+		<tr>
+			<td>潅水計</td>
+			<td id="fre"></td>
+		</tr>
+		<tr>
+			<td>フロートスイッチ</td>
+			<td id="float"></td>
+		</tr>
+		<tr>
+			<td>雨スイッチ</td>
+			<td id="rain"></td>
+		</tr>
+		<tr>
+			<td>AD値系統1</td>
+			<td id="ad"></td>
+		</tr>
+		<tr>
+			<td>ステート</td>
+			<td id="state"></td>
+		</tr>
+		<tr>
+			<td>潅水時間タイマ</td>
+			<td id="opeTime"></td>
+		</tr>
+		<tr>
+			<td>潅水停止フラグ</td>
+			<td id="stopFlag"></td>
+		</tr>
+		<tr>
+			<td>液肥異常フラグ</td>
+			<td id="liquidErrFlag"></td>
+		</tr>
+		<tr>
+			<td>電源異常フラグ</td>
+			<td id="pwrErrFlag"></td>
+		</tr>
+		<tr>
+			<td>AD異常フラグ</td>
+			<td id="adErrFlag"></td>
+		</tr>
+		<tr>
+			<td>バッテリ電圧</td>
+			<td id="batt"></td>
+		</tr>
+		<tr>
+			<td>入力電圧</td>
+			<td id="vIn"></td>
+		</tr>
+		<tr>
+			<td>5V電圧</td>
+			<td id="v5"></td>
+		</tr>
+		<tr>
+			<td>3.7V電圧</td>
+			<td id="v37"></td>
+		</tr>
+		<tr>
+			<td>3.3V電圧</td>
+			<td id="v33"></td>
+		</tr>
+		<tr>
+			<td>2.5V電圧</td>
+			<td id="v25"></td>
+		</tr>
+		<tr>
+			<td>1.8V電圧</td>
+			<td id="v18"></td>
+		</tr>
+		<tr>
+			<td>1.2V電圧</td>
+			<td id="v12"></td>
+		</tr>
+		<tr>
+			<td>ボタン電池電圧</td>
+			<td id="vBtn"></td>
+		</tr>
+	<table>
+	
     <script type="text/javascript" src="js/scan.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>
