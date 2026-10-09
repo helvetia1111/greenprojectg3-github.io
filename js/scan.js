@@ -137,9 +137,11 @@ function next() {
 		return ch.readValue()
 	})
 	.then(type => {
-		gType = type.getUint8(0)
-		console.log('type... ' + gType)
-		location.href = "views/main.html";
+		Type = type.getUint8(0)
+		console.log('type... ' + Type)
+		if (Type == 0) {
+			location.href = "views/main.html";
+		}
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
