@@ -69,8 +69,8 @@ btnMonitor.addEventListener("click", function(event) {
 	})
 	.then(valCh => {
 		monValCh = valCh
-		//readSystemTime()
-		writeStateMonitor(1)
+		readSystemTime()
+		//writeStateMonitor(1)
 	})
 	.then(_ => {
 		console.log('write state monitor...')
