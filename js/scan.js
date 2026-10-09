@@ -1,5 +1,6 @@
 var deviceName = 'H126B01_'
-var bleService = "50499688-e043-4442-a383-aceb7170bb4a"
+var bleService = '50499688-e043-4442-a383-aceb7170bb4a'
+var monServiceUUID = 'd809bf63-38a0-4a10-99b4-079c41d401bb'
 var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
 var bleCh = 'aaa9a54b-f70a-450a-baa2-67d921508d12'
 var typeCh = '5ea393b0-d1da-4eb3-bc00-b622f2d548d5'
@@ -51,7 +52,7 @@ function getDeviceInfo() {
 		filters: [
 			{ namePrefix: deviceName }
 		],
-		optionalServices: [bleService]
+		optionalServices: [bleService, monServiceUUID]
 	}
 	
 	console.log('Requesting any Bluetooth Device...')
