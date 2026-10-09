@@ -93,7 +93,7 @@ function connectGATT() {
 	.then(characteristic => {
 		gattCharacteristic = characteristic
 		button.disabled = false
-		return server.getPrimaryService(monServiceUUID)
+		return gattService.getPrimaryService(monServiceUUID)
 	})
 	.then(monService => {
 		return monService.getCharacteristic(monStateChUUID)
