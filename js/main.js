@@ -3,6 +3,6 @@ function test() {
 }
 
 let btnMonitor = document.getElementById("monitor")
-button.addEventListener("click", function(event) {
+btnMonitor.addEventListener("click", function(event) {
 	test()
 })
