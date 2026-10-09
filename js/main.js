@@ -47,7 +47,7 @@ function readSystemTime(){
 
 let btnMonitor = document.getElementById("monitor")
 btnMonitor.addEventListener("click", function(event) {
-	return gattServer.getPrimaryService(monServiceUUID
+	return gattServer.getPrimaryService(monServiceUUID)
 	.then(service => {
 		monService = service
 		return service.getCharacteristic(monStateChUUID)
@@ -60,7 +60,7 @@ btnMonitor.addEventListener("click", function(event) {
 	.then(valCh => {
 		monValCh = valCh
 	})
-	
+	*/
 	.catch(error => {
 		console.log('error: ' + error)
 	})
