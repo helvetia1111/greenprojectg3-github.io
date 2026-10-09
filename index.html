@@ -12,7 +12,37 @@
         <input type="button" value="次へ" id="btnNext" class="base" disabled></input>
     </div>
 
-    
+    <div class="mainbutton" id="main">
+		<input value="モニタ" type="button" id="monitor"/>
+
+		<button name="ope" value="0" type="button" id="operation">運転</button>
+	</div>
+
+	<div class="mainbutton" id="main">
+		<input value="設定" type="button" id="setting"/>
+
+		<input value="E-mail設定" type="submit" id="email"/>
+	</div>
+
+	<div class="mainbutton" >
+		<input type="hidden" name="season" value="0" />
+		<button name="ope" value="0" type="button" id="season1">時間設定1</button>
+
+		<input type="hidden" name="season" value="1" />
+		<button name="ope" value="0" type="button" id="season2">時間設定2</button>
+	</div>
+
+	<div class="mainbutton" >
+		<input type="hidden" name="season" value="2" />
+		<button name="ope" value="0" type="button" id="season3">時間設定3</button>
+
+		<input type="hidden" name="season" value="3" />
+		<button name="ope" value="0" type="button" id="season4">時間設定4</button>
+	</div>
+
+	<div class="messbutton" >
+		<button name="ope" value="0" type="button" id="message">送信メッセージ設定</button>
+	</div>
     
     <script type="text/javascript" src="js/scan.js"></script>
 </body>
