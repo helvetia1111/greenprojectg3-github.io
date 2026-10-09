@@ -53,7 +53,7 @@ function readSystemTime(){
 		const hour = value.getUint32(0, true) / (60 * 60)
 		const min = (value.getUint32(0, true) / 60) % 60
 		const sec = value.getUint32(0, true) % 60
-		console.log(hour + ':' + min + ':' + sec)
+		console.log((hour | 0) + ':' + (min | 0) + ':' + (sec | 0))
 	})
 	.catch(error => {
 		console.log('error: ' + error)
