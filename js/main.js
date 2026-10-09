@@ -1,5 +1,11 @@
 function monitor() {
-  location.href = "views/monitor.html"
+	const Type = localStorage.getItem('Type');
+	console.log('type... ' + Type)
+	if (Type == 0) {
+		//location.href = "views/monitor.html"
+	}
+	else {
+	}
 }
 
 let btnMonitor = document.getElementById("monitor")
