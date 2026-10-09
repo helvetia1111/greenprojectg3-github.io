@@ -8,6 +8,8 @@ var gattService
 var gattCharacteristic
 var gattCh
 
+document.getElementById("scan").style.display = "block"
+
 document.querySelector('#scan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scan() }
 })
