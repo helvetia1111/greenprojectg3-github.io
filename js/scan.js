@@ -11,6 +11,9 @@ var gattCh
 const scan = document.getElementById("scan")
 scan.style.display = "block"
 
+const main = document.getElementById("main")
+main.style.display = "none"
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
@@ -115,8 +118,9 @@ function getNc() {
 	})
 }
 
-function main() {
+function dispMain() {
 	scan.style.display = "none"
+	main.style.display = "block"
 }
 
 function next() {
@@ -149,7 +153,7 @@ function next() {
 		console.log('type... ' + Type)
 		localStorage.setItem('Type', Type);
 		if (Type == 0) {
-			main()
+			dispMain()
 			//location.href = "views/main.html";
 		}
 		else {
