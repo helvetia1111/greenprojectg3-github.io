@@ -4,6 +4,7 @@ var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
 var bleCh = 'aaa9a54b-f70a-450a-baa2-67d921508d12'
 var typeCh = '5ea393b0-d1da-4eb3-bc00-b622f2d548d5'
 var bluetoothDeviceDetected
+var gattServer
 var gattService
 var gattCharacteristic
 var gattCh
@@ -76,6 +77,7 @@ function connectGATT() {
 	
 	return bluetoothDeviceDetected.gatt.connect()
 	.then(server => {
+		gattServer = server
 		console.log('Getting GATT Service...')
 		return server.getPrimaryService(bleService)
 	})
