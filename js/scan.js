@@ -14,6 +14,9 @@ scan.style.display = "block"
 const main = document.getElementById("main")
 main.style.display = "none"
 
+const mainB = document.getElementById("mainB")
+mainB.style.display = "none"
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
@@ -118,9 +121,12 @@ function getNc() {
 	})
 }
 
-function dispMain() {
+function dispMain(type) {
 	scan.style.display = "none"
 	main.style.display = "block"
+	if (type == 0) {
+		mainB.style.display = "block"
+	}
 }
 
 function next() {
@@ -140,7 +146,6 @@ function next() {
 	.then(value => {
 		console.log('read... ' + value.getUint8(0))
 		if (value.getUint8(0) == 1) {
-			//location.href = "views/main.html";
 			return gattService.getCharacteristic(typeCh)
 		}
 		Promise.resolve()
@@ -151,14 +156,8 @@ function next() {
 	.then(type => {
 		Type = type.getUint8(0)
 		console.log('type... ' + Type)
-		localStorage.setItem('Type', Type);
-		if (Type == 0) {
-			dispMain()
-			//location.href = "views/main.html";
-		}
-		else {
-			//location.href = "views/mainT.html";
-		}
+		//localStorage.setItem('Type', Type);
+		dispMain(Type)
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
