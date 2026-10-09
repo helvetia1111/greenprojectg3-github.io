@@ -139,6 +139,7 @@ function next() {
 	.then(type => {
 		Type = type.getUint8(0)
 		console.log('type... ' + Type)
+		localStorage.setItem('Type', Type);
 		if (Type == 0) {
 			location.href = "views/main.html";
 		}
