@@ -60,9 +60,10 @@ btnMonitor.addEventListener("click", function(event) {
 	.then(valCh => {
 		monValCh = valCh
 	})
-	*/
+	
 	.catch(error => {
 		console.log('error: ' + error)
 	})
+	*/
 	//dispMonitor()
 })
