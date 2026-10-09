@@ -49,10 +49,10 @@ function readSystemTime(){
 		return readValueMonitor()
 	})
 	.then(value => {
-		console.log('read val... ' + value.getUint32(0))
-		const hour = value.getUint32(0) / (60 * 60)
-		const min = (value.getUint32(0) / 60) % 60
-		const sec = value.getUint32(0) % 60
+		console.log('read val... ' + value.getUint32(0, false))
+		const hour = value.getUint32(0, false) / (60 * 60)
+		const min = (value.getUint32(0, false) / 60) % 60
+		const sec = value.getUint32(0, false) % 60
 		console.log(hour + ':' + min + ':' + sec)
 	})
 	.catch(error => {
