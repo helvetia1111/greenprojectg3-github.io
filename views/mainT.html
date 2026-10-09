@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>main</title>
+	<link rel="stylesheet" href="/static/main.css" type="text/css" />
+</head>
+<body>
+	<div class="mainbutton" >
+		<form action="monitor" method="post" >
+			<input value="モニタ" type="submit" />
+		</form>
+
+		<form action="operation" method="post" >
+			<button name="ope" value="0" type="submit">運転</button>
+		</form>
+	</div>
+
+	<div class="mainbutton" >
+		<form action="set" method="post" >
+			<input value="設定" type="submit" />
+		</form>
+
+		<form action="mail" method="post" >
+			<input value="E-mail設定" type="submit" />
+		</form>
+	</div>
+
+	<div class="messbutton" >
+		<form action="mail_message" method="post" >
+			<button name="ope" value="0" type="submit">送信メッセージ設定</button>
+		</form>
+	</div>
+
+	<div class="mainbutton" >
+		<form action="toami" method="post" >
+			<button name="ope" value="0" type="submit">TOAMI設定</button>
+		</form>
+	</div>
+
+</body>
+</html>
