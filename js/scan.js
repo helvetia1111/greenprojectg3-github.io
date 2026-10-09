@@ -8,9 +8,10 @@ var gattService
 var gattCharacteristic
 var gattCh
 
-document.getElementById("scan").style.display = "block"
+const scan = document.getElementById("scan")
+scan.style.display = "block"
 
-document.querySelector('#scan').addEventListener('click', function() {
+document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scan() }
 })
 
@@ -114,6 +115,10 @@ function getNc() {
 	})
 }
 
+function main() {
+	scan.style.display = "none"
+}
+
 function next() {
 	const str = 'greenprg3'
 	const encoder = new TextEncoder()
@@ -144,10 +149,11 @@ function next() {
 		console.log('type... ' + Type)
 		localStorage.setItem('Type', Type);
 		if (Type == 0) {
-			location.href = "views/main.html";
+			main()
+			//location.href = "views/main.html";
 		}
 		else {
-			location.href = "views/mainT.html";
+			//location.href = "views/mainT.html";
 		}
 	})
 	.catch(error => {
@@ -161,7 +167,7 @@ function updateFormAction(actionU) {
 	form.action = actionU;
 }
 
-let button = document.getElementById("next")
+let button = document.getElementById("btnNext")
 button.addEventListener("click", function(event) {
 	if (isWebBluetoothEnabled()) { next() }
 })
