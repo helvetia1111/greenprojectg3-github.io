@@ -111,6 +111,8 @@ function getNc() {
 	})
 }
 
+export var gType = 0
+
 function next() {
 	const str = 'greenprg3'
 	const encoder = new TextEncoder()
@@ -137,7 +139,8 @@ function next() {
 		return ch.readValue()
 	})
 	.then(type => {
-		console.log('type... ' + type.getUint8(0))
+		Type = type.getUint8(0)
+		console.log('type... ' + gType)
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
