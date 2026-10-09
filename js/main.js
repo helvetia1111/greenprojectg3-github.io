@@ -1,4 +1,3 @@
-var monServiceUUID = 'd809bf63-38a0-4a10-99b4-079c41d401bb'
 var monStateChUUID = '971d283e-c157-4284-8bed-bf31198bf5d7'
 var monValChUUID = 'db61a960-0657-4ba0-8825-d743f12f602e'
 var monService
