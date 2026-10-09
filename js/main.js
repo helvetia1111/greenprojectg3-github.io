@@ -21,7 +21,7 @@ function dispMonitor() {
 async function writeStateMonitor(state) {
 	const val = Uint8Array.of(state)
 	try {
-		if (monStateCh.writeValueWithoutResponse) {
+		if (monStateCh.properties.writeWithoutResponse) {
 			await monStateCh.writeValueWithoutResponse(val)
 			console.log('write ' + val[0])
 		}
