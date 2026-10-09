@@ -19,19 +19,29 @@ function dispMonitor() {
 	monitor2.style.display = "block"
 }
 
-function readMonitor(state) {
+async function readMonitor(state) {
 	const val = Uint8Array.of(state)
-	if (monStateCh.writeValueWithoutResponse) {
-		return monStateCh.writeValueWithoutResponse(val)
+	try {
+		if (monStateCh.writeValueWithoutResponse) {
+			await monStateCh.writeValueWithoutResponse(val)
+		}
+		else {
+			await monStateCh.writeValueWithResponse(val)
+		}
+		const value = await monValCh.readValue();
+		return value
+	} catch (error) {
+		console.error('書き込みに失敗しました: ', error)
 	}
-	else {
-		return monStateCh.writeValueWithResponse(val)
-	}
-	.then(_ => {
-		return monValCh.readValue()
-	})
+}
+
+function readSystemTime(){
+	return readMonitor(1)
 	.then(value => {
 		console.log('read... ' + value.getUint32(0))
+	})
+	.catch(error => {
+		console.log('error: ' + error)
 	})
 }
 
