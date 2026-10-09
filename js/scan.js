@@ -11,11 +11,20 @@ var gattCh
 const scan = document.getElementById("scan")
 scan.style.display = "block"
 
-const main = document.getElementById("main")
-main.style.display = "none"
+const main1 = document.getElementById("main1")
+main1.style.display = "none"
 
-const mainB = document.getElementById("mainB")
-mainB.style.display = "none"
+const main2 = document.getElementById("main2")
+main2.style.display = "none"
+
+const main3 = document.getElementById("main3")
+main3.style.display = "none"
+
+const main4 = document.getElementById("main4")
+main4.style.display = "none"
+
+const main5 = document.getElementById("main5")
+main5.style.display = "none"
 
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
@@ -123,9 +132,12 @@ function getNc() {
 
 function dispMain(type) {
 	scan.style.display = "none"
-	main.style.display = "block"
+	main1.style.display = "block"
+	main2.style.display = "block"
+	main5.style.display = "block"
 	if (type == 0) {
-		mainB.style.display = "block"
+		main3.style.display = "block"
+		main4.style.display = "block"
 	}
 }
 
