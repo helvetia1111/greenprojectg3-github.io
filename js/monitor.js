@@ -99,7 +99,7 @@ function readFlag(){
     	tdSystemTime.textContent = '取得フラグ:' + time_flag + ' 時間:' + systime
 		tdFloat.textContent = sw >> 1
 		tdRain.textContent = sw & 0x01
-		tdState.textContent = '潅水:' + value.getUint(2, true)
+		tdState.textContent = '潅水:' + value.getUint8(2, true)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
