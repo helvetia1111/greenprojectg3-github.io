@@ -157,11 +157,9 @@ function dispMain() {
 	scan.style.display = "none"
 	main1.style.display = "block"
 	main2.style.display = "block"
+	main3.style.display = "block"
+	main4.style.display = "block"
 	main5.style.display = "block"
-	if (gType == 0) {
-		main3.style.display = "block"
-		main4.style.display = "block"
-	}
 }
 
 var gType = 0
