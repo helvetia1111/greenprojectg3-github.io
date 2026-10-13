@@ -28,6 +28,7 @@ let tdV33 = document.getElementById('v33')
 let tdV3 = document.getElementById('v3')
 let tdV18 = document.getElementById('v18')
 let tdVBtn = document.getElementById('vBtn')
+let tdValveT = document.getElementById('valveT')
 
 const valveIf = document.getElementById("valveIf")
 valveIf.style.display = "none"
@@ -251,7 +252,7 @@ function readV3V18(){
 	})
 }
 
-function readVBtn(){
+function readVBtnValveT(){
 	return writeStateMonitor(11)
 	.then(_ => {
 		console.log('req vBtn...')
@@ -260,6 +261,8 @@ function readVBtn(){
 	.then(value => {
 		console.log('readVBtn... ' + value.getUint16(0, true))
 		tdVBtn.textContent = value.getUint16(0, true) / 1000
+		let valve = value.getUint16(2, true)
+		tdValveT.textContent = (valve & 0x01) + ':' + ((valve >> 1) & 0x01) + ':' + ((valve >> 2) & 0x01) + ':' + ((valve >> 3) & 0x01) + ':' + ((valve >> 4) & 0x01) + ':' + ((valve >> 5) & 0x01) + ':' + ((valve >> 6) & 0x01) + ':' + ((valve >> 7) & 0x01)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
