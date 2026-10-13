@@ -54,7 +54,8 @@ function readSystemTime(){
 		const min = (value.getUint32(0, true) / 60) % 60
 		const sec = value.getUint32(0, true) % 60
 		console.log((hour | 0) + ':' + (min | 0) + ':' + (sec | 0))
-		tdSystemTime.Value = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
+		systime = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
+		//tdSystemTime.value = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
@@ -82,7 +83,6 @@ btnMonitor.addEventListener("click", function(event) {
 	.catch(error => {
 		console.log('error: ' + error)
 	})
-	//dispMonitor()
+	dispMonitor()
 })
 
-let tdSystemTime = document.getElementById("systemTime")
