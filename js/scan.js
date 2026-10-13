@@ -13,6 +13,7 @@ var gattService
 var gattCharacteristic
 var gattCh
 //var monCh
+let monService
 
 const scan = document.getElementById("scan")
 scan.style.display = "block"
@@ -240,7 +241,7 @@ let btnMonitor = document.getElementById("monitor")
 btnMonitor.addEventListener("click", function(event) {
 	return gattServer.getPrimaryService(monServiceUUID)
 	.then(service => {
-		//monService = service
+		monService = service
 		return service.getCharacteristic(monStateChUUID)
 	})
 	.then(stateCh => {
