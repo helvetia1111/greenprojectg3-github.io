@@ -43,6 +43,7 @@ function dispMonitor() {
 	monitor1.style.display = "block"
 	monitor2.style.display = "block"
 	if (gType == 1) {
+		monitor3.style.display = "block"
 		//valveIf.style.display = "block"
 	}
 }
@@ -56,6 +57,7 @@ function dispMonBack() {
 
 	monitor1.style.display = "none"
 	monitor2.style.display = "none"
+	monitor3.style.display = "none"
 	//valveIf.style.display = "none"
 }
 
