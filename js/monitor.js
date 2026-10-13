@@ -10,14 +10,15 @@ let time_flag
 let systime
 let flowmeter
 
-let tdSystemTime = document.getElementById("systemTime")
-let tdFlowmeter = document.getElementById("fre")
-let tdFloat = document.getElementById("float")
-let tdRain = document.getElementById("rain")
-let tdAd = document.getElementById("ad")
-let tdState = document.getElementById("state")
-let tdOpeTime = document.getElementById("opeTime")
-let tdStopFlag = document.getElementById("stopFlag")
+let tdSystemTime = document.getElementById('systemTime')
+let tdFlowmeter = document.getElementById('fre')
+let tdFloat = document.getElementById('float')
+let tdRain = document.getElementById('rain')
+let tdAd = document.getElementById('ad')
+let tdState = document.getElementById('state')
+let tdOpeTime = document.getElementById('opeTime')
+let tdStopFlag = document.getElementById('stopFlag')
+let tdLiquidErrFlag = document.getElementById('liquidErrFlag')
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -163,6 +164,24 @@ function readSprLimitTimer(){
 	})
 }
 
+function readFlag2(){
+	return writeStateMonitor(7)
+	.then(_ => {
+		console.log('req flag...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readFlag2... ' + value.getUint8(0, true))
+		console.log('readFlag2... ' + value.getUint8(1, true))
+		console.log('readFlag2... ' + value.getUint8(2, true))
+		console.log('readFlag2... ' + value.getUint8(3, true))
+		tdLiquidErrFlag.textContent = value.getUint8(0, true)
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
 function readMonitor() {
 	return readSystemTime()
 	.then(_ => {
@@ -176,6 +195,9 @@ function readMonitor() {
 	})
 	.then(_ => {
 		return readSprLimitTimer()
+	})
+	.then(_ => {
+		return readFlag2()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
