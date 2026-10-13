@@ -196,9 +196,9 @@ function readVBattVIn(){
 	})
 	.then(value => {
 		console.log('readVBatt VIn... ' + value.getUint16(0, true))
-		console.log('readVBatt VIn... ' + value.getUint16(1, true))
+		console.log('readVBatt VIn... ' + value.getUint16(2, true))
 		tdBatt.textContent = value.getUint16(0, true) * 2 / 1000
-		tdVIn.textContent = value.getUint16(1, true) * 2 / 1000
+		tdVIn.textContent = value.getUint16(2, true) * 2 / 1000
 	})
 	.catch(error => {
 		console.log('error: ' + error)
