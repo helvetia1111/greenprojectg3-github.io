@@ -27,6 +27,7 @@ let tdV5 = document.getElementById('v5')
 let tdV33 = document.getElementById('v33')
 let tdV3 = document.getElementById('v3')
 let tdV18 = document.getElementById('v18')
+let tdVBtn = document.getElementById('vBtn')
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -243,6 +244,21 @@ function readV3V18(){
 	})
 }
 
+function readVBtn(){
+	return writeStateMonitor(11)
+	.then(_ => {
+		console.log('req vBtn...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readVBtn... ' + value.getUint16(0, true))
+		tdVBtn.textContent = value.getUint16(0, true) / 1000
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
 function readMonitor() {
 	return readSystemTime()
 	.then(_ => {
@@ -268,6 +284,9 @@ function readMonitor() {
 	})
 	.then(_ => {
 		return readV3V18()
+	})
+	.then(_ => {
+		return readVBtn()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
