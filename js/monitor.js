@@ -30,8 +30,8 @@ let tdV18 = document.getElementById('v18')
 let tdVBtn = document.getElementById('vBtn')
 let tdValveT = document.getElementById('valveT')
 
-const valveIf = document.getElementById("valveIf")
-valveIf.style.display = "none"
+//const valveIf = document.getElementById("valveIf")
+//valveIf.style.display = "none"
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -43,7 +43,7 @@ function dispMonitor() {
 	monitor1.style.display = "block"
 	monitor2.style.display = "block"
 	if (gType == 1) {
-		valveIf.style.display = "block"
+		//valveIf.style.display = "block"
 	}
 }
 
@@ -56,7 +56,7 @@ function dispMonBack() {
 
 	monitor1.style.display = "none"
 	monitor2.style.display = "none"
-	valveIf.style.display = "none"
+	//valveIf.style.display = "none"
 }
 
 async function writeStateMonitor(state) {
