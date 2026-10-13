@@ -39,6 +39,9 @@ monitor1.style.display = "none"
 const monitor2 = document.getElementById("monitor2")
 monitor2.style.display = "none"
 
+const monitor3 = document.getElementById("monitor3")
+monitor3.style.display = "none"
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
