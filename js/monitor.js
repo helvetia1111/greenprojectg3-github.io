@@ -4,6 +4,8 @@ let monService
 let monStateCh
 let monValCh
 
+let setIntervalId
+
 let time_flag
 let systime
 
@@ -19,6 +21,17 @@ function dispMonitor() {
 
 	monitor1.style.display = "block"
 	monitor2.style.display = "block"
+}
+
+function dispMonBack() {
+	main1.style.display = "block"
+	main2.style.display = "block"
+	main5.style.display = "block"
+	main3.style.display = "block"
+	main4.style.display = "block"
+
+	monitor1.style.display = "none"
+	monitor2.style.display = "none"
 }
 
 async function writeStateMonitor(state) {
@@ -83,8 +96,15 @@ btnMonitor.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		dispMonitor()
+		setIntervalId = setInterval(readSystemTime, 5000)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
 	})
+})
+
+let btnMonBack = document.getElementById("monBack")
+btnMonBack.addEventListener("click", function(event) {
+	clearInterval(setIntervalId)
+	dispMonBack()
 })
