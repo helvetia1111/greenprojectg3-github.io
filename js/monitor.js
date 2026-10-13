@@ -136,7 +136,7 @@ function readAd(){
 	})
 	.then(value => {
 		console.log('readad... ' + value.getUint32(0, true))
-		tdAd.textContent = value.getUint32(0, true))
+		tdAd.textContent = value.getUint32(0, true)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
