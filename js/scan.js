@@ -54,7 +54,7 @@ function getDeviceInfo() {
 		filters: [
 			{ namePrefix: deviceName }
 		],
-		optionalServices: [bleService, monServiceUUID]
+		optionalServices: [monServiceUUID, bleService]
 	}
 	
 	console.log('Requesting any Bluetooth Device...')
