@@ -14,6 +14,7 @@ let tdSystemTime = document.getElementById("systemTime")
 let tdFlowmeter = document.getElementById("fre")
 let tdFloat = document.getElementById("float")
 let tdRain = document.getElementById("rain")
+let tdAd = document.getElementById("ad1")
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -127,6 +128,21 @@ function readFlowmeter(){
 	})
 }
 
+function readAd(){
+	return writeStateMonitor(5)
+	.then(_ => {
+		console.log('req ad...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readad... ' + value.getUint32(0, true))
+		tdAd.textContent = value.getUint32(0, true))
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
 function readMonitor() {
 	return readSystemTime()
 	.then(_ => {
@@ -134,6 +150,9 @@ function readMonitor() {
 	})
 	.then(_ => {
 		return readFlowmeter()
+	})
+	.then(_ => {
+		return readAd()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
