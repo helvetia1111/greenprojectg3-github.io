@@ -16,6 +16,7 @@ let tdFloat = document.getElementById("float")
 let tdRain = document.getElementById("rain")
 let tdAd = document.getElementById("ad")
 let tdState = document.getElementById("state")
+let tdOpeTime = document.getElementById("opeTime")
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -145,6 +146,21 @@ function readAd(){
 	})
 }
 
+function readSprLimitTimer(){
+	return writeStateMonitor(6)
+	.then(_ => {
+		console.log('req sprLimitTimer...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readSprLimitTimer... ' + value.getUint32(0, true))
+		tdOpeTime.textContent = value.getUint32(0, true)
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
 function readMonitor() {
 	return readSystemTime()
 	.then(_ => {
@@ -155,6 +171,9 @@ function readMonitor() {
 	})
 	.then(_ => {
 		return readAd()
+	})
+	.then(_ => {
+		return readSprLimitTimer()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
