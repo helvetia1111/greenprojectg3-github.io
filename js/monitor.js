@@ -115,7 +115,7 @@ function readFlowmeter(){
 	})
 	.then(value => {
 		console.log('readCounter... ' + value.getUint32(0, true))
-		tdSystemTime.textContent = "周波数:" + flowmeter + " カウンタ:" + value.getUint32(0, true)
+		tdFlowmeter.textContent = "周波数:" + flowmeter + " カウンタ:" + value.getUint32(0, true)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
