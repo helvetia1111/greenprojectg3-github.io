@@ -50,9 +50,9 @@ function dispMonitor() {
 function dispMonBack() {
 	main1.style.display = "block"
 	main2.style.display = "block"
-	main5.style.display = "block"
 	main3.style.display = "block"
 	main4.style.display = "block"
+	main5.style.display = "block"
 
 	monitor1.style.display = "none"
 	monitor2.style.display = "none"
@@ -296,7 +296,7 @@ function readMonitor() {
 		return readV3V18()
 	})
 	.then(_ => {
-		return readVBtn()
+		return readVBtnValveT()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
