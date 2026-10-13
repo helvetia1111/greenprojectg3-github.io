@@ -17,6 +17,7 @@ let tdRain = document.getElementById("rain")
 let tdAd = document.getElementById("ad")
 let tdState = document.getElementById("state")
 let tdOpeTime = document.getElementById("opeTime")
+let tdStopFlag = document.getElementById("stopFlag")
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -101,6 +102,7 @@ function readFlag(){
 		tdFloat.textContent = sw >> 1
 		tdRain.textContent = sw & 0x01
 		tdState.textContent = '潅水:' + value.getUint8(2, true)
+		tdStopFlag.textContent = value.getUint8(3, true)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
