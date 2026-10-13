@@ -19,7 +19,7 @@ let tdState = document.getElementById('state')
 let tdOpeTime = document.getElementById('opeTime')
 let tdStopFlag = document.getElementById('stopFlag')
 let tdLiquidErrFlag = document.getElementById('liquidErrFlag')
-let tdPwrErrFlag = document.getElementByid('pwrErrFlag')
+let tdPwrErrFlag = document.getElementById('pwrErrFlag')
 
 function dispMonitor() {
 	main1.style.display = "none"
