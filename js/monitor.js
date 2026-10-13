@@ -59,7 +59,7 @@ function readSystemTime(){
 		console.log((hour | 0) + ':' + (min | 0) + ':' + (sec | 0))
 		systime = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
 		//tdSystemTime.value = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
-    tdSystemTime.textContent = systime
+    	tdSystemTime.value = systime
 	})
 	.catch(error => {
 		console.log('error: ' + error)
@@ -82,10 +82,9 @@ btnMonitor.addEventListener("click", function(event) {
 		readSystemTime()
 	})
 	.then(_ => {
-		console.log('write state monitor...')
+		dispMonitor()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
 	})
-	dispMonitor()
 })
