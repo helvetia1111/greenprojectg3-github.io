@@ -26,7 +26,7 @@ let tdVIn = document.getElementById('vIn')
 let tdV5 = document.getElementById('v5')
 let tdV33 = document.getElementById('v33')
 let tdV3 = document.getElementById('v3')
-let tdv18 = document.getElementById('v18')
+let tdV18 = document.getElementById('v18')
 
 function dispMonitor() {
 	main1.style.display = "none"
