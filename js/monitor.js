@@ -14,7 +14,7 @@ let tdSystemTime = document.getElementById("systemTime")
 let tdFlowmeter = document.getElementById("fre")
 let tdFloat = document.getElementById("float")
 let tdRain = document.getElementById("rain")
-let tdAd = document.getElementById("ad1")
+let tdAd = document.getElementById("ad")
 
 function dispMonitor() {
 	main1.style.display = "none"
