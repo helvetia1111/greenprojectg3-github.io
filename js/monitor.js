@@ -59,7 +59,7 @@ function readSystemTime(){
 		console.log((hour | 0) + ':' + (min | 0) + ':' + (sec | 0))
 		systime = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
 		//tdSystemTime.value = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
-    	tdSystemTime.value = systime
+    	tdSystemTime.textContent = systime
 	})
 	.catch(error => {
 		console.log('error: ' + error)
