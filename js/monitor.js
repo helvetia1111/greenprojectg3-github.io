@@ -19,6 +19,7 @@ let tdState = document.getElementById('state')
 let tdOpeTime = document.getElementById('opeTime')
 let tdStopFlag = document.getElementById('stopFlag')
 let tdLiquidErrFlag = document.getElementById('liquidErrFlag')
+let tdPwrErrFlag = document.getElementByid('pwrErrFlag')
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -176,6 +177,7 @@ function readFlag2(){
 		console.log('readFlag2... ' + value.getUint8(2, true))
 		console.log('readFlag2... ' + value.getUint8(3, true))
 		tdLiquidErrFlag.textContent = value.getUint8(0, true)
+		tdPwrErrFlag.textContent = value.getUint8(1, true)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
