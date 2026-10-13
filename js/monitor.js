@@ -15,6 +15,7 @@ let tdFlowmeter = document.getElementById("fre")
 let tdFloat = document.getElementById("float")
 let tdRain = document.getElementById("rain")
 let tdAd = document.getElementById("ad")
+let tdState = document.getElementById("state")
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -95,9 +96,10 @@ function readFlag(){
 		console.log('readFlag... ' + value.getUint8(3, true))
 		time_flag = value.getUint8(0, true)
 		const sw = value.getUint8(1, true)
-    	tdSystemTime.textContent = "取得フラグ:" + time_flag + " 時間:" + systime
+    	tdSystemTime.textContent = '取得フラグ:' + time_flag + ' 時間:' + systime
 		tdFloat.textContent = sw >> 1
 		tdRain.textContent = sw & 0x01
+		tdState.textContent = '潅水:' + value.getUint(2, true)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
@@ -121,7 +123,7 @@ function readFlowmeter(){
 	})
 	.then(value => {
 		console.log('readCounter... ' + value.getUint32(0, true))
-		tdFlowmeter.textContent = "周波数:" + flowmeter + " カウンタ:" + value.getUint32(0, true)
+		tdFlowmeter.textContent = '周波数:' + flowmeter + ' カウンタ:' + value.getUint32(0, true)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
