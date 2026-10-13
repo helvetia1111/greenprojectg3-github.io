@@ -30,35 +30,33 @@ let tdV18 = document.getElementById('v18')
 let tdVBtn = document.getElementById('vBtn')
 let tdValveT = document.getElementById('valveT')
 
-//const valveIf = document.getElementById("valveIf")
-//valveIf.style.display = "none"
+const valveIf = document.getElementById("valveIf")
+valveIf.style.display = "none"
 
 function dispMonitor() {
-	main1.style.display = "none"
-	main2.style.display = "none"
-	main5.style.display = "none"
-	main3.style.display = "none"
-	main4.style.display = "none"
+	main1.style.display = 'none'
+	main2.style.display = 'none'
+	main5.style.display = 'none'
+	main3.style.display = 'none'
+	main4.style.display = 'none'
 
-	monitor1.style.display = "block"
-	monitor2.style.display = "block"
+	monitor1.style.display = 'block'
+	monitor2.style.display = 'block'
 	if (gType == 1) {
-		monitor3.style.display = "block"
-		//valveIf.style.display = "block"
+		valveIf.style.display = 'table-row'
 	}
 }
 
 function dispMonBack() {
-	main1.style.display = "block"
-	main2.style.display = "block"
-	main3.style.display = "block"
-	main4.style.display = "block"
-	main5.style.display = "block"
+	main1.style.display = 'block'
+	main2.style.display = 'block'
+	main3.style.display = 'block'
+	main4.style.display = 'block'
+	main5.style.display = 'block'
 
-	monitor1.style.display = "none"
-	monitor2.style.display = "none"
-	monitor3.style.display = "none"
-	//valveIf.style.display = "none"
+	monitor1.style.display = 'none'
+	monitor2.style.display = 'none'
+	valveIf.style.display = 'none'
 }
 
 async function writeStateMonitor(state) {
