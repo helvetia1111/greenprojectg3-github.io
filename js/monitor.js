@@ -9,11 +9,11 @@ let setIntervalId
 let time_flag
 let systime
 let flowmeter
-let float
 
 let tdSystemTime = document.getElementById("systemTime")
 let tdFlowmeter = document.getElementById("fre")
 let tdFloat = document.getElementById("float")
+let tdRain = document.getElementById("rain")
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -93,9 +93,10 @@ function readFlag(){
 		console.log('readFlag... ' + value.getUint8(2, true))
 		console.log('readFlag... ' + value.getUint8(3, true))
 		time_flag = value.getUint8(0, true)
-		float = value.getUint8(1, true)
+		const sw = value.getUint8(1, true)
     	tdSystemTime.textContent = "取得フラグ:" + time_flag + " 時間:" + systime
-		tdFloat.textContent = float
+		tdFloat.textContent = sw >> 1
+		tdRain.textContent = sw & 0x01
 	})
 	.catch(error => {
 		console.log('error: ' + error)
