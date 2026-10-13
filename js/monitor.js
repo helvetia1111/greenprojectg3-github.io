@@ -8,9 +8,10 @@ let setIntervalId
 
 let time_flag
 let systime
+let flowmeter
 
 let tdSystemTime = document.getElementById("systemTime")
-//document.getElementById("systemTime").textContent = `取得フラグ:${time_flag} 時間:${systime}`;
+let tdFlowmeter = document.getElementById("fre")
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -61,7 +62,7 @@ async function readValueMonitor() {
 function readSystemTime(){
 	return writeStateMonitor(1)
 	.then(_ => {
-		console.log('write state monitor...')
+		console.log('req systemTime...')
 		return readValueMonitor()
 	})
 	.then(value => {
@@ -81,7 +82,7 @@ function readSystemTime(){
 function readFlag(){
 	return writeStateMonitor(2)
 	.then(_ => {
-		console.log('write state monitor...')
+		console.log('req flag...')
 		return readValueMonitor()
 	})
 	.then(value => {
@@ -97,10 +98,37 @@ function readFlag(){
 	})
 }
 
+function readFlowmeter(){
+	return writeStateMonitor(3)
+	.then(_ => {
+		console.log('req flowmeter...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readFlometer... ' + value.getUint32(0, true))
+		flowmeter = value.getUint32(0, true)
+		return writeStateMonitor(4)
+	})
+	.then(_ => {
+		console.log('req counter...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readCounter... ' + value.getUint32(0, true))
+		tdSystemTime.textContent = "周波数:" + flowmeter + " カウンタ:" + value.getUint32(0, true)
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
 function readMonitor() {
 	return readSystemTime()
 	.then(_ => {
 		return readFlag()
+	})
+	.then(_ => {
+		return readFlowmeter()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
