@@ -21,6 +21,8 @@ let tdStopFlag = document.getElementById('stopFlag')
 let tdLiquidErrFlag = document.getElementById('liquidErrFlag')
 let tdPwrErrFlag = document.getElementById('pwrErrFlag')
 let tdAdErrFlag = document.getElementById('adErrFlag')
+let tdBatt = document.getElementById('batt')
+let tdVIn = document.getElementById('vIn')
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -186,6 +188,23 @@ function readFlag2(){
 	})
 }
 
+function readVBattVIn(){
+	return writeStateMonitor(8)
+	.then(_ => {
+		console.log('req vBatt vIn...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readVBatt VIn... ' + value.getUint16(0, true))
+		console.log('readVBatt VIn... ' + value.getUint16(1, true))
+		tdBatt.textContent = value.getUint16(0, true)
+		tdVIn.textContent = value.getUint16(1, true)
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
 function readMonitor() {
 	return readSystemTime()
 	.then(_ => {
@@ -202,6 +221,9 @@ function readMonitor() {
 	})
 	.then(_ => {
 		return readFlag2()
+	})
+	.then(_ => {
+		return readVBattVIn()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
