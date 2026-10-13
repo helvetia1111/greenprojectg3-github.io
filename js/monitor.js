@@ -25,6 +25,8 @@ let tdBatt = document.getElementById('batt')
 let tdVIn = document.getElementById('vIn')
 let tdV5 = document.getElementById('v5')
 let tdV33 = document.getElementById('v33')
+let tdV3 = document.getElementById('v3')
+let tdv18 = document.getElementById('v18')
 
 function dispMonitor() {
 	main1.style.display = "none"
@@ -210,7 +212,7 @@ function readVBattVIn(){
 function readV5V33(){
 	return writeStateMonitor(9)
 	.then(_ => {
-		console.log('req vBatt vIn...')
+		console.log('req v5 v3.3...')
 		return readValueMonitor()
 	})
 	.then(value => {
@@ -218,6 +220,23 @@ function readV5V33(){
 		console.log('readV3.3... ' + value.getUint16(2, true))
 		tdV5.textContent = value.getUint16(0, true) * 2 / 1000
 		tdV33.textContent = value.getUint16(2, true) / 1000
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
+function readV3V18(){
+	return writeStateMonitor(10)
+	.then(_ => {
+		console.log('req v3 v1.8...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readV3... ' + value.getUint16(0, true))
+		console.log('readV1.8... ' + value.getUint16(2, true))
+		tdV3.textContent = value.getUint16(0, true) / 1000
+		tdV18.textContent = value.getUint16(2, true) / 1000
 	})
 	.catch(error => {
 		console.log('error: ' + error)
@@ -246,6 +265,9 @@ function readMonitor() {
 	})
 	.then(_ => {
 		return readV5V33()
+	})
+	.then(_ => {
+		return readV3V18()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
