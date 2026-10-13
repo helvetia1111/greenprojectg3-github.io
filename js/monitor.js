@@ -65,14 +65,42 @@ function readSystemTime(){
 		return readValueMonitor()
 	})
 	.then(value => {
-		console.log('read val... ' + value.getUint32(0, true))
+		console.log('systemTime... ' + value.getUint32(0, true))
 		const hour = value.getUint32(0, true) / (60 * 60)
 		const min = (value.getUint32(0, true) / 60) % 60
 		const sec = value.getUint32(0, true) % 60
 		console.log((hour | 0) + ':' + (min | 0) + ':' + (sec | 0))
 		systime = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
-		//tdSystemTime.value = (hour | 0) + ':' + (min | 0) + ':' + (sec | 0)
-    	tdSystemTime.textContent = systime
+    	//tdSystemTime.textContent = systime
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
+function readFlag(){
+	return writeStateMonitor(2)
+	.then(_ => {
+		console.log('write state monitor...')
+		return readValueMonitor()
+	})
+	.then(value => {
+		console.log('readFlag... ' + value.getUint8(0, true))
+		console.log('readFlag... ' + value.getUint8(1, true))
+		console.log('readFlag... ' + value.getUint8(2, true))
+		console.log('readFlag... ' + value.getUint8(3, true))
+		time_flag = value.getUint8(0, true)
+    	tdSystemTime.textContent = "取得フラグ:" + time_flag + " 時間:" + systime
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+}
+
+function readMonitor() {
+	return readSystemTime()
+	.then(_ => {
+		return readFlag()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
@@ -92,11 +120,11 @@ btnMonitor.addEventListener("click", function(event) {
 	})
 	.then(valCh => {
 		monValCh = valCh
-		readSystemTime()
+		readMonitor()
 	})
 	.then(_ => {
 		dispMonitor()
-		setIntervalId = setInterval(readSystemTime, 5000)
+		setIntervalId = setInterval(readMonitor, 5000)
 	})
 	.catch(error => {
 		console.log('error: ' + error)
