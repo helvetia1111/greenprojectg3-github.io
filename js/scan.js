@@ -4,7 +4,9 @@ var monServiceUUID = 'd809bf63-38a0-4a10-99b4-079c41d401bb'
 var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
 var bleCh = 'aaa9a54b-f70a-450a-baa2-67d921508d12'
 var typeCh = '5ea393b0-d1da-4eb3-bc00-b622f2d548d5'
-//var monStateChUUID = '971d283e-c157-4284-8bed-bf31198bf5d7'
+let monStateChUUID = '971d283e-c157-4284-8bed-bf31198bf5d7'
+let monValChUUID = 'db61a960-0657-4ba0-8825-d743f12f602e'
+
 var bluetoothDeviceDetected
 var gattServer
 var gattService
@@ -223,3 +225,40 @@ button.addEventListener("click", function(event) {
 	if (isWebBluetoothEnabled()) { next() }
 })
 
+function dispMonitor() {
+	main1.style.display = "none"
+	main2.style.display = "none"
+	main5.style.display = "none"
+	main3.style.display = "none"
+	main4.style.display = "none"
+
+	monitor1.style.display = "block"
+	monitor2.style.display = "block"
+}
+
+let btnMonitor = document.getElementById("monitor")
+btnMonitor.addEventListener("click", function(event) {
+	return gattServer.getPrimaryService(monServiceUUID)
+	.then(service => {
+		//monService = service
+		return service.getCharacteristic(monStateChUUID)
+	})
+	.then(stateCh => {
+		//monStateCh = stateCh
+		return monService.getCharacteristic(monValChUUID)
+	})
+	.then(valCh => {
+		//monValCh = valCh
+		//readMonitor()
+		dispMonitor()
+	})
+		/*
+	.then(_ => {
+		dispMonitor()
+		//setIntervalId = setInterval(readMonitor, 5000)
+	})
+	*/
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+})
