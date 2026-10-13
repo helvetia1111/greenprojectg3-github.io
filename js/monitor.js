@@ -93,7 +93,7 @@ function readFlag(){
 		console.log('readFlag... ' + value.getUint8(2, true))
 		console.log('readFlag... ' + value.getUint8(3, true))
 		time_flag = value.getUint8(0, true)
-		float = value.getUInt8(1, true)
+		float = value.getUint8(1, true)
     	tdSystemTime.textContent = "取得フラグ:" + time_flag + " 時間:" + systime
 		tdFloat.textContent = float
 	})
