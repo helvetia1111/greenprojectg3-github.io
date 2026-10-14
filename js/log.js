@@ -26,7 +26,7 @@ function downloadCSV() {
 
 	const downloadLink = document.createElement("a")
 	downloadLink.download = filename
-	downloadLink.href = objcectUrl
+	downloadLink.href = objectUrl
 	downloadLink.click()
 	downloadLink.remove()
 }
