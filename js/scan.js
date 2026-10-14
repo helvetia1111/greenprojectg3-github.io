@@ -70,6 +70,25 @@ manual5.style.display = "none"
 const manual6 = document.getElementById("manual6")
 manual6.style.display = "none"
 
+const log1 = document.getElementById("log1")
+log1.style.display = "none"
+
+const log2 = document.getElementById("log2")
+log2.style.display = "none"
+
+const log3 = document.getElementById("log3")
+log3.style.display = "none"
+
+const log4 = document.getElementById("log4")
+log4.style.display = "none"
+
+const log5 = document.getElementById("log5")
+log5.style.display = "none"
+
+const log6 = document.getElementById("log6")
+log6.style.display = "none"
+
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
