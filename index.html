@@ -129,7 +129,26 @@
 			<td id="valveT">0:0:0:0:0:0:0:0</td>
 		</tr>
 	<table>
-	
+
+	<!-- 運転 ----------------------->
+	<div class="mainbutton" id="operation1">
+		<button name"ope" value="0" type="button" id="manual">手動運転</button>
+
+		<button name="ope" value="0" type="button" id="log">ログ</button>
+	</div>
+
+	<div class="mainbutton" id="operation2">
+		<button name="ope" value="0" type="button" id="timeSetting">時間設定</button>
+	</div>
+
+	<div id="operation3">
+		<button name="ope" value="2" type="button" class="errorstopbutton" >流量異常潅水停止解除</button>
+	</div>
+
+	<div id="operation4">
+			<input value="戻る" type="button" class="backbutton" />
+	</div>
+		
     <script type="text/javascript" src="js/scan.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/monitor.js"></script>
