@@ -18,6 +18,22 @@ function dispManual() {
 	manual6.style.display = 'block'
 }
 
+async function writeCmdManual(cmd) {
+	const val = Uint8Array.of(cmd)
+	try {
+		if (manCmdCh.properties.writeWithoutResponse) {
+			await manCmdCh.writeValueWithoutResponse(val)
+			console.log('write ' + val[0])
+		}
+		else {
+			await manCmdCh.writeValueWithResponse(val)
+			console.log('write ' + val[0])
+		}
+	} catch (error) {
+		console.error('書き込みに失敗しました: ', error)
+	}
+}
+
 let btnManual = document.getElementById("manual")
 btnManual.addEventListener("click", function(event) {
 	return gattServer.getPrimaryService(manServiceUUID)
@@ -29,6 +45,14 @@ btnManual.addEventListener("click", function(event) {
 		manCmdCh = cmdCh
 		dispManual()
 	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+})
+
+let btnManOpe1 = document.getElementById("manOpe1")
+btnManOpe1.addEventListener("click", function(event) {
+	return writeCmdManual(1)
 	.catch(error => {
 		console.log('error: ' + error)
 	})
