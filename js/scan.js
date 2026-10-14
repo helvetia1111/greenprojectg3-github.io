@@ -39,6 +39,18 @@ monitor1.style.display = "none"
 const monitor2 = document.getElementById("monitor2")
 monitor2.style.display = "none"
 
+const operation1 = document.getElementById("operation1")
+operation1.style.display = "none"
+
+const operation2 = document.getElementById("operation2")
+operation2.style.display = "none"
+
+const operation3 = document.getElementById("operation3")
+operation3.style.display = "none"
+
+const operation4 = document.getElementById("operation4")
+operation4.style.display = "none"
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
