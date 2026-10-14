@@ -1,20 +1,55 @@
 function dispLog() {
 	operation1.style.display = 'none'
-  operation2.style.display = 'none'
-  operation3.style.display = 'none'
-  operation4.style.display = 'none'
+  	operation2.style.display = 'none'
+  	operation3.style.display = 'none'
+  	operation4.style.display = 'none'
 
 	log1.style.display = 'block'
 	log2.style.display = 'block'
 	log3.style.display = 'block'
 	log4.style.display = 'block'
 	log5.style.display = 'block'
+	log7.style.display = 'block'
+}
+
+function dispBackLog() {
+	operation1.style.display = 'block'
+  	operation2.style.display = 'block'
+  	operation3.style.display = 'block'
+  	operation4.style.display = 'block'
+
+	log1.style.display = 'none'
+	log2.style.display = 'none'
+	log3.style.display = 'none'
+	log4.style.display = 'none'
+	log5.style.display = 'none'
+	log7.style.display = 'none'
+}
+
+let dispRes = 0
+function resultLog() {
+	dispRes = 1
+	log1.style.display = 'none'
+	log2.style.display = 'none'
+	log3.style.display = 'none'
+	log4.style.display = 'none'
+	log5.style.display = 'none'
 	log6.style.display = 'block'
+}
+
+function resultBackLog() {
+	dispRes = 0
+	log1.style.display = 'block'
+	log2.style.display = 'block'
+	log3.style.display = 'block'
+	log4.style.display = 'block'
+	log5.style.display = 'block'
+	log6.style.display = 'none'
 }
 
 let btnLog = document.getElementById("log")
 btnLog.addEventListener("click", function(event) {
-  dispLog()
+  	dispLog()
 })
 
 function downloadCSV() {
@@ -33,5 +68,17 @@ function downloadCSV() {
 
 let btnSprLog1 = document.getElementById("sprLog1")
 btnSprLog1.addEventListener("click", function(event) {
-  downloadCSV()
+	const data = 'テスト, テスト, テスト\nテスト, テスト, テスト'
+	log6.textContent = data
+	resultLog()
+})
+
+let btnLogBack = document.getElementById("logBack")
+btnLogBack.addEventListener("click", function(event) {
+	if (dispRes == 0) {
+		dispBackLog()
+	}
+	else {
+		resultBackLog()
+	}
 })
