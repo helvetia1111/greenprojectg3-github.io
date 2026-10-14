@@ -88,6 +88,8 @@ log5.style.display = "none"
 const log6 = document.getElementById("log6")
 log6.style.display = "none"
 
+const log7 = document.getElementById("log7")
+log7.style.display = "none"
 
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
