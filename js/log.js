@@ -69,7 +69,7 @@ function downloadCSV() {
 let btnSprLog1 = document.getElementById("sprLog1")
 btnSprLog1.addEventListener("click", function(event) {
 	const data = 'テスト, テスト, テスト\nテスト, テスト, テスト'
-	log6.textContent = data
+	log6.innerText = data
 	resultLog()
 })
 
