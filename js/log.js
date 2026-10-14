@@ -163,13 +163,14 @@ async function readLog(num) {
 			if (ts.getUint32(0, true) == 0) {
 				break;
 			}
-			let ss = ts.getUint8(0, true) & 0x3f
-			let mm = ((ts.getUint8(1, true) << 2) & 0x3c) | ((ts.getUint8(0, true) >> 6) & 0x03)
-			let hh = ts.getUint8(2, true) & 0x1f
-			let day = ((ts.getUint8(3, true) << 3) & 0x18) | ((ts.getUint8(2, true) >> 5) & 0x07)
-			let mon = (ts.getUint8(3, true) >> 2) & 0x0f
+			let ss = (ts.getUint8(0, true) & 0x3f).toString().padStart(2, '0')
+			let mm = (((ts.getUint8(1, true) << 2) & 0x3c) | ((ts.getUint8(0, true) >> 6) & 0x03)).toString().padStart(2, '0')
+			let hh = (ts.getUint8(2, true) & 0x1f).toString().padStart(2, '0')
+			let day = (((ts.getUint8(3, true) << 3) & 0x18) | ((ts.getUint8(2, true) >> 5) & 0x07)).toString().padStart(2, '0')
+			let mon = ((ts.getUint8(3, true) >> 2) & 0x0f).toString().padStart(2, '0')
 			let val = data.getUint32(0, true)
-			stLog += mon + '/' + day + ' ' + hh + ':' + mm + ':' + ss + ' ' + val + '\r\n'
+			//stLog += mon + '/' + day + ' ' + hh + ':' + mm + ':' + ss + ' ' + val + '\r\n'
+			stLog += '${mon}/${day} ${hh}:${mm}:${ss} ${val}\r\n'
 		}
 	} catch (error) {
 		console.error('読み込みに失敗しました: ', error)
