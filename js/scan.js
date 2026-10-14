@@ -199,6 +199,7 @@ function next() {
 		gType = type.getUint8(0)
 		console.log('type... ' + gType)
 		dispMain()
+	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
 	})
