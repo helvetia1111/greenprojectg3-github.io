@@ -7,9 +7,9 @@ function dispOperation() {
 
 	operation1.style.display = 'block'
 	operation2.style.display = 'block'
-  	operation3.style.display = 'block'
+  	operation4.style.display = 'block'
 	if ((gType == 1) || (gType == 2)) {
-		operation4.style.display = 'block'
+		operation3.style.display = 'block'
 	}
 }
 
