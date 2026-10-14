@@ -1,6 +1,7 @@
 var deviceName = 'H126B01_'
 var bleService = '50499688-e043-4442-a383-aceb7170bb4a'
 var monServiceUUID = 'd809bf63-38a0-4a10-99b4-079c41d401bb'
+var manServiceUUID = 'af27b346-cd12-433e-a838-2e710f66eb60'
 var bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
 var bleCh = 'aaa9a54b-f70a-450a-baa2-67d921508d12'
 var typeCh = '5ea393b0-d1da-4eb3-bc00-b622f2d548d5'
@@ -87,7 +88,7 @@ function getDeviceInfo() {
 		filters: [
 			{ namePrefix: deviceName }
 		],
-		optionalServices: [monServiceUUID, bleService]
+		optionalServices: [monServiceUUID, bleService, manServiceUUID]
 	}
 	
 	console.log('Requesting any Bluetooth Device...')
@@ -128,14 +129,6 @@ function connectGATT() {
 		button.disabled = false
 		//return gattServer.getPrimaryService(monServiceUUID)
 	})
-		/*
-	.then(monService => {
-		return monService.getCharacteristic(monStateChUUID)
-	})
-	.then(monStateCh => {
-		monCh = monStateCh
-	})
-	*/
 	.catch(error => {console.error(error) })
 }
 
@@ -157,24 +150,8 @@ function getNc() {
 	return gattService.getCharacteristic(bleCh)
 	.then(ch => {
 		gattCh = ch
-
-		/*
-		const val = Uint8Array.of(1)
-		if (gattCh.properties.writeWithoutResponse) {
-			return gattCh.writeValueWithoutResponse(val)
-		}
-		else {
-			return gattCh.writeValueWithResponse(val)
-		}
-		*/
 		return gattCh.readValue()
 	})	
-		/*
-	.then(_ => {
-		console.log('write 1...')
-		return gattCh.readValue()
-	})
-	*/
 	.then(value => {
 		console.log('read... ' + value.getUint8(0))
 	})
@@ -222,27 +199,9 @@ function next() {
 		gType = type.getUint8(0)
 		console.log('type... ' + gType)
 		dispMain()
-
-		/*
-		const val = Uint8Array.of(1)
-		if (monCh.properties.writeWithoutResponse) {
-			return monCh.writeValueWithoutResponse(val)
-		}
-		else {
-			return monCh.writeValueWithResponse(val)
-		}
-		*/
-	})
-		/*
-	.then(_ => {
-		console.log('test')
-	})
-	*/
 	.catch(error => {
 		console.log('[Error]: ' + error)
 	})
-
-	//getNc()
 }
 
 function updateFormAction(actionU) {
@@ -253,41 +212,3 @@ let button = document.getElementById("btnNext")
 button.addEventListener("click", function(event) {
 	if (isWebBluetoothEnabled()) { next() }
 })
-
-/*
-function dispMonitor() {
-	main1.style.display = "none"
-	main2.style.display = "none"
-	main5.style.display = "none"
-	main3.style.display = "none"
-	main4.style.display = "none"
-
-	monitor1.style.display = "block"
-	monitor2.style.display = "block"
-}
-
-let btnMonitor = document.getElementById("monitor")
-btnMonitor.addEventListener("click", function(event) {
-	return gattServer.getPrimaryService(monServiceUUID)
-	.then(service => {
-		monService = service
-		return service.getCharacteristic(monStateChUUID)
-	})
-	.then(stateCh => {
-		//monStateCh = stateCh
-		return monService.getCharacteristic(monValChUUID)
-	})
-	.then(valCh => {
-		//monValCh = valCh
-		//readMonitor()
-		//dispMonitor()
-	})
-	.then(_ => {
-		dispMonitor()
-		//setIntervalId = setInterval(readMonitor, 5000)
-	})
-	.catch(error => {
-		console.log('error: ' + error)
-	})
-})
-*/
