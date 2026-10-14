@@ -169,7 +169,7 @@ async function readLog(num) {
 			let day = ((ts.getUint8(3, true) << 3) & 0x18) | ((ts.getUint8(2, true) >> 5) & 0x07)
 			let mon = (ts.getUint8(3, true) >> 2) & 0x0f
 			let val = data.getUint32(0, true)
-			stLog += mon + '/' + day + ' ' + hh + ':' + mm + ':' + ss + ' ' + data + '\r\n'
+			stLog += mon + '/' + day + ' ' + hh + ':' + mm + ':' + ss + ' ' + val + '\r\n'
 		}
 	} catch (error) {
 		console.error('読み込みに失敗しました: ', error)
