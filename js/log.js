@@ -146,7 +146,9 @@ let stLog = ''
 async function readLog(num) {
 	try {
 		await writeStateLog(num)
-		let index = await readIndexLog()
+		let indexTemp = await readIndexLog()
+		let index = indexTemp.getUint8(0, true)
+		console.log('index ' + index)
 		for (let i = 0; i < 110; i++) {
 			if (index > 0) {
 				index--;
