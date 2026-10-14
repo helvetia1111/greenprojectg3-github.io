@@ -1,3 +1,13 @@
+let stateLogChUUID = '25f82846-2555-4f41-840d-4015ef0a88fc'
+let indexLogChUUID = '1302dae1-5c5d-4a28-8725-5152420ee764'
+let tsLogChUUID = '933b26ef-68fb-4c15-9e81-aa2eafca1beb'
+let dataLogChUUID = '97ad78a8-55f6-459e-a282-b1bbb01b0395'
+let logService
+let stateLogCh
+let indexLogCh
+let tsLogCh
+let dataLogCh
+
 function dispLog() {
 	operation1.style.display = 'none'
   	operation2.style.display = 'none'
@@ -49,8 +59,120 @@ function resultBackLog() {
 
 let btnLog = document.getElementById("log")
 btnLog.addEventListener("click", function(event) {
-  	dispLog()
+	return gattServer.getPrimaryService(logServiceUUID)
+	.then(service => {
+		logService = service
+		return service.getCharacteristic(stateLogChUUID)
+	})
+	.then(stateCh => {
+		stateLogCh = stateCh
+		return logService.getCharacteristic(indexLogChUUID)
+	})
+	.then(indexCh => {
+		indexLogCh = indexCh
+		return logService.getCharacteristic(tsLogChUUID)
+	})
+	.then(tsCh => {
+		tsLogCh = tsCh
+		return logService.getCharacteristic(dataLogChUUID)
+	})
+	.then(dataCh => {
+		dataLogCh = dataCh
+		dispLog()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+  	//dispLog()
 })
+
+async function writeStateLog(state) {
+	const val = Uint8Array.of(state)
+	try {
+		if (stateLogCh.properties.writeWithoutResponse) {
+			await stateLogCh.writeValueWithoutResponse(val)
+			console.log('write ' + val[0])
+		}
+		else {
+			await stateLogCh.writeValueWithResponse(val)
+			console.log('write ' + val[0])
+		}
+	} catch (error) {
+		console.error('書き込みに失敗しました: ', error)
+	}
+}
+
+async function readIndexLog() {
+	try {
+		return　await indexLogCh.readValue()
+	} catch (error) {
+		console.error('読み込みに失敗しました: ', error)
+	}
+}
+
+async function writeIndexLog(index) {
+	const val = Uint8Array.of(index)
+	try {
+		if (indexLogCh.properties.writeWithoutResponse) {
+			await indexLogCh.writeValueWithoutResponse(val)
+			console.log('write ' + val[0])
+		}
+		else {
+			await indexLogCh.writeValueWithResponse(val)
+			console.log('write ' + val[0])
+		}
+	} catch (error) {
+		console.error('書き込みに失敗しました: ', error)
+	}
+}
+
+async function readTsLog() {
+	try {
+		return　await tsLogCh.readValue()
+	} catch (error) {
+		console.error('読み込みに失敗しました: ', error)
+	}
+}
+
+async function readDataLog() {
+	try {
+		return　await dataLogCh.readValue()
+	} catch (error) {
+		console.error('読み込みに失敗しました: ', error)
+	}
+}
+
+let stLog = ''
+async function readLog(num) {
+	try {
+		await writeStateLog(num)
+		let index = await readIndexLog()
+		for (let i = 0; i < 110; i++) {
+			if (index > 0) {
+				index--;
+			}
+			else {
+				index = (110 - 1)
+			}
+			await writeIndexLog(index)
+			await writeStateLog(num + 1)
+			let ts = await readTsLog()
+			let data = await readDataLog()
+			if (ts.getUint32(0, true) == 0) {
+				break;
+			}
+			let ss = ts.getUint8(0, true) & 0x3f
+			let mm = ((ts.getUint8(1, true) << 2) & 0x3c) | ((ts.getUint8(0, true) >> 6) & 0x03)
+			let hh = ts.getUint8(2, true) & 0x1f
+			let day = ((ts.getUint8(3, true) << 3) & 0x18) | ((ts.getUint8(2, true) >> 5) & 0x07)
+			let mon = (ts.getUint8(3, true) >> 2) & 0x0f
+			let val = data.getUint32(0, true)
+			stLog += mon + '/' + day + ' ' + hh + ':' + mm + ':' + ss + ' ' + data + '\r\n'
+		}
+	} catch (error) {
+		console.error('読み込みに失敗しました: ', error)
+	}
+}
 
 function downloadCSV() {
 	const filename = "download.csv"
@@ -68,9 +190,20 @@ function downloadCSV() {
 
 let btnSprLog1 = document.getElementById("sprLog1")
 btnSprLog1.addEventListener("click", function(event) {
+	/*
 	const data = 'テスト, テスト, テスト\nテスト, テスト, テスト'
 	log6.innerText = data
 	resultLog()
+	*/
+	stLog = ''
+	return readLog(1)
+	.then(_ => {
+		log6.innerText = stLog
+		resultLog()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
 })
 
 let btnLogBack = document.getElementById("logBack")
