@@ -1,3 +1,22 @@
+function dispLog() {
+	operation1.style.display = 'none'
+  operation2.style.display = 'none'
+  operation3.style.display = 'none'
+  operation4.style.display = 'none'
+
+	log1.style.display = 'block'
+	log2.style.display = 'block'
+	log3.style.display = 'block'
+	log4.style.display = 'block'
+	log5.style.display = 'block'
+	log6.style.display = 'block'
+}
+
+let btnLog = document.getElementById("log")
+btnLog.addEventListener("click", function(event) {
+  dispLog()
+})
+
 function downloadCSV() {
   const filename = "download.csv"
   const data = 'テスト, テスト, テスト\nテスト, テスト, テスト'
