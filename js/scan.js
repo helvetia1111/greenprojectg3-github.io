@@ -51,6 +51,24 @@ operation3.style.display = "none"
 const operation4 = document.getElementById("operation4")
 operation4.style.display = "none"
 
+const manual1 = document.getElementById("manual1")
+manual1.style.display = "none"
+
+const manual2 = document.getElementById("manual2")
+manual2.style.display = "none"
+
+const manual3 = document.getElementById("manual3")
+manual3.style.display = "none"
+
+const manual4 = document.getElementById("manual4")
+manual4.style.display = "none"
+
+const manual5 = document.getElementById("manual5")
+manual5.style.display = "none"
+
+const manual6 = document.getElementById("manual6")
+manual6.style.display = "none"
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
