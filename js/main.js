@@ -17,6 +17,19 @@ function dispOperation() {
 	}
 }
 
+function dispBackOperation() {
+	main1.style.display = 'block'
+	main2.style.display = 'block'
+	main5.style.display = 'block'
+	main3.style.display = 'block'
+	main4.style.display = 'block'
+
+	operation1.style.display = 'none'
+	operation2.style.display = 'none'
+  	operation4.style.display = 'none'
+	operation3.style.display = 'none'
+}
+
 let btnOperation = document.getElementById("operation")
 btnOperation.addEventListener("click", function(event) {
 	return gattServer.getPrimaryService(manServiceUUID)
@@ -31,4 +44,9 @@ btnOperation.addEventListener("click", function(event) {
 	.catch(error => {
 		console.log('error: ' + error)
 	})
+})
+
+let btnOperationBack = document.getElementById("operationBack")
+btnOperationBack.addEventListener("click", function(event) {
+	dispBackOperation()
 })
