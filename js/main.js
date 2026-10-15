@@ -1,3 +1,6 @@
+var manCmdChUUID = '3ec0fd25-f1fd-432b-b73e-0a8cfa7cd445'
+var manService
+
 function dispOperation() {
 	main1.style.display = 'none'
 	main2.style.display = 'none'
@@ -15,5 +18,9 @@ function dispOperation() {
 
 let btnOperation = document.getElementById("operation")
 btnOperation.addEventListener("click", function(event) {
-  dispOperation()
+	return gattServer.getPrimaryService(manServiceUUID)
+	.then(service => {
+		manService = service
+		dispOperation()
+	})
 })
