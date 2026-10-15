@@ -101,6 +101,8 @@ time2.style.display = "none"
 const time3 = document.getElementById("time3")
 time3.style.display = "none"
 
+const test = document.getElementById("test")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
@@ -240,6 +242,7 @@ function next() {
 		gRev = new TextDecoder('utf-8').decode(rev)
 		let len = gRev.length
 		console.log(`rev ${gRev} len ${len}`)
+		test.textContent = gRev
 		dispMain()
 	})
 	.catch(error => {
