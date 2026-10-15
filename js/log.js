@@ -203,9 +203,11 @@ btnSprLog1.addEventListener("click", function(event) {
 	resultLog()
 	*/
 	stLog = ''
+	btnDisable(true)
 	return readLog(1)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -216,9 +218,11 @@ btnSprLog1.addEventListener("click", function(event) {
 let btnSprLog2 = document.getElementById("sprLog2")
 btnSprLog2.addEventListener("click", function(event) {
 	stLog = ''
+	btnDisable(true)
 	return readLog(3)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -229,9 +233,11 @@ btnSprLog2.addEventListener("click", function(event) {
 let btnSprLog3 = document.getElementById("sprLog3")
 btnSprLog3.addEventListener("click", function(event) {
 	stLog = ''
+	btnDisable(true)
 	return readLog(5)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -242,9 +248,11 @@ btnSprLog3.addEventListener("click", function(event) {
 let btnSprLog4 = document.getElementById("sprLog4")
 btnSprLog4.addEventListener("click", function(event) {
 	stLog = ''
+	btnDisable(true)
 	return readLog(7)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -255,9 +263,11 @@ btnSprLog4.addEventListener("click", function(event) {
 let btnSprLog5 = document.getElementById("sprLog5")
 btnSprLog5.addEventListener("click", function(event) {
 	stLog = ''
+	btnDisable(true)
 	return readLog(9)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -268,9 +278,11 @@ btnSprLog5.addEventListener("click", function(event) {
 let btnSprLog6 = document.getElementById("sprLog6")
 btnSprLog6.addEventListener("click", function(event) {
 	stLog = ''
+	btnDisable(true)
 	return readLog(11)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -281,9 +293,11 @@ btnSprLog6.addEventListener("click", function(event) {
 let btnSprLog7 = document.getElementById("sprLog7")
 btnSprLog7.addEventListener("click", function(event) {
 	stLog = ''
+	btnDisable(true)
 	return readLog(13)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -294,9 +308,11 @@ btnSprLog7.addEventListener("click", function(event) {
 let btnSprLog8 = document.getElementById("sprLog8")
 btnSprLog8.addEventListener("click", function(event) {
 	stLog = ''
+	btnDisable(true)
 	return readLog(15)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -307,9 +323,11 @@ btnSprLog8.addEventListener("click", function(event) {
 let btnAdLog = document.getElementById("adLog")
 btnAdLog.addEventListener("click", function(event) {
 	stLog = ''
+	btnDisable(true)
 	return readLog(17)
 	.then(_ => {
 		log6.innerText = stLog
+		btnDisable(false)
 		resultLog()
 	})
 	.catch(error => {
@@ -326,3 +344,16 @@ btnLogBack.addEventListener("click", function(event) {
 		resultBackLog()
 	}
 })
+
+function btnDisable(dis) {
+	btnSprLog1.disabled = dis;
+	btnSprLog2.disabled = dis;
+	btnSprLog3.disabled = dis;
+	btnSprLog4.disabled = dis;
+	btnSprLog5.disabled = dis;
+	btnSprLog6.disabled = dis;
+	btnSprLog7.disabled = dis;
+	btnSprLog8.disabled = dis;
+	btnAdLog.disabled = dis;
+	btnLogBack.disabled = dis;
+}
