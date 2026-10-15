@@ -238,7 +238,8 @@ function next() {
 	})
 	.then(rev => {
 		gRev = new TextDecoder('utf-8').decode(rev)
-		console.log(`rev ${gRev}`)
+		let len = gRev.length
+		console.log(`rev ${gRev} len ${len}`)
 		dispMain()
 	})
 	.catch(error => {
