@@ -209,7 +209,7 @@ btnSprLog1.addEventListener("click", function(event) {
 	})
 })
 
-let btnSprLog1 = document.getElementById("sprLog2")
+let btnSprLog2 = document.getElementById("sprLog2")
 btnSprLog2.addEventListener("click", function(event) {
 	stLog = ''
 	return readLog(3)
