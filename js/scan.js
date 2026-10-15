@@ -239,9 +239,8 @@ function next() {
 		return revCh.readValue()
 	})
 	.then(rev => {
-		gRev = new TextDecoder('utf-8').decode(rev)
-		let len = gRev.length
-		console.log(`rev ${gRev} len ${len}`)
+		gRev = new TextDecoder('utf-8').decode(rev).slice(0, 11)
+		console.log(`rev ${gRev}`)
 		test.textContent = gRev
 		dispMain()
 	})
