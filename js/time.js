@@ -99,11 +99,11 @@ async function writeYearTime(year) {
 	try {
 		if (flagTimeCh.properties.writeWithoutResponse) {
 			await yearTimeCh.writeValueWithoutResponse(buffer)
-			console.log('write ' + buffer.getUint16(0, true))
+			console.log('write ' + view.getUint16(0, true))
 		}
 		else {
 			await yearTimeCh.writeValueWithResponse(buffer)
-			console.log('write ' + buffer.getUint16(0, true))
+			console.log('write ' + view.getUint16(0, true))
 		}
 	} catch (error) {
 		console.error('書き込みに失敗しました: ', error)
@@ -192,6 +192,11 @@ async function writeSSTime(ss) {
 
 let yearElement = document.getElementById("timeYear")
 let monElement = document.getElementById("timeMon")
+let dayElement = document.getElementById("timeDay")
+let hhElement = document.getElementById("timeHH")
+let mmElement = document.getElementById("timeMM")
+let ssElement = document.getElementById("timeSS")
+
 let btnTimeSet = document.getElementById("timeSet")
 btnTimeSet.addEventListener("click", function(event) {
 	if (yearElement.value.trim() === '') {
@@ -204,14 +209,41 @@ btnTimeSet.addEventListener("click", function(event) {
 	.then(_ => {
     	let mon = monElement.selectedIndex + 1
     	if ((mon <= 0) || (mon > 12)) {
-     		console.log('test')
-     		Promise.resolve()
+     		return Promise.resolve()
     	}
     	return writeMonTime(mon)
 	})
   	.then(_ => {
-    	console.log('test2')
+    	let day = dayElement.selectedIndex + 1
+		if ((day <= 0) || (day > 31)) {
+			return Promise.resolve()
+		}
+		return writeDayTime(day)
   	})
+	.then(_ => {
+		let hh = hhElement.selectedIndex
+		if ((hh <= 0) || (hh > 23)) {
+			return Promise.resolve()
+		}
+		return writeHHTime(hh)
+	})
+	.then(_ => {
+		let mm = mmElement.selectedIndex
+		if ((mm <= 0) || (mm > 59)) {
+			return Promise.resolve()
+		}
+		return writeMMTime(hh)
+	})
+	.then(_ => {
+		let ss = ssElement.selectedIndex
+		if ((ss <= 0) || (ss > 59)) {
+			return Promise.resolve()
+		}
+		return writeSSTime(hh)
+	})
+	.then(_ => {
+		return writeFlagTime(1)
+	})
 	.catch(error => {
 		console.log('error: ' + error)
 	})
