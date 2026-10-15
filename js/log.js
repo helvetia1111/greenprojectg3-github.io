@@ -304,8 +304,8 @@ btnSprLog8.addEventListener("click", function(event) {
 	})
 })
 
-let btnSprLog8 = document.getElementById("adLog")
-btnSprLog8.addEventListener("click", function(event) {
+let btnAdLog = document.getElementById("adLog")
+btnAdLog.addEventListener("click", function(event) {
 	stLog = ''
 	return readLog(17)
 	.then(_ => {
