@@ -146,6 +146,14 @@ btnManStop.addEventListener('click', function(event) {
 	})
 })
 
+let btnErrStopRelease = document.getElementById('sprErrStopRelease')
+btnErrStopRelease.addEventListener('click', function(event) {
+	return writeCmdManual(11)
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+})
+
 let btnManBack = document.getElementById('manBack')
 btnManBack.addEventListener('click', function(event) {
 	return writeCmdManual(10)
