@@ -194,20 +194,23 @@ let yearElement = document.getElementById("timeYear")
 let monElement = document.getElementById("timeMon")
 let btnTimeSet = document.getElementById("timeSet")
 btnTimeSet.addEventListener("click", function(event) {
-  let year = parseInt(yearElement.value, 10)
-  console.log('year ' + year)
+	if (yearElement.value.trim() === '') {
+		Promise.resolve()
+	}
+  	let year = parseInt(yearElement.value, 10)
+  	console.log('year ' + year)
 	return writeYearTime(year)
 	.then(_ => {
-    let mon = monElement.selectedIndex + 1
-    if ((mon <= 0) || (mon > 12)) {
-      console.log('test')
-      Promise.resolve()
-    }
-    return writeMonTime(mon)
+    	let mon = monElement.selectedIndex + 1
+    	if ((mon <= 0) || (mon > 12)) {
+     		console.log('test')
+     		Promise.resolve()
+    	}
+    	return writeMonTime(mon)
 	})
-  .then(_ => {
-    console.log('test2')
-  })
+  	.then(_ => {
+    	console.log('test2')
+  	})
 	.catch(error => {
 		console.log('error: ' + error)
 	})
