@@ -261,6 +261,19 @@ btnSprLog5.addEventListener("click", function(event) {
 	})
 })
 
+let btnSprLog6 = document.getElementById("sprLog6")
+btnSprLog6.addEventListener("click", function(event) {
+	stLog = ''
+	return readLog(11)
+	.then(_ => {
+		log6.innerText = stLog
+		resultLog()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+})
+
 let btnLogBack = document.getElementById("logBack")
 btnLogBack.addEventListener("click", function(event) {
 	if (dispRes == 0) {
