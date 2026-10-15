@@ -195,7 +195,8 @@ let monElement = document.getElementById("timeMon")
 let btnTimeSet = document.getElementById("timeSet")
 btnTimeSet.addEventListener("click", function(event) {
 	if (yearElement.value.trim() === '') {
-		Promise.resolve()
+		console.log('yera empty')
+		return Promise.resolve()
 	}
   	let year = parseInt(yearElement.value, 10)
   	console.log('year ' + year)
