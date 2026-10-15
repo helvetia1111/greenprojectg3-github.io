@@ -1,5 +1,6 @@
-var manCmdChUUID = '3ec0fd25-f1fd-432b-b73e-0a8cfa7cd445'
-var manService
+let manCmdChUUID = '3ec0fd25-f1fd-432b-b73e-0a8cfa7cd445'
+let manService
+var manCmdCh
 
 function dispOperation() {
 	main1.style.display = 'none'
@@ -21,6 +22,13 @@ btnOperation.addEventListener("click", function(event) {
 	return gattServer.getPrimaryService(manServiceUUID)
 	.then(service => {
 		manService = service
+		return service.getCharacteristic(manCmdChUUID)
+	})
+	.then(cmdCh => {
+		manCmdCh = cmdCh
 		dispOperation()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
 	})
 })
