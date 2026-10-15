@@ -210,7 +210,7 @@ btnSprLog1.addEventListener("click", function(event) {
 })
 
 let btnSprLog1 = document.getElementById("sprLog2")
-btnSprLog1.addEventListener("click", function(event) {
+btnSprLog2.addEventListener("click", function(event) {
 	stLog = ''
 	return readLog(3)
 	.then(_ => {
