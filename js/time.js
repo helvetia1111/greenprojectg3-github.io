@@ -248,3 +248,8 @@ btnTimeSet.addEventListener("click", function(event) {
 		console.log('error: ' + error)
 	})
 })
+
+let btnTimeBack = document.getElementById("timeBack")
+btnTimeBack.addEventListener("click", function(event) {
+	dispBackTime()
+})
