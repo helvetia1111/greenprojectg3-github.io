@@ -93,6 +93,15 @@ log6.style.display = "none"
 const log7 = document.getElementById("log7")
 log7.style.display = "none"
 
+const time1 = document.getElementById("time1")
+time1.style.display = "none"
+
+const time2 = document.getElementById("time2")
+time2.style.display = "none"
+
+const time3 = document.getElementById("time3")
+time3.style.display = "none"
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
