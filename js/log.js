@@ -149,12 +149,16 @@ async function readLog(num) {
 		let indexTemp = await readIndexLog()
 		let index = indexTemp.getUint8(0, true)
 		console.log('index ' + index)
-		for (let i = 0; i < 110; i++) {
+		let logNum = 110
+		if (num == 17) {
+			logNum = 160
+		}
+		for (let i = 0; i < logNum; i++) {
 			if (index > 0) {
 				index--;
 			}
 			else {
-				index = (110 - 1)
+				index = (logNum - 1)
 			}
 			await writeIndexLog(index)
 			await writeStateLog(num + 1)
@@ -291,6 +295,19 @@ let btnSprLog8 = document.getElementById("sprLog8")
 btnSprLog8.addEventListener("click", function(event) {
 	stLog = ''
 	return readLog(15)
+	.then(_ => {
+		log6.innerText = stLog
+		resultLog()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+})
+
+let btnSprLog8 = document.getElementById("adLog")
+btnSprLog8.addEventListener("click", function(event) {
+	stLog = ''
+	return readLog(17)
 	.then(_ => {
 		log6.innerText = stLog
 		resultLog()
