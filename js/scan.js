@@ -24,82 +24,82 @@ const main1 = document.getElementById("main1")
 //main1.style.display = "none"
 
 const main2 = document.getElementById("main2")
-main2.style.display = "none"
+//main2.style.display = "none"
 
 const main3 = document.getElementById("main3")
-main3.style.display = "none"
+//main3.style.display = "none"
 
 const main4 = document.getElementById("main4")
-main4.style.display = "none"
+//main4.style.display = "none"
 
 const main5 = document.getElementById("main5")
-main5.style.display = "none"
+//main5.style.display = "none"
 
 const monitor1 = document.getElementById("monitor1")
-monitor1.style.display = "none"
+//monitor1.style.display = "none"
 
 const monitor2 = document.getElementById("monitor2")
-monitor2.style.display = "none"
+//monitor2.style.display = "none"
 
 const operation1 = document.getElementById("operation1")
-operation1.style.display = "none"
+//operation1.style.display = "none"
 
 const operation2 = document.getElementById("operation2")
-operation2.style.display = "none"
+//operation2.style.display = "none"
 
 const operation3 = document.getElementById("operation3")
-operation3.style.display = "none"
+//operation3.style.display = "none"
 
 const operation4 = document.getElementById("operation4")
-operation4.style.display = "none"
+//operation4.style.display = "none"
 
 const manual1 = document.getElementById("manual1")
-manual1.style.display = "none"
+//manual1.style.display = "none"
 
 const manual2 = document.getElementById("manual2")
-manual2.style.display = "none"
+//manual2.style.display = "none"
 
 const manual3 = document.getElementById("manual3")
-manual3.style.display = "none"
+//manual3.style.display = "none"
 
 const manual4 = document.getElementById("manual4")
-manual4.style.display = "none"
+//manual4.style.display = "none"
 
 const manual5 = document.getElementById("manual5")
-manual5.style.display = "none"
+//manual5.style.display = "none"
 
 const manual6 = document.getElementById("manual6")
-manual6.style.display = "none"
+//manual6.style.display = "none"
 
 const log1 = document.getElementById("log1")
-log1.style.display = "none"
+//log1.style.display = "none"
 
 const log2 = document.getElementById("log2")
-log2.style.display = "none"
+//log2.style.display = "none"
 
 const log3 = document.getElementById("log3")
-log3.style.display = "none"
+//log3.style.display = "none"
 
 const log4 = document.getElementById("log4")
-log4.style.display = "none"
+//log4.style.display = "none"
 
 const log5 = document.getElementById("log5")
-log5.style.display = "none"
+//log5.style.display = "none"
 
 const log6 = document.getElementById("log6")
-log6.style.display = "none"
+//log6.style.display = "none"
 
 const log7 = document.getElementById("log7")
-log7.style.display = "none"
+//log7.style.display = "none"
 
 const time1 = document.getElementById("time1")
-time1.style.display = "none"
+//time1.style.display = "none"
 
 const time2 = document.getElementById("time2")
-time2.style.display = "none"
+//time2.style.display = "none"
 
 const time3 = document.getElementById("time3")
-time3.style.display = "none"
+//time3.style.display = "none"
 
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
