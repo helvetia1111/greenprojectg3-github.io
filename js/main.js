@@ -30,6 +30,28 @@ function dispBackOperation() {
 	operation3.style.display = 'none'
 }
 
+function dispSetting() {
+	main1.style.display = 'none'
+	main2.style.display = 'none'
+	main5.style.display = 'none'
+	main3.style.display = 'none'
+	main4.style.display = 'none'
+
+	set1.style.display = 'block'
+	set2.style.display = 'block'
+  	set3.style.display = 'block'
+	set4.style.display = 'block'
+	set5.style.display = 'block'
+
+	set1.textContent = `Rev. ${gRev}`
+	if (gType == 0) {
+		btnRainOrValve.textContent = '雨センサ'
+	}
+	else {
+		btnRainOrValve.textContent = 'バルブ選択'
+	}
+}
+
 let btnOperation = document.getElementById("operation")
 btnOperation.addEventListener("click", function(event) {
 	return gattServer.getPrimaryService(manServiceUUID)
@@ -50,3 +72,10 @@ let btnOperationBack = document.getElementById("operationBack")
 btnOperationBack.addEventListener("click", function(event) {
 	dispBackOperation()
 })
+
+const btnRainOrValve = document.getElementById("setRainOrValve")
+
+let btnSetting = document.getElementById("setting")
+btnSetting.addEventListener("click", function(event) {
+	dispSetting()
+}
