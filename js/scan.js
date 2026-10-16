@@ -101,6 +101,12 @@ const time2 = document.getElementById("time2")
 const time3 = document.getElementById("time3")
 //time3.style.display = "none"
 
+const set1 = document.getElementById("set1")
+const set2 = document.getElementById("set2")
+const set3 = document.getElementById("set3")
+const set4 = document.getElementById("set4")
+const set5 = document.getElementById("set5")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
