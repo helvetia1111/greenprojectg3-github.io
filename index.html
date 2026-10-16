@@ -14,19 +14,19 @@
     </div>
 
 	<!-- メイン ----------------------->
-    <div class="mainbutton" id="main1">
+    <div class="mainbutton" id="main1" style="display: none;">
 		<input value="モニタ" type="button" id="monitor"/>
 
 		<button name="ope" value="0" type="button" id="operation">運転</button>
 	</div>
 
-	<div class="mainbutton" id="main2">
+	<div class="mainbutton" id="main2" style="display: none;">
 		<input value="設定" type="button" id="setting"/>
 
 		<input value="E-mail設定" type="submit" id="email"/>
 	</div>
 
-	<div class="mainbutton" id="main3">
+	<div class="mainbutton" id="main3" style="display: none;">
 		<input type="hidden" name="season" value="0" />
 		<button name="ope" value="0" type="button" id="season1">時間設定1</button>
 
@@ -34,7 +34,7 @@
 		<button name="ope" value="0" type="button" id="season2">時間設定2</button>
 	</div>
 
-	<div class="mainbutton" id="main4">
+	<div class="mainbutton" id="main4" style="display: none;">
 		<input type="hidden" name="season" value="2" />
 		<button name="ope" value="0" type="button" id="season3">時間設定3</button>
 
@@ -42,7 +42,7 @@
 		<button name="ope" value="0" type="button" id="season4">時間設定4</button>
 	</div>
 
-	<div class="messbutton" id="main5">
+	<div class="messbutton" id="main5" style="display: none;">
 		<button name="ope" value="0" type="button" id="message">送信メッセージ設定</button>
 	</div>
 
@@ -433,8 +433,40 @@
         <button name="ope" value="0" type="submit" class="backbutton" id="timeBack">戻る</button>
 	</div>
 
-	<div id="test">
-		test
+	<!-- 設定 ----------------------->
+	<div class="base" id="setRev" style="display: none;">
+	</div>
+
+	<div class="mainbutton" >
+		<form action="liquid_fertilizer" method="post" >
+			<button name="ope" value="0" type="submit">液肥制御</button>
+		</form>
+
+		<form action="flow_set" method="post" >
+			<button name="ope" value="0" type="submit" >潅水流量</button>
+		</form>
+	</div>
+
+	<div class="mainbutton" >
+		<form action="flow_error" method="post" >
+			<button name="ope" value="0" type="submit" >潅水異常</button>
+		</form>
+
+		<form action="rain" method="post" >
+			<button name="ope" value="0" type="submit" >雨センサ</button>
+                </form>
+	</div>
+
+	<div class="mainbutton" >
+		<form action="alarm" method="post" >
+			<button name="ope" value="0" type="submit" >アラーム接点</button>
+		</form>
+	</div>
+
+	<div>
+		<form action="main" method="post">
+			<input value="戻る" type="submit" class="backbutton" />
+		</form>
 	</div>
 		
     <script type="text/javascript" src="js/scan.js"></script>
