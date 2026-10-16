@@ -107,6 +107,15 @@ const set3 = document.getElementById("set3")
 const set4 = document.getElementById("set4")
 const set5 = document.getElementById("set5")
 
+const liquid1 = document.getElementById("liquid1")
+const liquid2 = document.getElementById("liquid2")
+const liquid3 = document.getElementById("liquid3")
+const liquid4 = document.getElementById("liquid4")
+const liquid5 = document.getElementById("liquid5")
+const liquid6 = document.getElementById("liquid6")
+const liquid7 = document.getElementById("liquid7")
+const liquid8 = document.getElementById("liquid8")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
