@@ -1,43 +1,19 @@
-function dispLiquid() {
-  set1.style.display = 'none'
-  set2.style.display = 'none'
-  set3.style.display = 'none'
-  set4.style.display = 'none'
-  set5.style.display = 'none'
+const chekMixUse1 = document.getElementById("use1")
+const chekMixUse2 = document.getElementById("use2")
+const chekMixUse3 = document.getElementById("use3")
+const chekMixUse4 = document.getElementById("use4")
+const chekMixUse5 = document.getElementById("use5")
+const chekMixUse6 = document.getElementById("use6")
+const chekMixUse7 = document.getElementById("use7")
+const chekMixUse8 = document.getElementById("use8")
 
-  liquid1.style.display = 'block'
-  liquid2.style.display = 'block'
-  liquid3.style.display = 'block'
-  liquid4.style.display = 'block'
-  liquid5.style.display = 'block'
-  liquid6.style.display = 'block'
-  liquid7.style.display = 'block'
-  liquid8.style.display = 'block'
+function setLiquidMix(mix) {
+  checkMixUse1.checked = ((mix & 0x0001) != 0)
+  checkMixUse2.checked = ((mix & 0x0002) != 0)
+  checkMixUse3.checked = ((mix & 0x0004) != 0)
+  checkMixUse4.checked = ((mix & 0x0008) != 0)
+  checkMixUse5.checked = ((mix & 0x0010) != 0)
+  checkMixUse6.checked = ((mix & 0x0020) != 0)
+  checkMixUse7.checked = ((mix & 0x0040) != 0)
+  checkMixUse8.checked = ((mix & 0x0080) != 0)
 }
-
-function dispLiquidBack() {
-  set1.style.display = 'block'
-  set2.style.display = 'block'
-  set3.style.display = 'block'
-  set4.style.display = 'block'
-  set5.style.display = 'block'
-
-  liquid1.style.display = 'none'
-  liquid2.style.display = 'none'
-  liquid3.style.display = 'none'
-  liquid4.style.display = 'none'
-  liquid5.style.display = 'none'
-  liquid6.style.display = 'none'
-  liquid7.style.display = 'none'
-  liquid8.style.display = 'none'
-}
-
-let btnSetLiquid = document.getElementById("setLiquid")
-btnSetLiquid.addEventListener("click", function(event) {
-  dispLiquid()
-})
-
-let btnLiquidBack = document.getElementById("liquidBack")
-btnLiquidBack.addEventListener("click", function(event) {
-  dispLiquidBack()
-})
