@@ -448,13 +448,64 @@
 	</div>
 
 	<div class="mainbutton" id="set4" style="display: none;">
-		<button name="ope" value="0" type="button" >アラーム接点</button>
+		<button name="ope" value="0" type="button" id="setAlarm">アラーム接点</button>
 	</div>
 
 	<div id="set5" style="display: none;">
 		<form action="main" method="post">
 			<input value="戻る" type="submit" class="backbutton" />
 		</form>
+	</div>
+
+	<!-- 液肥制御 ----------------------->
+	<div class="base" id="liquid1" style="display: none;">
+		液肥制御設定
+	</div>
+	<div class="check" id="liguid2" style="display: none;">
+		<input type="checkbox" id="liquidUse1" name="use" value="1" />
+		<label for="use1">潅水#1</label>
+		<input type="checkbox" id="liquidUse2" name="use" value="2" />
+		<label for="use2">潅水#2</label>
+		<input type="checkbox" id="liquidUse3" name="use" value="3" />
+		<label for="use3">潅水#3</label>
+		<input type="checkbox" id="liguidUse4" name="use" value="4" />
+		<label for="use4">潅水#4</label>
+	</div>
+	<div class="check" id="liquid3" style="display: none;">
+		<input type="checkbox" id="liguidUse5" name="use" value="5" />
+		<label for="use5">潅水#5</label>
+		<input type="checkbox" id="liquidUse6" name="use" value="6" />
+		<label for="use6">潅水#6</label>
+		<input type="checkbox" id="liquidUse7" name="use" value="7" />
+		<label for="use7">潅水#7</label>
+		<input type="checkbox" id="liquidUse8" name="use" value="8" />
+		<label for="use8">潅水#8</label>
+	</div>
+
+	<div class="time_set" id="liquid4" style="display: none;">
+		希釈倍数
+		<input type="number" id="liquidRatio" name="ratio" min="1000" max="5000" step="1" />
+		1000～5000(倍)
+	</div>
+
+	<div class="radio" id="liquid5" style="display: none;">
+		<input type="radio" id="liquidIwaki" name="pumpUse" value="1" />
+		<label for="iwaki">IWAKIポンプ</label>
+		<input type="radio" id="liquidGrundfos" name="pumpUse" value="2" />
+		<label for="grundfos">日機装ポンプ</label>
+	</div>
+
+	<div class="check" id="liquid6" style="display: none;">
+		<input type="checkbox" id="liquidPlsUse" name="plsUse" value="1" />
+		<label for="plsUse">ポンプ・パルス制御</label>
+	</div>
+
+	<div class="setbutton" id="liquid7" style="display: none;">
+		<button name="ope" value="1" type="button" id="liquidSet">設定</button>
+	</div>
+
+	<div id="liquid8" style="display: none;">
+        <input value="戻る" type="button" class="backbutton" id="liquidBack"/>
 	</div>
 		
     <script type="text/javascript" src="js/scan.js"></script>
