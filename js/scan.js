@@ -21,7 +21,7 @@ const scan = document.getElementById("scan")
 scan.style.display = "block"
 
 const main1 = document.getElementById("main1")
-main1.style.display = "none"
+//main1.style.display = "none"
 
 const main2 = document.getElementById("main2")
 main2.style.display = "none"
