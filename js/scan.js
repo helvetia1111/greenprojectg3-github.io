@@ -21,19 +21,19 @@ const scan = document.getElementById("scan")
 scan.style.display = "block"
 
 const main1 = document.getElementById("main1")
-main1.style.display = "none"
+//main1.style.display = "none"
 
 const main2 = document.getElementById("main2")
-main2.style.display = "none"
+//main2.style.display = "none"
 
 const main3 = document.getElementById("main3")
-main3.style.display = "none"
+//main3.style.display = "none"
 
 const main4 = document.getElementById("main4")
-main4.style.display = "none"
+//main4.style.display = "none"
 
 const main5 = document.getElementById("main5")
-main5.style.display = "none"
+//main5.style.display = "none"
 
 const monitor1 = document.getElementById("monitor1")
 monitor1.style.display = "none"
