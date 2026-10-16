@@ -241,7 +241,7 @@ function next() {
 	.then(rev => {
 		gRev = new TextDecoder('utf-8').decode(rev).replace(/[^a-zA-Z0-9!-/:-@[-`{-~]/g, '')
 		const temp = rev.getUint8(11, 0)
-		const str = new TextDecoder('utf-8').decode(rev)
+		const str = new TextDecoder('utf-8').decode(rev).replace(/\0/g, '')
 		console.log(`rev ${gRev} 12:${temp} org:${str}`)
 		test.textContent = gRev
 		dispMain()
