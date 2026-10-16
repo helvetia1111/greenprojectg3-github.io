@@ -1,4 +1,3 @@
-let btnSetting = document.getElementById("setting")
-btnSetting.addEventListener("click", function(event) {
-  dispSetting()
+let btnSetLiquid = document.getElementById("setLiquid")
+btnSetLiquid.addEventListener("click", function(event) {
 })
