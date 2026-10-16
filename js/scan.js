@@ -239,9 +239,10 @@ function next() {
 		return revCh.readValue()
 	})
 	.then(rev => {
-		gRev = new TextDecoder('utf-8').decode(rev).replace(/[^0-9a-z]/gi, '')
+		gRev = new TextDecoder('utf-8').decode(rev).replace(/[^a-zA-Z0-9!-/:-@[-`{-~]/g, '')
 		const temp = rev.getUint8(11, 0)
-		console.log(`rev ${gRev} 12:${temp}`)
+		const str = new TextDecoder('utf-8').decode(rev)
+		console.log(`rev ${gRev} 12:${temp} org:${str}`)
 		test.textContent = gRev
 		dispMain()
 	})
