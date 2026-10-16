@@ -1,11 +1,12 @@
-const checkMixUse1 = document.getElementById("use1")
-const checkMixUse2 = document.getElementById("use2")
-const checkMixUse3 = document.getElementById("use3")
-const checkMixUse4 = document.getElementById("use4")
-const checkMixUse5 = document.getElementById("use5")
-const checkMixUse6 = document.getElementById("use6")
-const checkMixUse7 = document.getElementById("use7")
-const checkMixUse8 = document.getElementById("use8")
+const checkMixUse1 = document.getElementById('use1')
+const checkMixUse2 = document.getElementById('use2')
+const checkMixUse3 = document.getElementById('use3')
+const checkMixUse4 = document.getElementById('use4')
+const checkMixUse5 = document.getElementById('use5')
+const checkMixUse6 = document.getElementById('use6')
+const checkMixUse7 = document.getElementById('use7')
+const checkMixUse8 = document.getElementById('use8')
+const textLiquidRatio = document.getElementById('liquidRatio')
 
 function setLiquidMix(mix) {
   checkMixUse1.checked = ((mix & 0x0001) != 0)
@@ -16,4 +17,8 @@ function setLiquidMix(mix) {
   checkMixUse6.checked = ((mix & 0x0020) != 0)
   checkMixUse7.checked = ((mix & 0x0040) != 0)
   checkMixUse8.checked = ((mix & 0x0080) != 0)
+}
+
+function setLiquidRatio(ratio) {
+  textLiquidRatio.value = ratio
 }
