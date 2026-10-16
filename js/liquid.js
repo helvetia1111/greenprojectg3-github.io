@@ -7,6 +7,8 @@ const checkMixUse6 = document.getElementById('use6')
 const checkMixUse7 = document.getElementById('use7')
 const checkMixUse8 = document.getElementById('use8')
 const textLiquidRatio = document.getElementById('liquidRatio')
+const radioLiquidIwaki = document.getElementById('iwaki')
+const radioLiquidGrundfos = document.getElementById('grundfos')
 
 function setLiquidMix(mix) {
   checkMixUse1.checked = ((mix & 0x0001) != 0)
@@ -21,4 +23,9 @@ function setLiquidMix(mix) {
 
 function setLiquidRatio(ratio) {
   textLiquidRatio.value = ratio
+}
+
+function setLiquidPumpSel(iwaki) {
+  radioLiquidIwaki.checked = ((iwaki & 0x01) != 0)
+  radioLiquidGrundfos.checked = !radioLiquidIwaki.checked
 }
