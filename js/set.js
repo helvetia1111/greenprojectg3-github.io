@@ -241,15 +241,37 @@ btnSetting.addEventListener("click", function(event) {
 
 let btnSetLiquid = document.getElementById("setLiquid")
 btnSetLiquid.addEventListener("click", function(event) {
-  return writeCmdRead(126)
-  .then(_ => {
-    return readUi16()
-  })
-  .then(ui16 => {
-    setLiquidMix(ui16)
-    dispLiquid()
-  })
-  .catch(error => {
+	return writeCmdRead(126) //mix
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		setLiquidMix(ui16)
+		return writeCmdRead(2) //ratio
+		//dispLiquid()
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		setLiquidRatio(ui16)
+		return writeCmdRead(128) //pump_sel[0]
+	})
+	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		setLiquidPumpSel(ui8)
+		return writeCmdRead(125) //pump_pls_ch
+	})
+	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		setLiquidPlsUse(ui8)
+		dispLiquid()
+	})
+	.catch(error => {
 		console.log('error: ' + error)
 	})
 })
