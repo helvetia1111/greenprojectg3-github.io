@@ -78,4 +78,4 @@ const btnRainOrValve = document.getElementById("setRainOrValve")
 let btnSetting = document.getElementById("setting")
 btnSetting.addEventListener("click", function(event) {
 	dispSetting()
-}
+})
