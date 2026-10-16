@@ -20,13 +20,13 @@
 		<button name="ope" value="0" type="button" id="operation">運転</button>
 	</div>
 
-	<div class="mainbutton" id="main2" >
+	<div class="mainbutton" id="main2" style="display: none;">
 		<input value="設定" type="button" id="setting"/>
 
 		<input value="E-mail設定" type="submit" id="email"/>
 	</div>
 
-	<div class="mainbutton" id="main3" >
+	<div class="mainbutton" id="main3" style="display: none;">
 		<input type="hidden" name="season" value="0" />
 		<button name="ope" value="0" type="button" id="season1">時間設定1</button>
 
@@ -34,7 +34,7 @@
 		<button name="ope" value="0" type="button" id="season2">時間設定2</button>
 	</div>
 
-	<div class="mainbutton" id="main4" >
+	<div class="mainbutton" id="main4" style="display: none;">
 		<input type="hidden" name="season" value="2" />
 		<button name="ope" value="0" type="button" id="season3">時間設定3</button>
 
@@ -42,16 +42,16 @@
 		<button name="ope" value="0" type="button" id="season4">時間設定4</button>
 	</div>
 
-	<div class="messbutton" id="main5" >
+	<div class="messbutton" id="main5" style="display: none;">
 		<button name="ope" value="0" type="button" id="message">送信メッセージ設定</button>
 	</div>
 
 	<!-- モニタ ----------------------->
-	<div class="mainbutton" id="monitor1">
+	<div class="mainbutton" id="monitor1" style="display: none;">
 		<input value="戻る" type="button" id="monBack"/>
 	</div>
 
-	<table class="table" border="1" style="border-collapse: collapse" id="monitor2">
+	<table class="table" border="1" style="border-collapse: collapse" id="monitor2" style="display: none;">
 		<tr>
 			<td>システム時間</td>
 			<td id="systemTime" >取得フラグ:0 時間:--:--:--</td>
@@ -131,93 +131,93 @@
 	<table>
 
 	<!-- 運転 ----------------------->
-	<div class="mainbutton" id="operation1">
+	<div class="mainbutton" id="operation1" style="display: none;">
 		<button name"ope" value="0" type="button" id="manual">手動運転</button>
 
 		<button name="ope" value="0" type="button" id="log">ログ</button>
 	</div>
 
-	<div class="mainbutton" id="operation2">
+	<div class="mainbutton" id="operation2" style="display: none;">
 		<button name="ope" value="0" type="button" id="timeSetting">時間設定</button>
 	</div>
 
-	<div id="operation3">
+	<div id="operation3" style="display: none;">
 		<button name="ope" value="2" type="button" class="errorstopbutton" id="sprErrStopRelease">流量異常潅水停止解除</button>
 	</div>
 
-	<div id="operation4">
+	<div id="operation4" style="display: none;">
 		<input value="戻る" type="button" class="backbutton" id="operationBack"/>
 	</div>
 
 	<!-- 手動運転 ----------------------->
-	<div class="mainbutton" id="manual1">
+	<div class="mainbutton" id="manual1" style="display: none;">
 		<button name="ope" value="1" type="button" id="manOpe1">潅水バルブ#1</button>
 
 		<button name="ope" value="2" type="button" id="manOpe2">潅水バルブ#2</button>
 	</div>
 
-	<div class="mainbutton" id="manual2">
+	<div class="mainbutton" id="manual2" style="display: none;">
 		<button name="ope" value="3" type="button" id="manOpe3">潅水バルブ#3</button>
 
 		<button name="ope" value="4" type="button" id="manOpe4">潅水バルブ#4</button>
 	</div>
 
-	<div class="mainbutton" id="manual3">
+	<div class="mainbutton" id="manual3" style="display: none;">
 		<button name="ope" value="5" type="button" id="manOpe5">潅水バルブ#5</button>
 		
 		<button name="ope" value="6" type="button" id="manOpe6">潅水バルブ#6</button>
 	</div>
 
-	<div class="mainbutton" id="manual4">
+	<div class="mainbutton" id="manual4" style="display: none;">
 		<button name="ope" value="7" type="button" id="manOpe7">潅水バルブ#7</button>
 		
 		<button name="ope" value="8" type="button" id="manOpe8">潅水バルブ#8</button>
 	</div>
 
-	<div class="mainbutton" id="manual5">
+	<div class="mainbutton" id="manual5" style="display: none;">
 		<button name="ope" value="9" type="button" id="manPump">液肥ポンプ</button>
 		
 		<button name="ope" value="10" type="submit" id="manStop">停止</button>
 	</div>
 
-	<div class="mainbutton" id="manual6">
+	<div class="mainbutton" id="manual6" style="display: none;">
 		<button name="ope" value="3" type="button" id="manBack">戻る</button>
 	</div>
 
 	<!-- ログ ----------------------->
-	<div class="mainbutton" id="log1">
+	<div class="mainbutton" id="log1" style="display: none;">
 		<button name="ope" value="1" type="button" id="sprLog1">潅水#1ログ</button>
 		<button name="ope" value="2" type="button" id="sprLog2">潅水#2ログ</button>
 	</div>
 
-	<div class="mainbutton" id="log2">
+	<div class="mainbutton" id="log2" style="display: none;">
 		<button name="ope" value="3" type="button" id="sprLog3">潅水#3ログ</button>
 		<button name="ope" value="4" type="button" id="sprLog4">潅水#4ログ</button>
 	</div>
 
-	<div class="mainbutton" id="log3">
+	<div class="mainbutton" id="log3" style="display: none;">
 		<button name="ope" value="5" type="button" id="sprLog5">潅水#5ログ</button>
 		<button name="ope" value="6" type="button" id="sprLog6">潅水#6ログ</button>
 	</div>
 
-	<div class="mainbutton" id="log4">
+	<div class="mainbutton" id="log4" style="display: none;">
 		<button name="ope" value="7" type="button" id="sprLog7">潅水#7ログ</button>
 		<button name="ope" value="8" type="button" id="sprLog8">潅水#8ログ</button>
 	</div>
 
-	<div class="mainbutton" id="log5">
+	<div class="mainbutton" id="log5" style="display: none;">
 		<button name="ope" value="9" type="button" id="adLog">ADログ</button>
 	</div>
 
-	<div id="log6">
+	<div id="log6" style="display: none;">
 	</div>
 		
-	<div id="log7">
+	<div id="log7" style="display: none;">
 		<button name="ope" value="0" type="button" class="backbutton" id="logBack">戻る</button>
 	</div>
 
 	<!-- 時間設定 ----------------------->
-	<div class="time_set" id="time1">
+	<div class="time_set" id="time1" style="display: none;">
 		システム時間
 		<br /> 
 		<select name="hh" id="timeHH">
@@ -424,46 +424,34 @@
 		</select>
 	</div>
 
-	<div class="mainbutton" id="time2">
+	<div class="mainbutton" id="time2" style="display: none;">
 		<button name="ope" value="1" type="button" id="timeSet">時間設定</button>
 	</div>
 	</form>
 
-	<div id="time3">
+	<div id="time3" style="display: none;">
         <button name="ope" value="0" type="submit" class="backbutton" id="timeBack">戻る</button>
 	</div>
 
 	<!-- 設定 ----------------------->
-	<div class="base" id="setRev" style="display: none;">
+	<div class="base" id="set1" style="display: none;">
 	</div>
 
-	<div class="mainbutton" style="display: none;">
-		<form action="liquid_fertilizer" method="post" >
-			<button name="ope" value="0" type="submit">液肥制御</button>
-		</form>
-
-		<form action="flow_set" method="post" >
-			<button name="ope" value="0" type="submit" >潅水流量</button>
-		</form>
+	<div class="mainbutton" id="set2" style="display: none;">
+		<button name="ope" value="0" type="button" id="setLiquid">液肥制御</button>
+		<button name="ope" value="0" type="button" id="setIrrigation">潅水流量</button>
 	</div>
 
-	<div class="mainbutton" style="display: none;">
-		<form action="flow_error" method="post" >
-			<button name="ope" value="0" type="submit" >潅水異常</button>
-		</form>
-
-		<form action="rain" method="post" >
-			<button name="ope" value="0" type="submit" >雨センサ</button>
-                </form>
+	<div class="mainbutton" id="set3" style="display: none;">
+		<button name="ope" value="0" type="button" id="setIrrigationErr">潅水異常</button>
+		<button name="ope" value="0" type="button" id="setRainOrValve">雨センサ</button>
 	</div>
 
-	<div class="mainbutton" style="display: none;">
-		<form action="alarm" method="post" >
-			<button name="ope" value="0" type="submit" >アラーム接点</button>
-		</form>
+	<div class="mainbutton" id="set4" style="display: none;">
+		<button name="ope" value="0" type="button" >アラーム接点</button>
 	</div>
 
-	<div style="display: none;">
+	<div id="set5" style="display: none;">
 		<form action="main" method="post">
 			<input value="戻る" type="submit" class="backbutton" />
 		</form>
