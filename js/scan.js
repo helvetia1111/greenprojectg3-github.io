@@ -240,7 +240,8 @@ function next() {
 	})
 	.then(rev => {
 		gRev = new TextDecoder('utf-8').decode(rev).replace(/[^0-9a-z]/gi, '')
-		console.log(`rev ${gRev}`)
+		const temp = rev.getUint8(11, 0)
+		console.log(`rev ${gRev} 12:${temp}`)
 		test.textContent = gRev
 		dispMain()
 	})
