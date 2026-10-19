@@ -1,4 +1,5 @@
 import * as Liquid from './liquid.js';
+import * as Irrigation from './irrigation.js';
 
 const cmdReadSetChUUID = '091272b5-575f-4231-bd87-9c614889aa7d'
 const cmdWriteSetChUUID = 'a54b15b0-6e03-4bd2-ac89-e8009bfee496'
@@ -37,37 +38,81 @@ function dispSetting() {
 }
 
 function dispLiquid() {
-  set1.style.display = 'none'
-  set2.style.display = 'none'
-  set3.style.display = 'none'
-  set4.style.display = 'none'
-  set5.style.display = 'none'
+	set1.style.display = 'none'
+  	set2.style.display = 'none'
+  	set3.style.display = 'none'
+  	set4.style.display = 'none'
+  	set5.style.display = 'none'
 
-  liquid1.style.display = 'block'
-  liquid2.style.display = 'block'
-  liquid3.style.display = 'block'
-  liquid4.style.display = 'block'
-  liquid5.style.display = 'block'
-  liquid6.style.display = 'block'
-  liquid7.style.display = 'block'
-  liquid8.style.display = 'block'
+  	liquid1.style.display = 'block'
+  	liquid2.style.display = 'block'
+  	liquid3.style.display = 'block'
+  	liquid4.style.display = 'block'
+  	liquid5.style.display = 'block'
+  	liquid6.style.display = 'block'
+  	liquid7.style.display = 'block'
+  	liquid8.style.display = 'block'
 }
 
 function dispLiquidBack() {
-  set1.style.display = 'block'
-  set2.style.display = 'block'
-  set3.style.display = 'block'
-  set4.style.display = 'block'
-  set5.style.display = 'block'
+  	set1.style.display = 'block'
+  	set2.style.display = 'block'
+  	set3.style.display = 'block'
+  	set4.style.display = 'block'
+  	set5.style.display = 'block'
 
-  liquid1.style.display = 'none'
-  liquid2.style.display = 'none'
-  liquid3.style.display = 'none'
-  liquid4.style.display = 'none'
-  liquid5.style.display = 'none'
-  liquid6.style.display = 'none'
-  liquid7.style.display = 'none'
-  liquid8.style.display = 'none'
+  	liquid1.style.display = 'none'
+  	liquid2.style.display = 'none'
+  	liquid3.style.display = 'none'
+ 	liquid4.style.display = 'none'
+  	liquid5.style.display = 'none'
+  	liquid6.style.display = 'none'
+  	liquid7.style.display = 'none'
+  	liquid8.style.display = 'none'
+}
+
+function dispIrrigation() {
+  	set1.style.display = 'none'
+  	set2.style.display = 'none'
+  	set3.style.display = 'none'
+  	set4.style.display = 'none'
+  	set5.style.display = 'none'
+
+  	irrigation1.style.display = 'block'
+  	irrigation2.style.display = 'block'
+  	irrigation3.style.display = 'block'
+  	irrigation4.style.display = 'block'
+  	irrigation5.style.display = 'block'
+	if (gType == 0) {
+		irrigation6.style.display = 'block'
+	}
+	else {
+		irrigation7.style.display = 'block'
+		if (gType == 2) {
+			irrigation8.style.display = 'block'
+		}
+	}
+	irrigation9.style.display = 'block'
+	irrigation10.style.display = 'block'
+}
+
+function dispIrrigationBack() {
+  	set1.style.display = 'block'
+  	set2.style.display = 'block'
+  	set3.style.display = 'block'
+  	set4.style.display = 'block'
+  	set5.style.display = 'block'
+
+  	irrigation1.style.display = 'none'
+	irrigation2.style.display = 'none'
+	irrigation3.style.display = 'none'
+	irrigation4.style.display = 'none'
+	irrigation5.style.display = 'none'
+	irrigation6.style.display = 'none'
+	irrigation7.style.display = 'none'
+	irrigation8.style.display = 'none'
+	irrigation9.style.display = 'none'
+	irrigation10.style.display = 'none'
 }
 
 const btnRainOrValve = document.getElementById("setRainOrValve")
@@ -241,6 +286,7 @@ btnSetting.addEventListener("click", function(event) {
 	})
 })
 
+// 液肥制御
 let btnSetLiquid = document.getElementById("setLiquid")
 btnSetLiquid.addEventListener("click", function(event) {
 	return writeCmdRead(126) //mix
@@ -320,4 +366,105 @@ btnLiquidSet.addEventListener("click", function(event) {
 let btnLiquidBack = document.getElementById("liquidBack")
 btnLiquidBack.addEventListener("click", function(event) {
   dispLiquidBack()
+})
+
+// 潅水流量
+let btnSetIrrigation = document.getElementById("setIrrigation")
+btnSetIrrigation.addEventListener("click", function(event) {
+	return writeCmdRead(23) //spr_fre
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Irrigation.setFlowLMin(ui16)
+		return writeCmdRead(24) //spr_fre2
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Irrigation.setFlowHz(ui16)
+		return writeCmdRead(122) // before_theory[0]
+	})
+	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Irrigation.setBeforeChecked(ui8)
+		return writeCmdRead(22) // spr_err
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Irrigation.setBeforeRatio(ui16)
+		return writeCmdRead(25) // theory
+	})
+	.then(_ => {
+		return readUi32()
+	})
+	.then(ui32 => {
+		Irrigation.setBeforeTheoretical(ui32)
+		return writeCmdRead(127) // spr_check_wait
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Irrigation.setSprFlowMonitorWait(ui16)
+		if (gType == 0) {
+			return writeCmdRead(143) // spr_error_stop_en
+		}
+		else {
+			return writeCmdRead(30) // start1_1_or_end
+		}
+	})
+	.then(_ => {
+		if (gType == 0) {
+			return readUi8()
+		}
+		else {
+			return readUi16()
+		}
+	})
+	.then(val => {
+		if (gType == 0) {
+			Irrigation.setCheckSprStopChecked(val)
+			return writeCmdRead(144) // spr_error_stop
+		}
+		else {
+			Irrigation.setEndTime(val)
+			if (gType == 2) {
+				return writeCmdRead(130) // stop_ad_or_start_time
+			}
+			else {
+				return Promise.resolve()
+			}
+		}
+	})
+	.then(_ => {
+		if (g_Type == 0) {
+			return readUi8()
+		}
+		else {
+			return readUi16()
+		}
+	})
+	.then(val => {
+		if (g_Type == 0) {
+			Irrigation.setCheckReleaseChecked(val)
+		}
+		else {
+			Irrigation.setStartTime(val)
+		}
+		dispIrrigation()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+})
+
+let btnIrrigationBack = document.getElementById("irrigationBack")
+btnIrrigationBack.addEventListener("click", function(event) {
+  dispIrrigationBack()
 })
