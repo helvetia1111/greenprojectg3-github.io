@@ -219,6 +219,7 @@ function dispMain() {
 var gType = 0
 var gRev = ''
 
+/*
 function next() {
 	const str = 'greenprg3'
 	const encoder = new TextEncoder()
@@ -261,6 +262,7 @@ function next() {
 		console.log('[Error]: ' + error)
 	})
 }
+*/
 
 function updateFormAction(actionU) {
 	form.action = actionU;
