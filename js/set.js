@@ -280,27 +280,27 @@ btnSetLiquid.addEventListener("click", function(event) {
 
 let btnLiquidSet = document.getElementById("liquidSet")
 btnLiquidSet.addEventListener("click", function(event) {
-	mix = Liquid.getLiquidMix()
+	let mix = Liquid.getLiquidMix()
 	return writeUi16(mix)
 	.then(_ => {
 		return writeCmdWrite(126) // mix
 	})
 	.then(_ => {
-		ratio = Liquid.getLiquidRatio()
+		let ratio = Liquid.getLiquidRatio()
 		return writeUi16(ratio)
 	})
 	.then(_ => {
 		return writeCmdWrite(2) // ratio
 	})
 	.then(_ => {
-		pump_sel = Liquid.getLiquidPumpSel()
+		let pump_sel = Liquid.getLiquidPumpSel()
 		return writeUi8(pump_sel)
 	})
 	.then(_ => {
 		return writeCmdWrite(128) //pump_sel[0]
 	})
 	.then(_ => {
-		pump_pls_ch = Liquid.getLiquidPlsUse()
+		let pump_pls_ch = Liquid.getLiquidPlsUse()
 		return writeUi8(pump_pls_ch)
 	})
 	.then(_ => {
