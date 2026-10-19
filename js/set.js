@@ -1,3 +1,5 @@
+import Liquid from './liquid.js';
+
 const cmdReadSetChUUID = '091272b5-575f-4231-bd87-9c614889aa7d'
 const cmdWriteSetChUUID = 'a54b15b0-6e03-4bd2-ac89-e8009bfee496'
 const ui8SetChUUID = '39e5bed1-b05a-4302-8bda-9a78d0e0e387'
@@ -246,7 +248,7 @@ btnSetLiquid.addEventListener("click", function(event) {
 		return readUi16()
 	})
 	.then(ui16 => {
-		setLiquidMix(ui16)
+		Liquid.setLiquidMix(ui16)
 		return writeCmdRead(2) //ratio
 		//dispLiquid()
 	})
@@ -254,21 +256,21 @@ btnSetLiquid.addEventListener("click", function(event) {
 		return readUi16()
 	})
 	.then(ui16 => {
-		setLiquidRatio(ui16)
+		Liquid.setLiquidRatio(ui16)
 		return writeCmdRead(128) //pump_sel[0]
 	})
 	.then(_ => {
 		return readUi8()
 	})
 	.then(ui8 => {
-		setLiquidPumpSel(ui8)
+		Liquid.setLiquidPumpSel(ui8)
 		return writeCmdRead(125) //pump_pls_ch
 	})
 	.then(_ => {
 		return readUi8()
 	})
 	.then(ui8 => {
-		setLiquidPlsUse(ui8)
+		Liquid.setLiquidPlsUse(ui8)
 		dispLiquid()
 	})
 	.catch(error => {
@@ -278,27 +280,27 @@ btnSetLiquid.addEventListener("click", function(event) {
 
 let btnLiquidSet = document.getElementById("liquidSet")
 btnLiquidSet.addEventListener("click", function(event) {
-	mix = getLiquidMix()
+	mix = Liquid.getLiquidMix()
 	return writeUi16(mix)
 	.then(_ => {
 		return writeCmdWrite(126) // mix
 	})
 	.then(_ => {
-		ratio = getLiquidRatio()
+		ratio = Liquid.getLiquidRatio()
 		return writeUi16(ratio)
 	})
 	.then(_ => {
 		return writeCmdWrite(2) // ratio
 	})
 	.then(_ => {
-		pump_sel = getLiquidPumpSel()
+		pump_sel = Liquid.getLiquidPumpSel()
 		return writeUi8(pump_sel)
 	})
 	.then(_ => {
 		return writeCmdWrite(128) //pump_sel[0]
 	})
 	.then(_ => {
-		pump_pls_ch = getLiquidPlsUse()
+		pump_pls_ch = Liquid.getLiquidPlsUse()
 		return writeUi8(pump_pls_ch)
 	})
 	.then(_ => {
