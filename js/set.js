@@ -443,7 +443,7 @@ btnSetIrrigation.addEventListener("click", function(event) {
 		}
 	})
 	.then(_ => {
-		if (g_Type == 0) {
+		if (gType == 0) {
 			return readUi8()
 		}
 		else {
@@ -451,7 +451,7 @@ btnSetIrrigation.addEventListener("click", function(event) {
 		}
 	})
 	.then(val => {
-		if (g_Type == 0) {
+		if (gType == 0) {
 			Irrigation.setCheckReleaseChecked(val)
 		}
 		else {
