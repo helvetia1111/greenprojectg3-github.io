@@ -288,7 +288,7 @@ btnLiquidSet.addEventListener("click", function(event) {
 		return writeUi16(ratio)
 	})
 	.then(_ => {
-		return writeCmeWrite(2) // ratio
+		return writeCmdWrite(2) // ratio
 	})
 	.then(_ => {
 		pump_sel = getLiquidPumpSel()
