@@ -11,7 +11,7 @@ const radioLiquidIwaki = document.getElementById('iwaki')
 const radioLiquidGrundfos = document.getElementById('grundfos')
 const checkLiquidPlsUse = document.getElementById('plsUse')
 
-function setLiquidMix(mix) {
+export function setLiquidMix(mix) {
   checkMixUse1.checked = ((mix & 0x0001) != 0)
   checkMixUse2.checked = ((mix & 0x0002) != 0)
   checkMixUse3.checked = ((mix & 0x0004) != 0)
@@ -22,7 +22,7 @@ function setLiquidMix(mix) {
   checkMixUse8.checked = ((mix & 0x0080) != 0)
 }
 
-function getLiquidMix() {
+export function getLiquidMix() {
   mix = 0
   if (checkMixUse1.checked) {
     mix |= 0x0001
@@ -51,21 +51,21 @@ function getLiquidMix() {
   return mix
 }
 
-function setLiquidRatio(ratio) {
+export function setLiquidRatio(ratio) {
   textLiquidRatio.value = ratio
 }
 
-function getLiquidRatio() {
+export function getLiquidRatio() {
   ratio = textLiquidRatio.value
   return parseInt(ratio, 10)
 }
 
-function setLiquidPumpSel(iwaki) {
+export function setLiquidPumpSel(iwaki) {
   radioLiquidIwaki.checked = ((iwaki & 0x01) != 0)
   radioLiquidGrundfos.checked = !radioLiquidIwaki.checked
 }
 
-function getLiquidPumpSel() {
+export function getLiquidPumpSel() {
   iwaki = 0;
   if (radioLiquidIwaki.checked) {
     iwaki |= 0x01
@@ -73,11 +73,11 @@ function getLiquidPumpSel() {
   return iwaki
 }
 
-function setLiquidPlsUse(use) {
+export function setLiquidPlsUse(use) {
   checkLiquidPlsUse.checked = ((use & 0x01) != 0)
 }
 
-function getLiquidPlsUse() {
+export function getLiquidPlsUse() {
   use = 0
   if (checkLiquidPlsUse.checked) {
     use |= 0x01
