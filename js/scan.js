@@ -117,6 +117,17 @@ const liquid6 = document.getElementById("liquid6")
 const liquid7 = document.getElementById("liquid7")
 const liquid8 = document.getElementById("liquid8")
 
+const irrigation1 = document.getElementById("irrigation1")
+const irrigation2 = document.getElementById("irrigation2")
+const irrigation3 = document.getElementById("irrigation3")
+const irrigation4 = document.getElementById("irrigation4")
+const irrigation5 = document.getElementById("irrigation5")
+const irrigation6 = document.getElementById("irrigation6")
+const irrigation7 = document.getElementById("irrigation7")
+const irrigation8 = document.getElementById("irrigation8")
+const irrigation9 = document.getElementById("irrigation9")
+const irrigation10 = document.getElementById("irrigation10")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
