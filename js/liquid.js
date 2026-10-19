@@ -65,7 +65,7 @@ function setLiquidPumpSel(iwaki) {
   radioLiquidGrundfos.checked = !radioLiquidIwaki.checked
 }
 
-function getliquidPumpSel() {
+function getLiquidPumpSel() {
   iwaki = 0;
   if (radioLiquidIwaki.checked) {
     iwaki |= 0x01
