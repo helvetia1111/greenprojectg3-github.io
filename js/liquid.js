@@ -1,3 +1,5 @@
+export default Liquid
+
 const checkMixUse1 = document.getElementById('use1')
 const checkMixUse2 = document.getElementById('use2')
 const checkMixUse3 = document.getElementById('use3')
