@@ -37,6 +37,14 @@ function dispSetting() {
 	}
 }
 
+function disableSet(dis) {
+	set1.disabled = dis
+	set2.disabled = dis
+	set3.disabled = dis
+	set4.disabled = dis
+	set5.disabled = dis
+}
+
 function dispLiquid() {
 	set1.style.display = 'none'
   	set2.style.display = 'none'
@@ -69,6 +77,17 @@ function dispLiquidBack() {
   	liquid6.style.display = 'none'
   	liquid7.style.display = 'none'
   	liquid8.style.display = 'none'
+}
+
+function disableLiquid(dis) {
+	liquid1.disabled = dis
+	liquid2.disabled = dis
+	liquid3.disabled = dis
+	liquid4.disabled = dis
+	liquid5.disabled = dis
+	liquid6.disabled = dis
+	liquid7.disabled = dis
+	liquid8.disabled = dis
 }
 
 function dispIrrigation() {
@@ -113,6 +132,19 @@ function dispIrrigationBack() {
 	irrigation8.style.display = 'none'
 	irrigation9.style.display = 'none'
 	irrigation10.style.display = 'none'
+}
+
+function disableIrrigation(dis) {
+	irrigation1.disabled = dis
+	irrigation2.disabled = dis
+	irrigation3.disabled = dis
+	irrigation4.disabled = dis
+	irrigation5.disabled = dis
+	irrigation6.disabled = dis
+	irrigation7.disabled = dis
+	irrigation8.disabled = dis
+	irrigation9.disabled = dis
+	irrigation10.disabled = dis
 }
 
 const btnRainOrValve = document.getElementById("setRainOrValve")
@@ -289,6 +321,7 @@ btnSetting.addEventListener("click", function(event) {
 // 液肥制御
 let btnSetLiquid = document.getElementById("setLiquid")
 btnSetLiquid.addEventListener("click", function(event) {
+	disableSet(true)
 	return writeCmdRead(126) //mix
 	.then(_ => {
 		return readUi16()
@@ -317,15 +350,18 @@ btnSetLiquid.addEventListener("click", function(event) {
 	})
 	.then(ui8 => {
 		Liquid.setLiquidPlsUse(ui8)
+		disableSet(false)
 		dispLiquid()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
+		disableSet(false)
 	})
 })
 
 let btnLiquidSet = document.getElementById("liquidSet")
 btnLiquidSet.addEventListener("click", function(event) {
+	disableLiquid(true)
 	let mix = Liquid.getLiquidMix()
 	return writeUi16(mix)
 	.then(_ => {
@@ -356,10 +392,12 @@ btnLiquidSet.addEventListener("click", function(event) {
 		return writeCmdManual(12) // write liquid_fe
 	})
 	.then(_ => {
+		disableLiquid(false)
 		dispLiquidBack()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
+		disableLiquid(false)
 	})
 })
 
@@ -371,6 +409,7 @@ btnLiquidBack.addEventListener("click", function(event) {
 // 潅水流量
 let btnSetIrrigation = document.getElementById("setIrrigation")
 btnSetIrrigation.addEventListener("click", function(event) {
+	disableSet(true)
 	return writeCmdRead(23) //spr_fre
 	.then(_ => {
 		return readUi16()
@@ -458,10 +497,12 @@ btnSetIrrigation.addEventListener("click", function(event) {
 			Irrigation.setStartTime(val)
 		}
 		Irrigation.irrigationReadOnly()
+		disableSet(false)
 		dispIrrigation()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
+		disableSet(false)
 	})
 })
 
