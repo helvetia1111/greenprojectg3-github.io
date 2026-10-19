@@ -457,6 +457,7 @@ btnSetIrrigation.addEventListener("click", function(event) {
 		else {
 			Irrigation.setStartTime(val)
 		}
+		Irrigation.irrigationReadOnly()
 		dispIrrigation()
 	})
 	.catch(error => {
