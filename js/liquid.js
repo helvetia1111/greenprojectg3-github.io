@@ -79,7 +79,7 @@ function setLiquidPlsUse(use) {
 
 function getLiquidPlsUse() {
   use = 0
-  if (checkLiquidPlsuse.checked) {
+  if (checkLiquidPlsUse.checked) {
     use |= 0x01
   }
   return use
