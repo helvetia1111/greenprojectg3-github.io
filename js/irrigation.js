@@ -52,12 +52,15 @@ export function setStartTime(time) {
 
 export function irrigationGate() {
   var UserInput = prompt('パスワードを入力してください', '');
-  let ret = false;
   if (UserInput != null) {
-    ret = UserInput == 'pass'
-    if (!ret) {
+    if (UserInput == 'pass') {
+      textFlowLMin.readOnly = false
+      textFlowHz.readOnly = false
+      textBeforeRatio.readOnly = false
+      textBeforeTheoretical.readOnly = false
+    }
+    else {
       alert('パスワードが違います')
     }
   }
-  return ret
 }
