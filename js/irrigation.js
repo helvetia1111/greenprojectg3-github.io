@@ -64,3 +64,10 @@ export function irrigationGate() {
     }
   }
 }
+
+export function irrigationReadOnly() {
+  textFlowLMin.readOnly = true
+  textFlowHz.readOnly = true
+  textBeforeRatio.readOnly = true
+  textBeforeTheoretical.readOnly = true
+}
