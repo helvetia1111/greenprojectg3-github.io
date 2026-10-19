@@ -23,7 +23,7 @@ export function setLiquidMix(mix) {
 }
 
 export function getLiquidMix() {
-  mix = 0
+  let mix = 0
   if (checkMixUse1.checked) {
     mix |= 0x0001
   }
@@ -56,7 +56,7 @@ export function setLiquidRatio(ratio) {
 }
 
 export function getLiquidRatio() {
-  ratio = textLiquidRatio.value
+  let ratio = textLiquidRatio.value
   return parseInt(ratio, 10)
 }
 
@@ -66,7 +66,7 @@ export function setLiquidPumpSel(iwaki) {
 }
 
 export function getLiquidPumpSel() {
-  iwaki = 0;
+  let iwaki = 0;
   if (radioLiquidIwaki.checked) {
     iwaki |= 0x01
   }
@@ -78,7 +78,7 @@ export function setLiquidPlsUse(use) {
 }
 
 export function getLiquidPlsUse() {
-  use = 0
+  let use = 0
   if (checkLiquidPlsUse.checked) {
     use |= 0x01
   }
