@@ -276,6 +276,45 @@ btnSetLiquid.addEventListener("click", function(event) {
 	})
 })
 
+let btnSetLiquid = document.getElementById("liquidSet")
+btnSetLiquid.addEventListener("click", function(event) {
+	mix = getLiquidMix()
+	return writeUi16(mix)
+	.then(_ => {
+		return writeCmeWrite(126) // mix
+	})
+	.then(_ => {
+		ratio = getLiquidRatio()
+		return writeUi16(ratio)
+	})
+	.then(_ => {
+		return writeCmeWrite(2) // ratio
+	})
+	.then(_ => {
+		pump_sel = getLiquidPumpSel()
+		return writeUi8(pump_sel)
+	})
+	.then(_ => {
+		return writeCmeWrite(128) //pump_sel[0]
+	})
+	.then(_ => {
+		pump_pls_ch = getLiquidPlsUse()
+		return writeUi8(pump_pls_ch)
+	})
+	.then(_ => {
+		return writeCmeWrite(125) // pump_pls_ch
+	})
+	.then(_ => {
+		return writeCmdManual(12) // write liquid_fe
+	})
+	.then(_ => {
+		dispLiquidBack()
+	}
+	.catch(error => {
+		console.log('error: ' + error)
+	})
+})
+
 let btnLiquidBack = document.getElementById("liquidBack")
 btnLiquidBack.addEventListener("click", function(event) {
   dispLiquidBack()
