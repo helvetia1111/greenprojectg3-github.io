@@ -38,11 +38,8 @@ function dispSetting() {
 }
 
 function disableSet(dis) {
-	set1.disabled = dis
-	set2.disabled = dis
-	set3.disabled = dis
-	set4.disabled = dis
-	set5.disabled = dis
+	btnSetLiquid.disabled = dis
+	btnSetIrrigation.disabled = dis
 }
 
 function dispLiquid() {
@@ -80,14 +77,9 @@ function dispLiquidBack() {
 }
 
 function disableLiquid(dis) {
-	liquid1.disabled = dis
-	liquid2.disabled = dis
-	liquid3.disabled = dis
-	liquid4.disabled = dis
-	liquid5.disabled = dis
-	liquid6.disabled = dis
-	liquid7.disabled = dis
-	liquid8.disabled = dis
+	Liquid.disableLiquid(dis)
+	btnLiquidSet.disabled = dis
+	btnLiquidBack.disabled = dis
 }
 
 function dispIrrigation() {
@@ -135,19 +127,10 @@ function dispIrrigationBack() {
 }
 
 function disableIrrigation(dis) {
-	irrigation1.disabled = dis
-	irrigation2.disabled = dis
-	irrigation3.disabled = dis
-	irrigation4.disabled = dis
-	irrigation5.disabled = dis
-	irrigation6.disabled = dis
-	irrigation7.disabled = dis
-	irrigation8.disabled = dis
-	irrigation9.disabled = dis
-	irrigation10.disabled = dis
+	Irrigation.disableIrrigation(dis)
+	btnIrrigationPassword.disabled = dis
+	btnIrrigationBack.disabled = dis
 }
-
-const btnRainOrValve = document.getElementById("setRainOrValve")
 
 async function writeCmdRead(cmd) {
 	const val = Uint8Array.of(cmd)
@@ -291,27 +274,27 @@ btnSetting.addEventListener("click", function(event) {
 	})
 	.then(cmdReadCh => {
 		cmdReadSetCh = cmdReadCh
-    return setService.getCharacteristic(cmdWriteSetChUUID)
+    	return setService.getCharacteristic(cmdWriteSetChUUID)
 	})
   .then(cmdWriteCh => {
 		cmdWriteSetCh = cmdWriteCh
-    return setService.getCharacteristic(ui8SetChUUID)
+    	return setService.getCharacteristic(ui8SetChUUID)
 	})
   .then(ui8Ch => {
 		ui8SetCh = ui8Ch
-    return setService.getCharacteristic(ui16SetChUUID)
+    	return setService.getCharacteristic(ui16SetChUUID)
 	})
   .then(ui16Ch => {
 		ui16SetCh = ui16Ch
-    return setService.getCharacteristic(ui32SetChUUID)
+    	return setService.getCharacteristic(ui32SetChUUID)
 	})
   .then(ui32Ch => {
 		ui32SetCh = ui32Ch
-    return setService.getCharacteristic(strSetChUUID)
+    	return setService.getCharacteristic(strSetChUUID)
 	})
   .then(strCh => {
 		strSetCh = strCh
-    dispSetting()
+    	dispSetting()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
@@ -361,7 +344,7 @@ btnSetLiquid.addEventListener("click", function(event) {
 
 let btnLiquidSet = document.getElementById("liquidSet")
 btnLiquidSet.addEventListener("click", function(event) {
-	disableLiquid(true)
+	Liquid.disableLiquid(true)
 	let mix = Liquid.getLiquidMix()
 	return writeUi16(mix)
 	.then(_ => {
@@ -392,7 +375,7 @@ btnLiquidSet.addEventListener("click", function(event) {
 		return writeCmdManual(12) // write liquid_fe
 	})
 	.then(_ => {
-		disableLiquid(false)
+		Liquid.disableLiquid(false)
 		dispLiquidBack()
 	})
 	.catch(error => {
@@ -515,3 +498,5 @@ let btnIrrigationBack = document.getElementById("irrigationBack")
 btnIrrigationBack.addEventListener("click", function(event) {
   dispIrrigationBack()
 })
+
+let btnRainOrValve = document.getElementById("setRainOrValve")
