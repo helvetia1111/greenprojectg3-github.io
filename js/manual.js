@@ -34,38 +34,8 @@ function dispManBack() {
 	manual6.style.display = 'none'
 }
 
-async function writeCmdManual(cmd) {
-	const val = Uint8Array.of(cmd)
-	try {
-		if (manCmdCh.properties.writeWithoutResponse) {
-			await manCmdCh.writeValueWithoutResponse(val)
-			console.log('write ' + val[0])
-		}
-		else {
-			await manCmdCh.writeValueWithResponse(val)
-			console.log('write ' + val[0])
-		}
-	} catch (error) {
-		console.error('書き込みに失敗しました: ', error)
-	}
-}
-
 let btnManual = document.getElementById('manual')
 btnManual.addEventListener('click', function(event) {
-	/*
-	return gattServer.getPrimaryService(manServiceUUID)
-	.then(service => {
-		manService = service
-		return service.getCharacteristic(manCmdChUUID)
-	})
-	.then(cmdCh => {
-		manCmdCh = cmdCh
-		dispManual()
-	})
-	.catch(error => {
-		console.log('error: ' + error)
-	})
-	*/
 	dispManual()
 })
 
