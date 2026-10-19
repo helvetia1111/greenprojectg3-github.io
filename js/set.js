@@ -464,6 +464,11 @@ btnSetIrrigation.addEventListener("click", function(event) {
 	})
 })
 
+let btnIrrigationPassword = document.getElementById("irrigationPassword")
+btnIrrigationPassword.addEventListener("click", function(event) {
+  Irrigation.irrigationGate()
+})
+
 let btnIrrigationBack = document.getElementById("irrigationBack")
 btnIrrigationBack.addEventListener("click", function(event) {
   dispIrrigationBack()
