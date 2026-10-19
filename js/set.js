@@ -344,7 +344,7 @@ btnSetLiquid.addEventListener("click", function(event) {
 
 let btnLiquidSet = document.getElementById("liquidSet")
 btnLiquidSet.addEventListener("click", function(event) {
-	Liquid.disableLiquid(true)
+	disableLiquid(true)
 	let mix = Liquid.getLiquidMix()
 	return writeUi16(mix)
 	.then(_ => {
@@ -375,7 +375,7 @@ btnLiquidSet.addEventListener("click", function(event) {
 		return writeCmdManual(12) // write liquid_fe
 	})
 	.then(_ => {
-		Liquid.disableLiquid(false)
+		disableLiquid(false)
 		dispLiquidBack()
 	})
 	.catch(error => {
