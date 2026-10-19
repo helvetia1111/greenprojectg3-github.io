@@ -22,8 +22,42 @@ function setLiquidMix(mix) {
   checkMixUse8.checked = ((mix & 0x0080) != 0)
 }
 
+function getLiquidMix() {
+  mix = 0
+  if (checkMixUse1.checked) {
+    mix |= 0x0001
+  }
+  if (checkMixUse2.checked) {
+    mix |= 0x0002
+  }
+  if (checkMixUse3.checked) {
+    mix |= 0x0004
+  }
+  if (checkMixUse4.checked) {
+    mix |= 0x0008
+  }
+  if (checkMixUse5.checked) {
+    mix |= 0x0010
+  }
+  if (checkMixUse6.checked) {
+    mix |= 0x0020
+  }
+  if (checkMixUse7.checked) {
+    mix |= 0x0040
+  }
+  if (checkMixUse8.checked) {
+    mix |= 0x0080
+  }
+  return mix
+}
+
 function setLiquidRatio(ratio) {
   textLiquidRatio.value = ratio
+}
+
+function getLiquidRatio() {
+  ratio = textLiquidRatio.value
+  return parseInt(ratio, 10)
 }
 
 function setLiquidPumpSel(iwaki) {
@@ -31,6 +65,22 @@ function setLiquidPumpSel(iwaki) {
   radioLiquidGrundfos.checked = !radioLiquidIwaki.checked
 }
 
+function getliquidPumpSel() {
+  iwaki = 0;
+  if (radioLiquidIwaki.checked) {
+    iwaki |= 0x01
+  }
+  return iwaki
+}
+
 function setLiquidPlsUse(use) {
   checkLiquidPlsUse.checked = ((use & 0x01) != 0)
+}
+
+function getLiquidPlsUse() {
+  use = 0
+  if (checkLiquidPlsuse.checked) {
+    use |= 0x01
+  }
+  return use
 }
