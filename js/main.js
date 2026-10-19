@@ -91,7 +91,7 @@ function next() {
 	})
 	.then(cmdCh => {
 		manCmdCh = cmdCh
-		dispOperation()
+		//dispOperation()
 	})
 	.catch(error => {
 		console.log('[Error]: ' + error)
