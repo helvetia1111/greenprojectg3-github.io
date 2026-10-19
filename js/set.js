@@ -309,7 +309,7 @@ btnLiquidSet.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		dispLiquidBack()
-	}
+	})
 	.catch(error => {
 		console.log('error: ' + error)
 	})
