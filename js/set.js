@@ -281,7 +281,7 @@ btnLiquidSet.addEventListener("click", function(event) {
 	mix = getLiquidMix()
 	return writeUi16(mix)
 	.then(_ => {
-		return writeCmeWrite(126) // mix
+		return writeCmdWrite(126) // mix
 	})
 	.then(_ => {
 		ratio = getLiquidRatio()
@@ -295,14 +295,14 @@ btnLiquidSet.addEventListener("click", function(event) {
 		return writeUi8(pump_sel)
 	})
 	.then(_ => {
-		return writeCmeWrite(128) //pump_sel[0]
+		return writeCmdWrite(128) //pump_sel[0]
 	})
 	.then(_ => {
 		pump_pls_ch = getLiquidPlsUse()
 		return writeUi8(pump_pls_ch)
 	})
 	.then(_ => {
-		return writeCmeWrite(125) // pump_pls_ch
+		return writeCmdWrite(125) // pump_pls_ch
 	})
 	.then(_ => {
 		return writeCmdManual(12) // write liquid_fe
