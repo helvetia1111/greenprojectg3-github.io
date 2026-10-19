@@ -91,6 +91,7 @@ function next() {
 	})
 	.then(cmdCh => {
 		manCmdCh = cmdCh
+		dispMain()
 		//dispOperation()
 	})
 	.catch(error => {
