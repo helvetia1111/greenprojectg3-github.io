@@ -49,3 +49,15 @@ export function setEndTime(time) {
 export function setStartTime(time) {
   textStartTime.value = time
 }
+
+export function irrigationGate() {
+  var UserInput = prompt('パスワードを入力してください', '');
+  let ret = false;
+  if (UserInput != null) {
+    ret = UserInput == 'pass'
+    if (!ret) {
+      alert('パスワードが違います')
+    }
+  }
+  return ret
+}
