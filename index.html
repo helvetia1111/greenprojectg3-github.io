@@ -505,6 +505,67 @@
 	<div id="liquid8" style="display: none;">
         <input value="戻る" type="button" class="backbutton" id="liquidBack"/>
 	</div>
+
+	<!-- 灌水流量 ----------------------->
+	<div class="base" id="irrigation1" style="display: none;">
+		潅水流量設定
+	</div>
+	<div class="time_set" id="irrigation2" style="display: none;">
+		潅水流量計
+		<input type="number" id="flowLmin" name="flowLmin" step="0.1" min="0" max="1000" />
+		L/Min:  
+		<input type="number" id="flowHz" name="flowHz" step="0.1" min="0" max="1000" />
+		Hz
+	</div>
+
+	<div class="radio" id="irrigation3" style="display: none;">
+        <input type="radio" id="beforeRatioChecked" name="beforeChecked" value="1" />
+		<label for="beforeRatioChecked">前回潅水量エラー</label>
+		<input type="number" id="beforeRatio" name="beforeRatio" step="0.1" min="0" max="100"/>
+		％
+    </div>
+
+	<div class="radio" id="irrigation4" style="display: none;">
+        <input type="radio" id="beforeTheoreticalChecked" name="beforeChecked" value="2" />
+		<label for="beforeTheoreticalChecked">理論値</label>
+        <input type="number" id="beforeTheoretical" name="beforeTheoretical" min="0" max="4294967295" step="1" />
+		mL
+    </div>
+
+	<div class="time_set" id="irrigation5" style="display: none;">
+		潅水流量監視待ち時間
+		<input type="number" id="sprFlowMonitorWait" name="sprFlowMonitorWait" min="0" max="3600" step="1" />
+		秒
+	</div>
+
+	<div class="check" id="irrigation6" style="display: none;">
+		<input type="checkbox" id="sprStopChecked" name="sprStopChecked" value="1" />
+		<label for="sprStopChecked">潅水停止</label>
+		<input type="checkbox" id="releaseChecked" name="releaseChecked" value="1" />
+		<label for="releaseChecked">解除処理</label>
+	</div>
+
+	<div class="time_set" id="irrigation7" style="display: none;">
+		潅水完了待ち時間
+		<input type="number" id="endTime" name="endTime" min="0" max="255" step="1" />
+		秒
+	</div>
+
+	<div class="time_set" id="irrigation8" style="display: none;">
+		潅水開始時間
+		<input type="number" id="startTime" name="startTime" min="0" max="86400" step="1" />
+		秒
+	</div>
+		
+	<div class="setbutton" id="irrigation9" style="display: none;">
+		<button name="ope" value="1" type="button" id="irrigationSet">設定</button>
+		<input type="button" value="パスワード" id="irrigationPassword"/>
+		<input type="text" id="irrigationPass" />
+	</div>
+
+	<div id="irrigation10" style="display: none;">
+        <input value="戻る" type="button" class="backbutton" id="liquidBack"/>
+	</div>
 		
     <script type="text/javascript" src="js/scan.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
