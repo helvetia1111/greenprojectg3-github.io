@@ -46,8 +46,62 @@ async function writeCmdManual(cmd) {
 	}
 }
 
+function next() {
+	const str = 'greenprg3'
+	const encoder = new TextEncoder()
+	const encoded = encoder.encode(str)
+
+	writeData(encoded)
+	.then(_ => {
+		console.log('Write ...')
+		return gattService.getCharacteristic(bleCh)
+	})
+	.then(ch => {
+		gattCh = ch
+		return gattCh.readValue()
+	})
+	.then(value => {
+		console.log('read... ' + value.getUint8(0))
+		if (value.getUint8(0) == 1) {
+			return gattService.getCharacteristic(typeCh)
+		}
+		Promise.resolve()
+	})
+	.then(ch => {
+		return ch.readValue()
+	})
+	.then(type => {
+		gType = type.getUint8(0)
+		console.log('type... ' + gType)
+		//dispMain()
+		return gattService.getCharacteristic(revChUUID)
+	})
+	.then(revCh => {
+		return revCh.readValue()
+	})
+	.then(rev => {
+		gRev = new TextDecoder('utf-8').decode(rev).replace(/\0/g, '')
+		console.log(`rev ${gRev}`)
+		//dispMain()
+		return gattServer.getPrimaryService(manServiceUUID)
+	})
+	.then(service => {
+		manService = service
+		return service.getCharacteristic(manCmdChUUID)
+	})
+	.then(cmdCh => {
+		manCmdCh = cmdCh
+		dispOperation()
+	})
+	.catch(error => {
+		console.log('[Error]: ' + error)
+	})
+}
+
+
 let btnOperation = document.getElementById("operation")
 btnOperation.addEventListener("click", function(event) {
+	/*
 	return gattServer.getPrimaryService(manServiceUUID)
 	.then(service => {
 		manService = service
@@ -60,6 +114,8 @@ btnOperation.addEventListener("click", function(event) {
 	.catch(error => {
 		console.log('error: ' + error)
 	})
+	*/
+	dispOperation()
 })
 
 let btnOperationBack = document.getElementById("operationBack")
