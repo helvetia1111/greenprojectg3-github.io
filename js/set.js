@@ -276,8 +276,8 @@ btnSetLiquid.addEventListener("click", function(event) {
 	})
 })
 
-let btnSetLiquid = document.getElementById("liquidSet")
-btnSetLiquid.addEventListener("click", function(event) {
+let btnLiquidSet = document.getElementById("liquidSet")
+btnLiquidSet.addEventListener("click", function(event) {
 	mix = getLiquidMix()
 	return writeUi16(mix)
 	.then(_ => {
