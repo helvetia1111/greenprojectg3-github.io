@@ -641,6 +641,95 @@
 	<div id="irrigation_err11" style="display: none;">
         <input value="戻る" type="button" class="backbutton" id="irrigationErrBack"/>
 	</div>
+
+	<!-- 雨センサ・バルブ ----------------------->
+	<div class="base" id="rain_or_valve1" style="display: none;">
+		雨センサ使用系統設定
+	</div>
+	<div class="check" id="rain_or_valve2" style="display: none;">
+		<input type="checkbox" id="rainChecked1" name="rain" value="1" />
+		<label for="rainChecked1">潅水#1</label>
+		<input type="checkbox" id="rainChecked2" name="rain" value="2" />
+		<label for="rainChecked2">潅水#2</label>
+		<input type="checkbox" id="rainChecked3" name="rain" value="3" />
+		<label for="rainChecked3">潅水#3</label>
+		<input type="checkbox" id="rainChecked4" name="rain" value="4" />
+		<label for="rainChecked4">潅水#4</label>
+	</div>
+	<div class="check" id="rain_or_valve3" style="display: none;">
+		<input type="checkbox" id="rainChecked5" name="rain" value="5" />
+		<label for="rainChecked5">潅水#5</label>
+		<input type="checkbox" id="rainChecked6" name="rain" value="6" />
+		<label for="rainChecked6">潅水#6</label>
+		<input type="checkbox" id="rainChecked7" name="rain" value="7" />
+		<label for="rainChecked7">潅水#7</label>
+		<input type="checkbox" id="rainChecked8" name="rain" value="8" />
+		<label for="rainChecked8">潅水#8</label>
+	</div>
+
+	<div class="base" id="rain_or_valve4" style="display: none;">
+		潅水バルブ有効
+	</div>
+	<div class="check" id="rain_or_valve5" style="display: block;">
+		<input type="checkbox" id="valveChecked1" name="checked" value="1" />
+		<div class="check" id="rain_or_valve6" style="display: block;">
+			<label for="valveChecked1">潅水バルブ#1有効</label>
+			<input type="number" id="on1" name="on1" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
+	</div>
+		<div class="check" >
+			<input type="checkbox" id="valveChecked2" name="checked" value="2" />
+			<label for="valveChecked2">潅水バルブ#2有効</label>
+			<input type="number" id="on2" name="on2" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
+		<div class="check" >
+			<input type="checkbox" id="valveChecked3" name="checked" value="3" />
+			<label for="valveChecked3">潅水バルブ#3有効</label>
+			<input type="number" id="on3" name="on3" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
+		<div class="check" >
+			<input type="checkbox" id="valveChecked4" name="checked" value="4" />
+			<label for="valveChecked4">潅水バルブ#4有効</label>
+			<input type="number" id="on4" name="on4" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
+		<div class="check" >
+			<input type="checkbox" id="valveChecked5" name="checked" value="5" />
+			<label for="valveChecked5">潅水バルブ#5有効</label>
+			<input type="number" id="on5" name="on5" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
+		<div class="check" >
+			<input type="checkbox" id="valveChecked6" name="checked" value="6" />
+			<label for="valveChecked6">潅水バルブ#6有効</label>
+			<input type="number" id="on6" name="on6" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
+		<div class="check" >
+			<input type="checkbox" id="valveChecked7" name="checked" value="7" />
+			<label for="valveChecked7">潅水バルブ#7有効</label>
+			<input type="number" id="on7" name="on7" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
+		<div class="check" >
+			<input type="checkbox" id="valveChecked8" name="checked" value="8" />
+			<label for="valveChecked8">潅水バルブ#8有効</label>
+			<input type="number" id="on8" name="on8" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
+		
+	<div class="setbutton" id="rain_or_valve4" style="display: none;">
+		<button name="ope" value="1" type="button" >設定</button>
+	</div>
+		
+	<div >
+		<form action="set" method="post">
+                        <input value="戻る" type="submit" class="backbutton" />
+                </form>
+	</div>
 		
     <script type="text/javascript" src="js/scan.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
