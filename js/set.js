@@ -574,7 +574,7 @@ btnIrrigationSet.addEventListener("click", function(event) {
 		}
 	})
 	.then(_ => {
-		return writeCmdManual(12) // write liquid_fe
+		return writeCmdManual(13) // write irrigation
 	})
 	.then(_ => {
 		disableIrrigation(false)
