@@ -145,6 +145,10 @@
 	width: 60px;
 }
 
+.frex {
+	display: flex;
+}
+
 .check {
 	margin: 0 0 30px 10px;
 	font-size: 50px;
