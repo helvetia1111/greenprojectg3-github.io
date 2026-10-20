@@ -132,6 +132,46 @@ function disableIrrigation(dis) {
 	btnIrrigationBack.disabled = dis
 }
 
+function dispIrrigationErr() {
+	set1.style.display = 'none'
+  	set2.style.display = 'none'
+  	set3.style.display = 'none'
+  	set4.style.display = 'none'
+  	set5.style.display = 'none'
+
+  	irrigation_err1.style.display = 'block'
+	irrigation_err2.style.display = 'block'
+	irrigation_err3.style.display = 'block'
+	irrigation_err4.style.display = 'block'
+	irrigation_err5.style.display = 'block'
+	irrigation_err6.style.display = 'block'
+	irrigation_err7.style.display = 'block'
+	irrigation_err8.style.display = 'block'
+	irrigation_err9.style.display = 'block'
+	irrigation_err10.style.display = 'block'
+	irrigation_err11.style.display = 'block'
+}
+
+function dispIrrigationErrBack() {
+  	set1.style.display = 'block'
+  	set2.style.display = 'block'
+  	set3.style.display = 'block'
+  	set4.style.display = 'block'
+  	set5.style.display = 'block'
+
+  	irrigation_err1.style.display = 'none'
+	irrigation_err2.style.display = 'none'
+	irrigation_err3.style.display = 'none'
+	irrigation_err4.style.display = 'none'
+	irrigation_err5.style.display = 'none'
+	irrigation_err6.style.display = 'none'
+	irrigation_err7.style.display = 'none'
+	irrigation_err8.style.display = 'none'
+	irrigation_err9.style.display = 'none'
+	irrigation_err10.style.display = 'none'
+	irrigation_err11.style.display = 'none'
+}
+
 async function writeCmdRead(cmd) {
 	const val = Uint8Array.of(cmd)
 	try {
@@ -594,6 +634,106 @@ btnIrrigationPassword.addEventListener("click", function(event) {
 let btnIrrigationBack = document.getElementById("irrigationBack")
 btnIrrigationBack.addEventListener("click", function(event) {
   dispIrrigationBack()
+})
+
+// 灌水流量異常
+let btnSetIrrigationErr = document.getElementById("setIrrigationErr")
+btnSetIrrigationErr.addEventListener("click", function(event) {
+	disableSet(true)
+	return writeCmdRead(3) //upper
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Irrigation.setFlowLMin(ui16)
+		return writeCmdRead(24) //spr_fre2
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Irrigation.setFlowHz(ui16)
+		return writeCmdRead(122) // before_theory[0]
+	})
+	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Irrigation.setBeforeChecked(ui8)
+		return writeCmdRead(22) // spr_err
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Irrigation.setBeforeRatio(ui16)
+		return writeCmdRead(25) // theory
+	})
+	.then(_ => {
+		return readUi32()
+	})
+	.then(ui32 => {
+		Irrigation.setBeforeTheoretical(ui32)
+		return writeCmdRead(127) // spr_check_wait
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Irrigation.setSprFlowMonitorWait(ui16)
+		if (gType == 0) {
+			return writeCmdRead(143) // spr_error_stop_en
+		}
+		else {
+			return writeCmdRead(30) // start1_1_or_end
+		}
+	})
+	.then(_ => {
+		if (gType == 0) {
+			return readUi8()
+		}
+		else {
+			return readUi16()
+		}
+	})
+	.then(val => {
+		if (gType == 0) {
+			Irrigation.setCheckSprStopChecked(val)
+			return writeCmdRead(144) // spr_error_stop
+		}
+		else {
+			Irrigation.setEndTime(val)
+			if (gType == 2) {
+				return writeCmdRead(130) // stop_ad_or_start_time
+			}
+			else {
+				return Promise.resolve()
+			}
+		}
+	})
+	.then(_ => {
+		if (gType == 0) {
+			return readUi8()
+		}
+		else {
+			return readUi16()
+		}
+	})
+	.then(val => {
+		if (gType == 0) {
+			Irrigation.setCheckReleaseChecked(val)
+		}
+		else {
+			Irrigation.setStartTime(val)
+		}
+		Irrigation.irrigationReadOnly()
+		disableSet(false)
+		dispIrrigation()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableSet(false)
+	})
 })
 
 let btnRainOrValve = document.getElementById("setRainOrValve")
