@@ -1,6 +1,6 @@
 import * as Liquid from './liquid.js'
 import * as Irrigation from './irrigation.js'
-import * as IrrigationErr from '.irrigation_err.js'
+import * as IrrigationErr from './irrigation_err.js'
 
 const cmdReadSetChUUID = '091272b5-575f-4231-bd87-9c614889aa7d'
 const cmdWriteSetChUUID = 'a54b15b0-6e03-4bd2-ac89-e8009bfee496'
