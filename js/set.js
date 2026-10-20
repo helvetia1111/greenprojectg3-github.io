@@ -769,6 +769,133 @@ btnSetIrrigationErr.addEventListener("click", function(event) {
 	})
 })
 
+let btnIrrigationErrSet = document.getElementById("irrigationErrSet")
+btnIrrigationErrSet.addEventListener("click", function(event) {
+	disableIrrigationErr(true)
+	let upper = IrrigationErr.getUpperLimit1()
+	return writeUi16(upper)
+	.then(_ => {
+		return writeCmdWrite(3) // upper
+	})
+	.then(_ => {
+		let upper_2 = IrrigationErr.getUpperLimit2()
+		return writeUi16(upper_2)
+	})
+	.then(_ => {
+		return writeCmdWrite(6) // upper_2
+	})
+	.then(_ => {
+		let upper_3 = IrrigationErr.getUpperLimit3()
+		return writeUi16(upper_3)
+	})
+	.then(_ => {
+		return writeCmdWrite(8) // upper_3
+	})
+	.then(_ => {
+		let upper_4 = IrrigationErr.getUpperLimit4()
+		return writeUi16(upper_4)
+	})
+	.then(_ => {
+		return writeCmdWrite(10) // upper_4
+	})
+	.then(_ => {
+		let upper_5 = IrrigationErr.getUpperLimit5()
+		return writeUi16(upper_5)
+	})
+	.then(_ => {
+		return writeCmdWrite(12) // upper_5
+	})
+	.then(_ => {
+		let upper_6 = IrrigationErr.getUpperLimit6()
+		return writeUi16(upper_6)
+	})
+	.then(_ => {
+		return writeCmdWrite(14) // upper_6
+	})
+	.then(_ => {
+		let upper_7 = IrrigationErr.getUpperLimit7()
+		return writeUi16(upper_7)
+	})
+	.then(_ => {
+		return writeCmdWrite(16) // upper_7
+	})
+	.then(_ => {
+		let upper_8 = IrrigationErr.getUpperLimit8()
+		return writeUi16(upper_8)
+	})
+	.then(_ => {
+		return writeCmdWrite(18) // upper_8
+	})
+	.then(_ => {
+		let lower = IrrigationErr.getLowerLimit1()
+		return writeUi16(lower)
+	})
+	.then(_ => {
+		return writeCmdWrite(4) // lower
+	})
+	.then(_ => {
+		let lower_2 = IrrigationErr.getLowerLimit2()
+		return writeUi16(lower_2)
+	})
+	.then(_ => {
+		return writeCmdWrite(7) // lower_2
+	})
+	.then(_ => {
+		let lower_3 = IrrigationErr.getLowerLimit3()
+		return writeUi16(lower_3)
+	})
+	.then(_ => {
+		return writeCmdWrite(9) // lower_3
+	})
+	.then(_ => {
+		let lower_4 = IrrigationErr.getLowerLimit4()
+		return writeUi16(lower_4)
+	})
+	.then(_ => {
+		return writeCmdWrite(11) // lower_4
+	})
+	.then(_ => {
+		let lower_5 = IrrigationErr.getLowerLimit5()
+		return writeUi16(lower_5)
+	})
+	.then(_ => {
+		return writeCmdWrite(13) // lower_5
+	})
+	.then(_ => {
+		let lower_6 = IrrigationErr.getLowerLimit6()
+		return writeUi16(lower_6)
+	})
+	.then(_ => {
+		return writeCmdWrite(15) // lower_6
+	})
+	.then(_ => {
+		let lower_7 = IrrigationErr.getLowerLimit7()
+		return writeUi16(lower_7)
+	})
+	.then(_ => {
+		return writeCmdWrite(17) // lower_7
+	})
+	.then(_ => {
+		let lower_8 = IrrigationErr.getLowerLimit8()
+		return writeUi16(lower_8)
+	})
+	.then(_ => {
+		return writeCmdWrite(19) // lower_8
+	})
+	.then(_ => {
+		return writeCmdManual(14) // write irrigation_err
+	})
+	.then(_ => {
+		disableIrrigationErr(false)
+		dispIrrigationErrBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableIrrigationErr(false)
+	})
+})
+
+
 let btnIrrigationErrBack = document.getElementById("irrigationErrBack")
 btnIrrigationErrBack.addEventListener("click", function(event) {
   dispIrrigationErrBack()
