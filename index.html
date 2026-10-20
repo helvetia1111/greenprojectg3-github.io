@@ -670,11 +670,15 @@
 	<div class="base" id="rain_or_valve4" style="display: none;">
 		潅水バルブ有効
 	</div>
-	<div class="check" id="rain_or_valve5" style="display: none;">
-		<input type="checkbox" id="valveChecked1" name="checked" value="1" />
-		<label for="valveChecked1">潅水バルブ#1有効</label>
-		<input type="number" id="on1" name="on1" min="0" max="999" step="1" style="display: none;"/>
-		ON値[L/Min]
+	<div class="check" id="rain_or_valve5" style="display: block;">
+		<div class="check" id="rain_or_valve5_1" style="display: block;">
+			<input type="checkbox" id="valveChecked1" name="checked" value="1" />
+			<label for="valveChecked1">潅水バルブ#1有効</label>
+		</div>
+		<div class="check" id="rain_or_valve5_2" style="display: block;">
+			<input type="number" id="on1" name="on1" min="0" max="999" step="1" />
+			ON値[L/Min]
+		</div>
 	</div>
 		<div class="check" >
 			<input type="checkbox" id="valveChecked2" name="checked" value="2" />
