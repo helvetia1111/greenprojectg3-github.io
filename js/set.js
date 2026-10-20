@@ -499,7 +499,7 @@ btnIrrigationSet.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		let spr_fre2 = Irrigation.getFlowHz()
-		return writeUi16(hZ)
+		return writeUi16(spr_fre2)
 	})
 	.then(_ => {
 		return writeCmdWrite(24) // spr_fre2
