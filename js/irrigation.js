@@ -13,8 +13,19 @@ const textStartTime = document.getElementById('startTime')
 export function setFlowLMin(flow) {
   textFlowLMin.value = flow
 }
+
+export function getFlowLMin() {
+  let flow = textFlowLMin.value
+  return parseInt(flow, 10)
+}
+
 export function setFlowHz(flow) {
   textFlowHz.value = flow
+}
+
+export function getFlowHz() {
+  let flow = textFlowHz.value
+  return parseInt(flow, 10)
 }
 
 export function setBeforeChecked(check) {
@@ -22,32 +33,81 @@ export function setBeforeChecked(check) {
   radioBeforeTheoreticalChecked.checked = !radioBeforeRatioChecked.checked
 }
 
+export function getBeforeChecked() {
+  let check = 0;
+  if (radioBeforeRatioChecked.checked) {
+    check |= 0x01
+  }
+  return check
+}
+
 export function setBeforeRatio(ratio) {
   textBeforeRatio.value = ratio
+}
+
+export function getBeforeRatio() {
+  let ratio = textBeforeRatio.value
+  return parseInt(ratio, 10)
 }
 
 export function setBeforeTheoretical(theo) {
   textBeforeTheoretical.value = theo
 }
 
+export function getBeforeTheoretical() {
+  let theo = textBeforeTheoretical.value
+  return parseInt(theo, 10)
+}
+
 export function setSprFlowMonitorWait(wait) {
   textSprFlowMonitorWait.value = wait
+}
+
+export function getSprFlowMonitorWait() {
+  let wait = textSprFlowMonitorWait.value
+  return parseInt(wait, 10)
 }
 
 export function setCheckSprStopChecked(chk) {
   checkSprStopChecked.checked = ((chk & 0x01) != 0)
 }
 
+export function getCheckSprStopChecked() {
+  let chk = 0
+  if (checkSprStopChecked.checked) {
+    chk |= 0x01
+  }
+  return chk
+}
+
 export function setCheckReleaseChecked(chk) {
   checkReleaseChecked.checked = ((chk & 0x01) != 0)
+}
+
+export function getCheckReleaseChecked() {
+  let chk = 0
+  if (checkReleaseChecked.checked) {
+    chk |= 0x01
+  }
+  return chk
 }
 
 export function setEndTime(time) {
   textEndTime.value = time
 }
 
+export function getEndTime() {
+  let time = textEndTime.value
+  return parseInt(time, 10)
+}
+
 export function setStartTime(time) {
   textStartTime.value = time
+}
+
+export function getStartTime() {
+  let time = textStartTime.value
+  return parseInt(time, 10)
 }
 
 export function irrigationGate() {
