@@ -983,10 +983,9 @@ let btnSetRainOrValve = document.getElementById("setRainOrValve")
 btnSetRainOrValve.addEventListener("click", function(event) {
 	disableSet(true)
 	console.log('btnSetRainOrValve... ')
-	let cmd = 5 // ch
-	if (gType == 0) {
-		cmd = 140 // rain_ch
-		//return writeCmdRead(140) // rain_ch
+	let cmd = 140 // rain_ch
+	if (gType != 0) {
+		cmd = 5 // ch
 	}
 	return writeCmdRead(cmd)
 	.then(_ => {
@@ -994,22 +993,10 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 	})
 	.then(ui16 => {
 		if (gType == 0) {
-			console.log('gType0... ')
 			RainOrValve.setRain(ui16)
 			disableSet(false)
 			dispRainOrValve()
-		}
-		else {
-			console.log('gType12... ')
-			disableSet(false)
-			dispRainOrValve()
-		}
-		/*
-		if (gType == 0) {
-			RainOrValve.setRain(ui16)
-			disableSet(false)
-			dispRainOrValve()
-			return Promise.resolve()
+			return Promise.resoleve()
 		}
 		else {
 			RainOrValve.setValve(ui16)
@@ -1018,13 +1005,9 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 				dispRainOrValve()
 				return Promise.resolve()
 			}
-			else {
-				return writeCmdRead(34) // ope11_or_on[0]
-			}
 		}
-		*/
+		return writeCmdRead(34) // ope11_or_on[0]
 	})
-	/*
 	.then(_ => {
 		return readUi16()
 	})
@@ -1082,7 +1065,6 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 		disableSet(false)
 		dispRainOrValve()
 	})	
-	*/
 	.catch(error => {
 		console.log('error: ' + error)
 		disableSet(false)
