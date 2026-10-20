@@ -1011,6 +1011,7 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		if (gType == 2) {
+			console.log('readUi16 ... ')
 			return readUi16()
 		}
 	})
