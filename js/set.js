@@ -895,10 +895,10 @@ btnIrrigationErrSet.addEventListener("click", function(event) {
 	})
 })
 
-
 let btnIrrigationErrBack = document.getElementById("irrigationErrBack")
 btnIrrigationErrBack.addEventListener("click", function(event) {
   dispIrrigationErrBack()
 })
 
 let btnRainOrValve = document.getElementById("setRainOrValve")
+
