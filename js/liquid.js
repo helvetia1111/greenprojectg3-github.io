@@ -87,15 +87,15 @@ export function getLiquidPlsUse() {
 
 export function disableLiquid(dis) {
 	checkMixUse1.disabled = dis
-  checkMixUse2.disabled = dis
-  checkMixUse3.disabled = dis
-  checkMixUse4.disabled = dis
-  checkMixUse5.disabled = dis
-  checkMixUse6.disabled = dis
-  checkMixUse7.disabled = dis
-  checkMixUse8.disabled = dis
-  textLiquidRatio.disabled = dis
-  radioLiquidIwaki.disabled = dis
-  radioLiquidGrundfos.disabled = dis
-  checkLiquidPlsUse.disabled = dis
+  	checkMixUse2.disabled = dis
+  	checkMixUse3.disabled = dis
+  	checkMixUse4.disabled = dis
+  	checkMixUse5.disabled = dis
+  	checkMixUse6.disabled = dis
+  	checkMixUse7.disabled = dis
+  	checkMixUse8.disabled = dis
+  	textLiquidRatio.disabled = dis
+  	radioLiquidIwaki.disabled = dis
+  	radioLiquidGrundfos.disabled = dis
+  	checkLiquidPlsUse.disabled = dis
 }
