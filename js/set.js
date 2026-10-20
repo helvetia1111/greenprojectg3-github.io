@@ -1011,64 +1011,92 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		if (gType == 2) {
-			console.log('readUi16 ... ')
 			return readUi16()
 		}
 	})
 	.then(ui16 => {
-		console.log('read ope11_or_on0... ')
-		RainOrValve.setOn1(ui16)
-		return writeCmdRead(35) // ope11_or_on[1]
+		if (gType == 2) {
+			RainOrValve.setOn1(ui16)
+			return writeCmdRead(35) // ope11_or_on[1]
+		}
 	})
 	.then(_ => {
-		return readUi16()
+		if (gType == 2) {
+			return readUi16()
+		}
 	})
 	.then(ui16 => {
-		RainOrValve.setOn2(ui16)
-		return writeCmdRead(36) // ope11_or_on[2]
+		if (gType == 2) {
+			RainOrValve.setOn2(ui16)
+			return writeCmdRead(36) // ope11_or_on[2]
+		}
 	})
 	.then(_ => {
-		return readUi16()
+		if (gType == 2) {
+			return readUi16()
+		}
 	})
 	.then(ui16 => {
-		RainOrValve.setOn3(ui16)
-		return writeCmdRead(37) // ope11_or_on[3]
+		if (gType == 2) {
+			RainOrValve.setOn3(ui16)
+			return writeCmdRead(37) // ope11_or_on[3]
+		}
 	})
 	.then(_ => {
-		return readUi16()
+		if (gType == 2) {
+			return readUi16()
+		}
 	})
 	.then(ui16 => {
-		RainOrValve.setOn4(ui16)
-		return writeCmdRead(38) // ope11_or_on[4]
+		if (gType == 2) {
+			RainOrValve.setOn4(ui16)
+			return writeCmdRead(38) // ope11_or_on[4]
+		}
 	})
 	.then(_ => {
-		return readUi16()
+		if (gType == 2) {
+			return readUi16()
+		}
 	})
 	.then(ui16 => {
-		RainOrValve.setOn5(ui16)
-		return writeCmdRead(39) // ope11_or_on[5]
+		if (gType == 2) {
+			RainOrValve.setOn5(ui16)
+			return writeCmdRead(39) // ope11_or_on[5]
+		}
 	})
 	.then(_ => {
-		return readUi16()
+		if (gType == 2) {
+			return readUi16()
+		}
 	})
 	.then(ui16 => {
-		RainOrValve.setOn6(ui16)
-		return writeCmdRead(40) // ope11_or_on[6]
+		if (gType == 2) {
+			RainOrValve.setOn6(ui16)
+			return writeCmdRead(40) // ope11_or_on[6]
+		}
 	})
 	.then(_ => {
-		return readUi16()
+		if (gType == 2) {
+			return readUi16()
+		}
 	})
 	.then(ui16 => {
-		RainOrValve.setOn7(ui16)
-		return writeCmdRead(41) // ope11_or_on[7]
+		if (gType == 2) {
+			RainOrValve.setOn7(ui16)
+			return writeCmdRead(41) // ope11_or_on[7]
+		}
 	})
 	.then(_ => {
-		return readUi16()
+		if (gType == 2) {
+			return readUi16()
+		}
 	})
 	.then(ui16 => {
-		RainOrValve.setOn8(ui16)
-		disableSet(false)
-		dispRainOrValve()
+		if (gType == 2) {
+			RainOrValve.setOn8(ui16)
+			disableSet(false)
+			dispRainOrValve()
+		}
 	})	
 	.catch(error => {
 		console.log('error: ' + error)
@@ -1120,57 +1148,86 @@ btnRainOrValveSet.addEventListener("click", function(event) {
 		}
 	})
 	.then(_ => {
-		console.log('write ope11_or_on0... ')
-		return writeCmdWrite(35) // ope11_or_on[1]
+		if (gType == 2) {
+			return writeCmdWrite(35) // ope11_or_on[1]
+		}
 	})
 	.then(_ => {
-		let on = RainOrValve.getOn3()
-		return writeUi16(on)
+		if (gType == 2) {
+			let on = RainOrValve.getOn3()
+			return writeUi16(on)
+		}
 	})
 	.then(_ => {
-		return writeCmdWrite(36) // ope11_or_on[2]
+		if (gType == 2) {
+			return writeCmdWrite(36) // ope11_or_on[2]
+		}
 	})
 	.then(_ => {
-		let on = RainOrValve.getOn4()
-		return writeUi16(on)
+		if (gType == 2) {
+			let on = RainOrValve.getOn4()
+			return writeUi16(on)
+		}
 	})
 	.then(_ => {
-		return writeCmdWrite(37) // ope11_or_on[3]
+		if (gType == 2) {
+			return writeCmdWrite(37) // ope11_or_on[3]
+		}
 	})
 	.then(_ => {
-		let on = RainOrValve.getOn5()
-		return writeUi16(on)
+		if (gType == 2) {
+			let on = RainOrValve.getOn5()
+			return writeUi16(on)
+		}
 	})
 	.then(_ => {
-		return writeCmdWrite(38) // ope11_or_on[4]
+		if (gType == 2) {
+			return writeCmdWrite(38) // ope11_or_on[4]
+		}
 	})
 	.then(_ => {
-		let on = RainOrValve.getOn6()
-		return writeUi16(on)
+		if (gType == 2) {
+			let on = RainOrValve.getOn6()
+			return writeUi16(on)
+		}
 	})
 	.then(_ => {
-		return writeCmdWrite(39) // ope11_or_on[5]
+		if (gType == 2) {
+			return writeCmdWrite(39) // ope11_or_on[5]
+		}
 	})
 	.then(_ => {
-		let on = RainOrValve.getOn7()
-		return writeUi16(on)
+		if (gType == 2) {
+			let on = RainOrValve.getOn7()
+			return writeUi16(on)
+		}
 	})
 	.then(_ => {
-		return writeCmdWrite(40) // ope11_or_on[6]
+		if (gType == 2) {
+			return writeCmdWrite(40) // ope11_or_on[6]
+		}
 	})
 	.then(_ => {
-		let on = RainOrValve.getOn8()
-		return writeUi16(on)
+		if (gType == 2) {
+			let on = RainOrValve.getOn8()
+			return writeUi16(on)
+		}
 	})
 	.then(_ => {
-		return writeCmdWrite(41) // ope11_or_on[7]
+		if (gType == 2) {
+			return writeCmdWrite(41) // ope11_or_on[7]
+		}
 	})
 	.then(_ => {
-		return writeCmdManual(15) // write rain_or_valve
+		if (gType == 2) {
+			return writeCmdManual(15) // write rain_or_valve
+		}
 	})
 	.then(_ => {
-		disableRainOrValve(false)
-		dispRainOrValveBack()
+		if (gType == 2) {
+			disableRainOrValve(false)
+			dispRainOrValveBack()
+		}
 	})
 	.catch(error => {
 		console.log('error: ' + error)
