@@ -145,10 +145,6 @@ const rain_or_valve2 = document.getElementById("rain_or_valve2")
 const rain_or_valve3 = document.getElementById("rain_or_valve3")
 const rain_or_valve4 = document.getElementById("rain_or_valve4")
 const rain_or_valve5 = document.getElementById("rain_or_valve5")
-rain_or_valve5.style.display = "block"
-rain_or_valve5.textContent = ""
-const on1 = document.getElementById("on1")
-on1.style.display = "block"
 
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
