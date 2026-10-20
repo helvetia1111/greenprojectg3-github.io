@@ -1010,10 +1010,12 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 		}
 	})
 	.then(_ => {
-		console.log('read ope11_or_on0... ')
-		return readUi16()
+		if (gType == 2) {
+			return readUi16()
+		}
 	})
 	.then(ui16 => {
+		console.log('read ope11_or_on0... ')
 		RainOrValve.setOn1(ui16)
 		return writeCmdRead(35) // ope11_or_on[1]
 	})
@@ -1111,10 +1113,13 @@ btnRainOrValveSet.addEventListener("click", function(event) {
 		}
 	})
 	.then(_ => {
-		let on = RainOrValve.getOn2()
-		return writeUi16(on)
+		if (gType == 2) {
+			let on = RainOrValve.getOn2()
+			return writeUi16(on)
+		}
 	})
 	.then(_ => {
+		console.log('write ope11_or_on0... ')
 		return writeCmdWrite(35) // ope11_or_on[1]
 	})
 	.then(_ => {
