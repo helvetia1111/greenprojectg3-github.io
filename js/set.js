@@ -992,7 +992,6 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 	.then(ui16 => {
 		disableSet(false)
 		dispRainOrValve()
-		return Promise.resolve()
 		/*
 		if (gType == 0) {
 			RainOrValve.setRain(ui16)
@@ -1009,6 +1008,7 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 		return writeCmdRead(34) // ope11_or_on[0]
 		*/
 	})
+	/*
 	.then(_ => {
 		return readUi16()
 	})
@@ -1066,6 +1066,7 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 		disableSet(false)
 		dispRainOrValve()
 	})	
+	*/
 	.catch(error => {
 		console.log('error: ' + error)
 		disableSet(false)
