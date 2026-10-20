@@ -990,27 +990,41 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 		return writeCmdRead(5) // ch
 	}
 	.then(_ => {
-		console.log('writeCmdRead... ')
-		disableSet(false)
-		dispRainOrValve()
-		//return readUi16()
+		return readUi16()
 	})
-	/*
 	.then(ui16 => {
+		if (gType == 0) {
+			console.log('gType0... ')
+			RainOrValve.setRain(ui16)
+			disableSet(false)
+			dispRainOrValve()
+		}
+		else {
+			console.log('gType12... ')
+			disableSet(false)
+			dispRainOrValve()
+		}
+		/*
 		if (gType == 0) {
 			RainOrValve.setRain(ui16)
 			disableSet(false)
 			dispRainOrValve()
 			return Promise.resolve()
 		}
-		RainOrValve.setValve(ui16)
-		if (gType == 1) {
-			disableSet(false)
-			dispRainOrValve()
-			return Promise.resolve()
+		else {
+			RainOrValve.setValve(ui16)
+			if (gType == 1) {
+				disableSet(false)
+				dispRainOrValve()
+				return Promise.resolve()
+			}
+			else {
+				return writeCmdRead(34) // ope11_or_on[0]
+			}
 		}
-		return writeCmdRead(34) // ope11_or_on[0]
+		*/
 	})
+	/*
 	.then(_ => {
 		return readUi16()
 	})
