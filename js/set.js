@@ -1,5 +1,6 @@
-import * as Liquid from './liquid.js';
-import * as Irrigation from './irrigation.js';
+import * as Liquid from './liquid.js'
+import * as Irrigation from './irrigation.js'
+import * as IrrigationErr from '.irrigation_err.js'
 
 const cmdReadSetChUUID = '091272b5-575f-4231-bd87-9c614889aa7d'
 const cmdWriteSetChUUID = 'a54b15b0-6e03-4bd2-ac89-e8009bfee496'
@@ -640,96 +641,120 @@ btnIrrigationBack.addEventListener("click", function(event) {
 let btnSetIrrigationErr = document.getElementById("setIrrigationErr")
 btnSetIrrigationErr.addEventListener("click", function(event) {
 	disableSet(true)
-	return writeCmdRead(3) //upper
+	return writeCmdRead(3) // upper
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
-		Irrigation.setFlowLMin(ui16)
-		return writeCmdRead(24) //spr_fre2
-	})
-	.then(_ => {
-		return readUi16()
-	})
-	.then(ui16 => {
-		Irrigation.setFlowHz(ui16)
-		return writeCmdRead(122) // before_theory[0]
-	})
-	.then(_ => {
-		return readUi8()
-	})
-	.then(ui8 => {
-		Irrigation.setBeforeChecked(ui8)
-		return writeCmdRead(22) // spr_err
+		IrrigationErr.setUpperLimit1(ui16)
+		return writeCmdRead(6) // upper_2
 	})
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
-		Irrigation.setBeforeRatio(ui16)
-		return writeCmdRead(25) // theory
-	})
-	.then(_ => {
-		return readUi32()
-	})
-	.then(ui32 => {
-		Irrigation.setBeforeTheoretical(ui32)
-		return writeCmdRead(127) // spr_check_wait
+		IrrigationErr.setUpperLimit2(ui16)
+		return writeCmdRead(8) // upper_3
 	})
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
-		Irrigation.setSprFlowMonitorWait(ui16)
-		if (gType == 0) {
-			return writeCmdRead(143) // spr_error_stop_en
-		}
-		else {
-			return writeCmdRead(30) // start1_1_or_end
-		}
+		IrrigationErr.setUpperLimit3(ui16)
+		return writeCmdRead(10) // upper_4
 	})
 	.then(_ => {
-		if (gType == 0) {
-			return readUi8()
-		}
-		else {
-			return readUi16()
-		}
+		return readUi16()
 	})
-	.then(val => {
-		if (gType == 0) {
-			Irrigation.setCheckSprStopChecked(val)
-			return writeCmdRead(144) // spr_error_stop
-		}
-		else {
-			Irrigation.setEndTime(val)
-			if (gType == 2) {
-				return writeCmdRead(130) // stop_ad_or_start_time
-			}
-			else {
-				return Promise.resolve()
-			}
-		}
+	.then(ui16 => {
+		IrrigationErr.setUpperLimit4(ui16)
+		return writeCmdRead(12) // upper_5
 	})
 	.then(_ => {
-		if (gType == 0) {
-			return readUi8()
-		}
-		else {
-			return readUi16()
-		}
+		return readUi16()
 	})
-	.then(val => {
-		if (gType == 0) {
-			Irrigation.setCheckReleaseChecked(val)
-		}
-		else {
-			Irrigation.setStartTime(val)
-		}
-		Irrigation.irrigationReadOnly()
+	.then(ui16 => {
+		IrrigationErr.setUpperLimit5(ui16)
+		return writeCmdRead(14) // upper_6
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setUpperLimit6(ui16)
+		return writeCmdRead(16) // upper_7
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setUpperLimit7(ui16)
+		return writeCmdRead(18) // upper_8
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setUpperLimit8(ui16)
+		return writeCmdRead(4) // lower
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setLowerLimit1(ui16)
+		return writeCmdRead(7) // lower_2
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setLowerLimit2(ui16)
+		return writeCmdRead(9) // lower_3
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setLowerLimit3(ui16)
+		return writeCmdRead(11) // lower_4
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setLowerLimit4(ui16)
+		return writeCmdRead(13) // lower_5
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setLowerLimit5(ui16)
+		return writeCmdRead(15) // lower_6
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setLowerLimit6(ui16)
+		return writeCmdRead(17) // lower_7
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setLowerLimit7(ui16)
+		return writeCmdRead(19) // lower_8
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		IrrigationErr.setLowerLimit8(ui16)
 		disableSet(false)
-		dispIrrigation()
-	})
+		dispIrrigationErr()
+	})	
 	.catch(error => {
 		console.log('error: ' + error)
 		disableSet(false)
