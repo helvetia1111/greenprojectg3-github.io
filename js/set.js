@@ -983,12 +983,12 @@ let btnSetRainOrValve = document.getElementById("setRainOrValve")
 btnSetRainOrValve.addEventListener("click", function(event) {
 	disableSet(true)
 	console.log('btnSetRainOrValve... ')
+	let cmd = 5 // ch
 	if (gType == 0) {
-		return writeCmdRead(140) // rain_ch
+		cmd = 140 // rain_ch
+		//return writeCmdRead(140) // rain_ch
 	}
-	else {
-		return writeCmdRead(5) // ch
-	}
+	return writeCmdRead(cmd)
 	.then(_ => {
 		return readUi16()
 	})
