@@ -81,7 +81,7 @@ export function getCheckSprStopChecked() {
 }
 
 export function setCheckReleaseChecked(chk) {
-  checkReleaseChecked.checked = ((chk & 0x01) != 0)
+  checkReleaseChecked.checked = ((chk & 0x02) != 0)
 }
 
 export function getCheckReleaseChecked() {
