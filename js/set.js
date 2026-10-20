@@ -982,11 +982,13 @@ btnIrrigationErrBack.addEventListener("click", function(event) {
 let btnSetRainOrValve = document.getElementById("setRainOrValve")
 btnSetRainOrValve.addEventListener("click", function(event) {
 	disableSet(true)
-	if (gType == 0) {
+	console.log('btnSetRainOrValve... ')
+	//if (gType == 0) {
 		return writeCmdRead(140) // rain_ch
-	}
-	return writeCmdRead(5) // ch
+	//}
+	//return writeCmdRead(5) // ch
 	.then(_ => {
+		console.log('writeCmdRead... ')
 		disableSet(false)
 		dispRainOrValve()
 		//return readUi16()
