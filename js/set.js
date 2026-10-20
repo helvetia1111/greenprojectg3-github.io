@@ -489,6 +489,103 @@ btnSetIrrigation.addEventListener("click", function(event) {
 	})
 })
 
+let btnIrrigationSet = document.getElementById("irrigationSet")
+btnIrrigationSet.addEventListener("click", function(event) {
+	disableIrrigation(true)
+	let spr_fre = Irrigation.getFlowLMin()
+	return writeUi16(spr_fre)
+	.then(_ => {
+		return writeCmdWrite(23) // spr_fre
+	})
+	.then(_ => {
+		let spr_fre2 = Irrigation.getFlowHz()
+		return writeUi16(hZ)
+	})
+	.then(_ => {
+		return writeCmdWrite(24) // spr_fre2
+	})
+	.then(_ => {
+		let before_theory = Irrigation.getBeforeChecked()
+		return writeUi8(before_theory)
+	})
+	.then(_ => {
+		return writeCmdWrite(122) //before_theory[0]
+	})
+	.then(_ => {
+		let spr_err = Irrigation.getBeforeRatio()
+		return writeUi16(spr_err)
+	})
+	.then(_ => {
+		return writeCmdWrite(22) // spr_err
+	})
+	.then(_ => {
+		let theory = Irrigation.getBeforeTheoretical()
+		return writeUi32(theory)
+	})
+	.then(_ => {
+		return writeCmdWrite(25) // theory
+	})
+	.then(_ => {
+		let spr_check_wait = Irrigation.getSprFlowMonitorWait()
+		return writeUi16(spr_check_wait)
+	})
+	.then(_ => {
+		return writeCmdWrite(127) // spr_check_wait
+	})	
+	.then(_ => {
+		if	(gType == 0) {
+			let spr_error_stop_en = Irrigation.getCheckSprStopChecked()
+			return writeUi8(spr_error_stop_en)
+		}
+		else {
+			let start1_1_or_end = Irrigation.getEndTime()
+			return writeUi16(start1_1_or_end)
+		}
+	})
+	.then(_ => {
+		if (gType == 0) {
+			return writeCmdWrite(143) // spr_error_stop_en
+		}
+		else {
+			return writeCmdWrite(30) // start1_1_or_end
+		}
+	})
+	.then(_ => {
+		if	(gType == 0) {
+			let spr_error_stop = Irrigation.getCheckReleaseChecked()
+			return writeUi8(spr_error_stop)
+		}
+		else {
+			if (gType == 2) {
+				let stop_ad_or_start_time = Irrigation.getStartTime()
+				return writeUi16(stop_ad_or_start_time)
+			}
+			else {
+				return Promise.resolve()
+			}
+		}
+	})
+	.then(_ => {
+		if (gType == 0) {
+			return writeCmdWrite(144) // spr_error_stop
+		}
+		else {
+			return writeCmdWrite(130) // stop_ad_or_start_time
+		}
+	})
+	.then(_ => {
+		return writeCmdManual(12) // write liquid_fe
+	})
+	.then(_ => {
+		disableIrrigation(false)
+		dispIrrigationBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableIrrigation(false)
+	})
+})
+
 let btnIrrigationPassword = document.getElementById("irrigationPassword")
 btnIrrigationPassword.addEventListener("click", function(event) {
   Irrigation.irrigationGate()
