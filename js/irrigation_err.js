@@ -74,28 +74,61 @@ export function getUpperLimit8() {
 }
 
 export function setLowerLimit1(lower) {
-  textLowerLimit1.value = upper
+  textLowerLimit1.value = lower
 }
 export function setLowerLimit2(lower) {
-  textLowerLimit2.value = upper
+  textLowerLimit2.value = lower
 }
 export function setLowerLimit3(lower) {
-  textLowerLimit3.value = upper
+  textLowerLimit3.value = lower
 }
 export function setLowerLimit4(lower) {
-  textLowerLimit4.value = upper
+  textLowerLimit4.value = lower
 }
 export function setLowerLimit5(lower) {
-  textLowerLimit5.value = upper
+  textLowerLimit5.value = lower
 }
 export function setLowerLimit6(lower) {
-  textLowerLimit6.value = upper
+  textLowerLimit6.value = lower
 }
 export function setLowerLimit7(lower) {
-  textLowerLimit7.value = upper
+  textLowerLimit7.value = lower
 }
 export function setLowerLimit8(lower) {
-  textLowerLimit8.value = upper
+  textLowerLimit8.value = lower
+}
+
+export function getLowerLimit1() {
+  let lower = textLowerLimit1.value
+  return parseInt(lower, 10)
+}
+export function getLowerLimit2() {
+  let lower = textLowerLimit2.value
+  return parseInt(lower, 10)
+}
+export function getLowerLimit3() {
+  let lower = textLowerLimit3.value
+  return parseInt(lower, 10)
+}
+export function getLowerLimit4() {
+  let lower = textLowerLimit4.value
+  return parseInt(lower, 10)
+}
+export function getLowerLimit5() {
+  let lower = textLowerLimit5.value
+  return parseInt(lower, 10)
+}
+export function getLowerLimit6() {
+  let lower = textLowerLimit6.value
+  return parseInt(lower, 10)
+}
+export function getLowerLimit7() {
+  let lower = textLowerLimit7.value
+  return parseInt(lower, 10)
+}
+export function getLowerLimit8() {
+  let lower = textLowerLimit8.value
+  return parseInt(lower, 10)
 }
 
 export function disableIrrigation(dis) {
