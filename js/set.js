@@ -981,16 +981,17 @@ btnIrrigationErrBack.addEventListener("click", function(event) {
 // 雨センサ・潅水バルブ
 let btnSetRainOrValve = document.getElementById("setRainOrValve")
 btnSetRainOrValve.addEventListener("click", function(event) {
-	dispRainOrValve()
-	/*
 	disableSet(true)
 	if (gType == 0) {
 		return writeCmdRead(140) // rain_ch
 	}
 	return writeCmdRead(5) // ch
 	.then(_ => {
-		return readUi16()
+		disableSet(false)
+		dispRainOrValve()
+		//return readUi16()
 	})
+	/*
 	.then(ui16 => {
 		if (gType == 0) {
 			RainOrValve.setRain(ui16)
@@ -1063,11 +1064,11 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 		disableSet(false)
 		dispRainOrValve()
 	})	
+	*/
 	.catch(error => {
 		console.log('error: ' + error)
 		disableSet(false)
 	})
-	*/
 })
 
 let btnRainOrValve = document.getElementById("setRainOrValve")
