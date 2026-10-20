@@ -1004,8 +1004,10 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 				dispRainOrValve()
 				return Promise.resolve()
 			}
+			else {
+				return writeCmdRead(34) // ope11_or_on[0]
+			}
 		}
-		return writeCmdRead(34) // ope11_or_on[0]
 	})
 	.then(_ => {
 		console.log('read ope11_or_on0... ')
