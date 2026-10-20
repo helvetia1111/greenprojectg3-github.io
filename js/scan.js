@@ -128,6 +128,18 @@ const irrigation8 = document.getElementById("irrigation8")
 const irrigation9 = document.getElementById("irrigation9")
 const irrigation10 = document.getElementById("irrigation10")
 
+const irrigation_err1 = document.getElementById("irrigation_err1")
+const irrigation_err2 = document.getElementById("irrigation_err2")
+const irrigation_err3 = document.getElementById("irrigation_err3")
+const irrigation_err4 = document.getElementById("irrigation_err4")
+const irrigation_err5 = document.getElementById("irrigation_err5")
+const irrigation_err6 = document.getElementById("irrigation_err6")
+const irrigation_err7 = document.getElementById("irrigation_err7")
+const irrigation_err8 = document.getElementById("irrigation_err8")
+const irrigation_err9 = document.getElementById("irrigation_err9")
+const irrigation_err10 = document.getElementById("irrigation_err10")
+const irrigation_err11 = document.getElementById("irrigation_err11")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
