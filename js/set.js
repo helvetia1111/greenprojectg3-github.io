@@ -982,7 +982,6 @@ btnIrrigationErrBack.addEventListener("click", function(event) {
 let btnSetRainOrValve = document.getElementById("setRainOrValve")
 btnSetRainOrValve.addEventListener("click", function(event) {
 	disableSet(true)
-	console.log('btnSetRainOrValve... ')
 	let cmd = 140 // rain_ch
 	if (gType != 0) {
 		cmd = 5 // ch
@@ -996,7 +995,7 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 			RainOrValve.setRain(ui16)
 			disableSet(false)
 			dispRainOrValve()
-			return Promise.resoleve()
+			return Promise.resolve()
 		}
 		else {
 			RainOrValve.setValve(ui16)
