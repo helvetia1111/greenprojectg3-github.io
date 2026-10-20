@@ -41,6 +41,7 @@ function dispSetting() {
 function disableSet(dis) {
 	btnSetLiquid.disabled = dis
 	btnSetIrrigation.disabled = dis
+	btnSetIrrigationErr.disabled = dis
 }
 
 function dispLiquid() {
@@ -129,6 +130,7 @@ function dispIrrigationBack() {
 
 function disableIrrigation(dis) {
 	Irrigation.disableIrrigation(dis)
+	btnIrrigationSet.disabled = dis
 	btnIrrigationPassword.disabled = dis
 	btnIrrigationBack.disabled = dis
 }
@@ -171,6 +173,12 @@ function dispIrrigationErrBack() {
 	irrigation_err9.style.display = 'none'
 	irrigation_err10.style.display = 'none'
 	irrigation_err11.style.display = 'none'
+}
+
+function disableIrrigation(dis) {
+	IrrigationErr.disableIrrigationErr(dis)
+	btnSetIrrigationErr.disabled = dis
+	btnIrrigationErrBack.disabled = dis
 }
 
 async function writeCmdRead(cmd) {
@@ -759,6 +767,11 @@ btnSetIrrigationErr.addEventListener("click", function(event) {
 		console.log('error: ' + error)
 		disableSet(false)
 	})
+})
+
+let btnIrrigationErrBack = document.getElementById("irrigationErrBack")
+btnIrrigationErrBack.addEventListener("click", function(event) {
+  dispIrrigationErrBack()
 })
 
 let btnRainOrValve = document.getElementById("setRainOrValve")
