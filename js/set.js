@@ -992,10 +992,14 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 	.then(ui16 => {
 		if (gType == 0) {
 			RainOrValve.setRain(ui16)
+			disableSet(false)
+			dispRainOrValve()
 			return Promise.resolve()
 		}
 		RainOrValve.setValve(ui16)
 		if (gType == 1) {
+			disableSet(false)
+			dispRainOrValve()
 			return Promise.resolve()
 		}
 		return writeCmdRead(34) // ope11_or_on[0]
