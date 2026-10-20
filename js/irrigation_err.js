@@ -97,3 +97,23 @@ export function setLowerLimit7(lower) {
 export function setLowerLimit8(lower) {
   textLowerLimit8.value = upper
 }
+
+export function disableIrrigation(dis) {
+  textUpperLimit1.disabled = dis
+  textUpperLimit2.disabled = dis
+  textUpperLimit3.disabled = dis
+  textUpperLimit4.disabled = dis
+  textUpperLimit5.disabled = dis
+  textUpperLimit6.disabled = dis
+  textUpperLimit7.disabled = dis
+  textUpperLimit8.disabled = dis
+
+  textLowerLimit1.disabled = dis
+  textLowerLimit2.disabled = dis
+  textLowerLimit3.disabled = dis
+  textLowerLimit4.disabled = dis
+  textLowerLimit5.disabled = dis
+  textLowerLimit6.disabled = dis
+  textLowerLimit7.disabled = dis
+  textLowerLimit8.disabled = dis
+}
