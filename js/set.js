@@ -1,6 +1,7 @@
 import * as Liquid from './liquid.js'
 import * as Irrigation from './irrigation.js'
 import * as IrrigationErr from './irrigation_err.js'
+import * as RainOrValve from './rain_or_valve.js'
 
 const cmdReadSetChUUID = '091272b5-575f-4231-bd87-9c614889aa7d'
 const cmdWriteSetChUUID = 'a54b15b0-6e03-4bd2-ac89-e8009bfee496'
@@ -42,6 +43,7 @@ function disableSet(dis) {
 	btnSetLiquid.disabled = dis
 	btnSetIrrigation.disabled = dis
 	btnSetIrrigationErr.disabled = dis
+	btnSetRainOrValve.disabled = dis
 }
 
 function dispLiquid() {
@@ -177,7 +179,7 @@ function dispIrrigationErrBack() {
 
 function disableIrrigationErr(dis) {
 	IrrigationErr.disableIrrigationErr(dis)
-	btnSetIrrigationErr.disabled = dis
+	btnIrrigationErrSet.disabled = dis
 	btnIrrigationErrBack.disabled = dis
 }
 
@@ -249,6 +251,12 @@ function dispRainOrValveBack() {
 	rain_or_valve20.style.display = 'none'
 	rain_or_valve21.style.display = 'none'
 	rain_or_valve22.style.display = 'none'
+}
+
+function disableRainOrValve(dis) {
+	RainOrValve.disableRainOrValve(dis)
+	btnRainOrValveSet.disabled = dis
+	btnRainOrValveBack.disabled = dis
 }
 
 async function writeCmdRead(cmd) {
@@ -968,6 +976,91 @@ btnIrrigationErrSet.addEventListener("click", function(event) {
 let btnIrrigationErrBack = document.getElementById("irrigationErrBack")
 btnIrrigationErrBack.addEventListener("click", function(event) {
   dispIrrigationErrBack()
+})
+
+// 雨センサ・潅水バルブ
+let btnSetRainOrValve = document.getElementById("setRainOrValve")
+btnSetRainOrValve.addEventListener("click", function(event) {
+	disableSet(true)
+	if (gType == 0) {
+		return writeCmdRead(140) // rain_ch
+	}
+	return writeCmdRead(5) // ch
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		if (gType == 0) {
+			RainOrValve.setRain(ui16)
+			return Promise.resolve()
+		}
+		RainOrValve.setValve(ui16)
+		if (gType == 1) {
+			return Promise.resolve()
+		}
+		return writeCmdRead(34) // ope11_or_on[0]
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		RainOrValve.setOn1(ui16)
+		return writeCmdRead(35) // ope11_or_on[1]
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		RainOrValve.setOn2(ui16)
+		return writeCmdRead(36) // ope11_or_on[2]
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		RainOrValve.setOn3(ui16)
+		return writeCmdRead(37) // ope11_or_on[3]
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		RainOrValve.setOn4(ui16)
+		return writeCmdRead(38) // ope11_or_on[4]
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		RainOrValve.setOn5(ui16)
+		return writeCmdRead(39) // ope11_or_on[5]
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		RainOrValve.setOn6(ui16)
+		return writeCmdRead(40) // ope11_or_on[6]
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		RainOrValve.setOn7(ui16)
+		return writeCmdRead(41) // ope11_or_on[7]
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		RainOrValve.setOn8(ui16)
+		disableSet(false)
+		dispRainOrValve()
+	})	
+	.catch(error => {
+		console.log('error: ' + error)
+		disableSet(false)
+	})
 })
 
 let btnRainOrValve = document.getElementById("setRainOrValve")
