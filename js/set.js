@@ -181,6 +181,76 @@ function disableIrrigationErr(dis) {
 	btnIrrigationErrBack.disabled = dis
 }
 
+function dispRainOrValve() {
+	set1.style.display = 'none'
+  	set2.style.display = 'none'
+  	set3.style.display = 'none'
+  	set4.style.display = 'none'
+  	set5.style.display = 'none'
+
+	if (gType == 0) {
+  		rain_or_valve1.style.display = 'block'
+		rain_or_valve2.style.display = 'block'
+		rain_or_valve3.style.display = 'block'
+	}
+	else {
+		rain_or_valve4.style.display = 'block'
+		if (gType == 1) {
+			rain_or_valve5.style.display = 'block'
+			rain_or_valve6.style.display = 'block'
+			rain_or_valve7.style.display = 'block'
+			rain_or_valve8.style.display = 'block'
+			rain_or_valve9.style.display = 'block'
+			rain_or_valve10.style.display = 'block'
+			rain_or_valve11.style.display = 'block'
+			rain_or_valve12.style.display = 'block'
+		}
+		else {
+			rain_or_valve13.style.display = 'block'
+			rain_or_valve14.style.display = 'block'
+			rain_or_valve15.style.display = 'block'
+			rain_or_valve16.style.display = 'block'
+			rain_or_valve17.style.display = 'block'
+			rain_or_valve18.style.display = 'block'
+			rain_or_valve19.style.display = 'block'
+			rain_or_valve20.style.display = 'block'
+		}
+	}
+	rain_or_valve21.style.display = 'block'
+	rain_or_valve22.style.display = 'block'
+}
+
+function dispRainOrValveBack() {
+  	set1.style.display = 'block'
+  	set2.style.display = 'block'
+  	set3.style.display = 'block'
+  	set4.style.display = 'block'
+  	set5.style.display = 'block'
+
+  	rain_or_valve1.style.display = 'none'
+	rain_or_valve2.style.display = 'none'
+	rain_or_valve3.style.display = 'none'
+	rain_or_valve4.style.display = 'none'
+	rain_or_valve5.style.display = 'none'
+	rain_or_valve6.style.display = 'none'
+	rain_or_valve7.style.display = 'none'
+	rain_or_valve8.style.display = 'none'
+	rain_or_valve9.style.display = 'none'
+	rain_or_valve10.style.display = 'none'
+	rain_or_valve11.style.display = 'none'
+	rain_or_valve12.style.display = 'none'
+	rain_or_valve13.style.display = 'none'
+	rain_or_valve14.style.display = 'none'
+	rain_or_valve15.style.display = 'none'
+	rain_or_valve16.style.display = 'none'
+	rain_or_valve17.style.display = 'none'
+	rain_or_valve18.style.display = 'none'
+	rain_or_valve19.style.display = 'none'
+	rain_or_valve20.style.display = 'none'
+	rain_or_valve21.style.display = 'none'
+	rain_or_valve22.style.display = 'none'
+}
+
 async function writeCmdRead(cmd) {
 	const val = Uint8Array.of(cmd)
 	try {
