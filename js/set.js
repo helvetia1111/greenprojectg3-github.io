@@ -175,7 +175,7 @@ function dispIrrigationErrBack() {
 	irrigation_err11.style.display = 'none'
 }
 
-function disableIrrigation(dis) {
+function disableIrrigationErr(dis) {
 	IrrigationErr.disableIrrigationErr(dis)
 	btnSetIrrigationErr.disabled = dis
 	btnIrrigationErrBack.disabled = dis
