@@ -134,14 +134,14 @@ export function irrigationReadOnly() {
 
 export function disableIrrigation(dis) {
 	textFlowLMin.disabled = dis
-  textFlowHz.disabled = dis
-  radioBeforeRatioChecked.disabled = dis
-  textBeforeRatio.disabled = dis
-  radioBeforeTheoreticalChecked.disabled = dis
-  textBeforeTheoretical.disabled = dis
-  textSprFlowMonitorWait.disabled = dis
-  checkSprStopChecked.disabled = dis
-  checkReleaseChecked.disabled = dis
-  textEndTime.disabled = dis
-  textStartTime.disabled = dis
+  	textFlowHz.disabled = dis
+  	radioBeforeRatioChecked.disabled = dis
+  	textBeforeRatio.disabled = dis
+  	radioBeforeTheoreticalChecked.disabled = dis
+  	textBeforeTheoretical.disabled = dis
+  	textSprFlowMonitorWait.disabled = dis
+  	checkSprStopChecked.disabled = dis
+  	checkReleaseChecked.disabled = dis
+  	textEndTime.disabled = dis
+  	textStartTime.disabled = dis
 }
