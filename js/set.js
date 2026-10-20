@@ -32,10 +32,10 @@ function dispSetting() {
 
 	set1.textContent = `Rev. ${gRev}`
 	if (gType == 0) {
-		btnRainOrValve.textContent = '雨センサ'
+		btnSetRainOrValve.textContent = '雨センサ'
 	}
 	else {
-		btnRainOrValve.textContent = 'バルブ選択'
+		btnSetRainOrValve.textContent = 'バルブ選択'
 	}
 }
 
@@ -1070,5 +1070,106 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 	})
 })
 
-let btnRainOrValve = document.getElementById("setRainOrValve")
+let btnRainOrValveSet = document.getElementById("rainOrValveSet")
+btnRainOrValveSet.addEventListener("click", function(event) {
+	disableRainOrValve(true)
+	let val = 0;
+	if (gType == 0) {
+		val = RainOrValve.getRain()
+	}
+	else {
+		val = RainOrValve.getValve()
+	}
+	return writeUi16(val)
+	.then(_ => {
+		let cmd = 140
+		if (gType != 0) {
+			cmd = 5
+		}
+		return writeCmdWrite(cmd) // rain_check or ch
+	})
+	.then(_ => {
+		if (gType == 2) {
+			let on = RainOrValve.getOn1()
+			return writeUi16(on)
+		}
+		else {
+			return writeCmdManual(15) // write rain_or_valve
+		}
+	})
+	.then(_ => {
+		if (gType != 2) {
+			disableRainOrValve(false)
+			dispRainOrValveBack()
+			return Promise.resolve()
+		}
+		else {
+			return writeCmdWrite(34) // ope11_or_on[0]
+		}
+	})
+	.then(_ => {
+		let on = RainOrValve.getOn2()
+		return writeUi16(on)
+	})
+	.then(_ => {
+		return writeCmdWrite(35) // ope11_or_on[1]
+	})
+	.then(_ => {
+		let on = RainOrValve.getOn3()
+		return writeUi16(on)
+	})
+	.then(_ => {
+		return writeCmdWrite(36) // ope11_or_on[2]
+	})
+	.then(_ => {
+		let on = RainOrValve.getOn4()
+		return writeUi16(on)
+	})
+	.then(_ => {
+		return writeCmdWrite(37) // ope11_or_on[3]
+	})
+	.then(_ => {
+		let on = RainOrValve.getOn5()
+		return writeUi16(on)
+	})
+	.then(_ => {
+		return writeCmdWrite(38) // ope11_or_on[4]
+	})
+	.then(_ => {
+		let on = RainOrValve.getOn6()
+		return writeUi16(on)
+	})
+	.then(_ => {
+		return writeCmdWrite(39) // ope11_or_on[5]
+	})
+	.then(_ => {
+		let on = RainOrValve.getOn7()
+		return writeUi16(on)
+	})
+	.then(_ => {
+		return writeCmdWrite(40) // ope11_or_on[6]
+	})
+	.then(_ => {
+		let on = RainOrValve.getOn8()
+		return writeUi16(on)
+	})
+	.then(_ => {
+		return writeCmdWrite(41) // ope11_or_on[7]
+	})
+	.then(_ => {
+		return writeCmdManual(15) // write rain_or_valve
+	})
+	.then(_ => {
+		disableRainOrValve(false)
+		dispRainOrValveBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableRainOrValve(false)
+	})
+})
 
+let btnRainOrValveBack = document.getElementById("rainOrValveBack")
+btnRainOrValveBack.addEventListener("click", function(event) {
+  dispRainOrValveBack()
+})
