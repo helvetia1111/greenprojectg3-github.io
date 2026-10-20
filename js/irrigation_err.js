@@ -131,7 +131,7 @@ export function getLowerLimit8() {
   return parseInt(lower, 10)
 }
 
-export function disableIrrigation(dis) {
+export function disableIrrigationErr(dis) {
   textUpperLimit1.disabled = dis
   textUpperLimit2.disabled = dis
   textUpperLimit3.disabled = dis
