@@ -1008,6 +1008,7 @@ btnSetRainOrValve.addEventListener("click", function(event) {
 		return writeCmdRead(34) // ope11_or_on[0]
 	})
 	.then(_ => {
+		console.log('read ope11_or_on0... ')
 		return readUi16()
 	})
 	.then(ui16 => {
