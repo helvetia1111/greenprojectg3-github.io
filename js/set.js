@@ -60,6 +60,7 @@ function disableSet(dis) {
 	btnSetIrrigationErr.disabled = dis
 	btnSetRainOrValve.disabled = dis
 	btnSetAlarm.disabled = dis
+	btnSetBack.disabled = dis
 }
 
 function dispLiquid() {
