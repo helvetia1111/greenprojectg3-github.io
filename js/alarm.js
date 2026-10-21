@@ -11,3 +11,7 @@ export function getCheckAlarm() {
   }
   return alm
 }
+
+export function disableAlarm(dis) {
+	checkAlarm.disabled = dis
+}
