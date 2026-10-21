@@ -1,22 +1,26 @@
+//import * as SetService from './setService.js'
+import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, writeStr, readStr, setService} from './settingService.js'
 import * as Liquid from './liquid.js'
 import * as Irrigation from './irrigation.js'
 import * as IrrigationErr from './irrigation_err.js'
 import * as RainOrValve from './rain_or_valve.js'
 import * as Alarm from './alarm.js'
 
+/*
 const cmdReadSetChUUID = '091272b5-575f-4231-bd87-9c614889aa7d'
 const cmdWriteSetChUUID = 'a54b15b0-6e03-4bd2-ac89-e8009bfee496'
 const ui8SetChUUID = '39e5bed1-b05a-4302-8bda-9a78d0e0e387'
 const ui16SetChUUID = '302ad424-9906-44e0-b721-45d85e19abad'
 const ui32SetChUUID = '8045fced-4830-40c2-8e2b-49d2452af5e5'
 const strSetChUUID = '9ad400f5-d46d-4cc0-aeb5-a0dd0e68f90a'
-var setService
-var cmdReadSetCh
-var cmdWriteSetCh
-var ui8SetCh
-var ui16SetCh
-var ui32SetCh
-var strSetCh
+let setService
+let cmdReadSetCh
+let cmdWriteSetCh
+let ui8SetCh
+let ui16SetCh
+let ui32SetCh
+let strSetCh
+*/
 
 function dispSetting() {
 	main1.style.display = 'none'
@@ -308,6 +312,7 @@ function disableAlarm(dis) {
 	btnAlarmBack.disabled = dis
 }
 
+/*
 async function writeCmdRead(cmd) {
 	const val = Uint8Array.of(cmd)
 	try {
@@ -475,16 +480,26 @@ function setSettingService() {
 		console.log('error: ' + error)
 	})
 }
+*/
 
 let btnSetting = document.getElementById("setting")
 btnSetting.addEventListener("click", function(event) {
-  if (setService && cmdReadSetCh && cmdWriteSetCh && ui8SetCh && ui16SetCh && ui32SetCh && strSetCh) {
-	  dispSetting()
-	  return Promise.resolve()
-  }
+	/*
+  	if (setService && cmdReadSetCh && cmdWriteSetCh && ui8SetCh && ui16SetCh && ui32SetCh && strSetCh) {
+	  	dispSetting()
+	  	return Promise.resolve()
+  	}
 	else {
 		setSettingService()
 	}
+	*/
+	return setService()
+	.then(_ => {
+    	dispSetting()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+	})
 })
 
 let btnSetBack = document.getElementById("setBack")
