@@ -83,6 +83,7 @@ btnSetServer.addEventListener("click", function(event) {
 		return readStr()
 	})
 	.then(str => {
+		console.log(`server ${str}`)
 		Server.setSmtpServer(str)
 		return writeMailCmdRead(3) //auth_id
 	})
@@ -90,6 +91,7 @@ btnSetServer.addEventListener("click", function(event) {
 		return readStr()
 	})
 	.then(str => {
+		console.log(`id ${str}`)
 		Server.setSmtpId(str)
 		return writeMailCmdRead(4) //auth_pw
 	})
@@ -97,6 +99,7 @@ btnSetServer.addEventListener("click", function(event) {
 		return readStr()
 	})
 	.then(str => {
+		console.log(`pw ${str}`)
 		Server.setSmtpPw(str)
 		disableMailSet(false)
 		dispServer()
