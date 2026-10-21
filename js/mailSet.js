@@ -1,4 +1,4 @@
-import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, writeStr, readStr, setBleService} from './settingService.js'
+import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, setBleService} from './settingService.js'
 
 function dispMailSet() {
 	main1.style.display = 'none'
@@ -19,7 +19,13 @@ function dispMailSetBack() {
 	main4.style.display = 'block'
 
 	mailSet1.style.display = 'none'
-  mailSet2.style.display = 'none'
+  	mailSet2.style.display = 'none'
+}
+
+function disableMailSet(dis) {
+	btnSetServer.disabled = dis
+	btnSetAddress.disabled = dis
+	btnMailSetBack.disabled = dis
 }
 
 let btnEmail = document.getElementById("email")
@@ -31,4 +37,13 @@ btnEmail.addEventListener("click", function(event) {
 	.catch(error => {
 		console.log('error: ' + error)
 	})
+})
+
+let btnSetServer = document.getElementById("setServer")
+
+let btnSetAddress = document.getElementById("setAddress")
+
+let btnMailSetBack = document.getElementById("mailSetBack")
+btnMailSetBack.addEventListener("click", function(event) {
+	dispMailSetBack()
 })
