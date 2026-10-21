@@ -40,6 +40,20 @@ function dispSetting() {
 	}
 }
 
+function dispSetBack() {
+	main1.style.display = 'block'
+	main2.style.display = 'block'
+	main5.style.display = 'block'
+	main3.style.display = 'block'
+	main4.style.display = 'block'
+
+	set1.style.display = 'none'
+	set2.style.display = 'none'
+  	set3.style.display = 'none'
+	set4.style.display = 'none'
+	set5.style.display = 'none'
+}
+
 function disableSet(dis) {
 	btnSetLiquid.disabled = dis
 	btnSetIrrigation.disabled = dis
@@ -469,6 +483,11 @@ btnSetting.addEventListener("click", function(event) {
 	else {
 		setSettingService()
 	}
+})
+
+let btnSetBack = document.getElementById("setBack")
+btnSetBack.addEventListener("click", function(event) {
+  dispSetBack()
 })
 
 // 液肥制御
