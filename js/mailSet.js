@@ -1,3 +1,5 @@
+import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, writeStr, readStr, setBleService} from './settingService.js'
+
 function dispMailSet() {
 	main1.style.display = 'none'
 	main2.style.display = 'none'
@@ -6,7 +8,7 @@ function dispMailSet() {
 	main4.style.display = 'none'
 
 	mailSet1.style.display = 'block'
-  mailSet2.style.display = 'block'
+  	mailSet2.style.display = 'block'
 }
 
 function dispMailSetBack() {
@@ -20,48 +22,13 @@ function dispMailSetBack() {
   mailSet2.style.display = 'none'
 }
 
-function setSettingServiceMail() {
-	return gattServer.getPrimaryService(setServiceUUID)
-	.then(service => {
-		setService = service
-		return service.getCharacteristic(cmdReadSetChUUID)
-	})
-	.then(cmdReadCh => {
-		cmdReadSetCh = cmdReadCh
-    	return setService.getCharacteristic(cmdWriteSetChUUID)
-	})
-  .then(cmdWriteCh => {
-		cmdWriteSetCh = cmdWriteCh
-    	return setService.getCharacteristic(ui8SetChUUID)
-	})
-  .then(ui8Ch => {
-		ui8SetCh = ui8Ch
-    	return setService.getCharacteristic(ui16SetChUUID)
-	})
-  .then(ui16Ch => {
-		ui16SetCh = ui16Ch
-    	return setService.getCharacteristic(ui32SetChUUID)
-	})
-  .then(ui32Ch => {
-		ui32SetCh = ui32Ch
-    	return setService.getCharacteristic(strSetChUUID)
-	})
-  .then(strCh => {
-		strSetCh = strCh
+let btnEmail = document.getElementById("email")
+btnEmail.addEventListener("click", function(event) {
+	return setBleService()
+	.then(_ => {
     	dispMailSet()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
 	})
-}
-
-let btnEmail = document.getElementById("email")
-btnEmail.addEventListener("click", function(event) {
-  if (setService && cmdReadSetCh && cmdWriteSetCh && ui8SetCh && ui16SetCh && ui32SetCh && strSetCh) {
-	  dispMailSet()
-	  return Promise.resolve()
-  }
-	else {
-		setSettingServiceMail()
-	}
 })
