@@ -1,4 +1,5 @@
 import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, setBleService} from './settingService.js'
+import {writeMailCmdRead, writeMailCmdWrite, readStr, writeStr, setBleMailService} from './mailSettingService.js'
 
 function dispMailSet() {
 	main1.style.display = 'none'
@@ -31,6 +32,9 @@ function disableMailSet(dis) {
 let btnEmail = document.getElementById("email")
 btnEmail.addEventListener("click", function(event) {
 	return setBleService()
+	.then(_ => {
+    	return setBleMailService()
+	})
 	.then(_ => {
     	dispMailSet()
 	})
