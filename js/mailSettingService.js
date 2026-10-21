@@ -53,8 +53,7 @@ export async function writeStr(str) {
 export async function readStr() {
 	try {
 		let ret = await strSetCh.readValue()
-    return new TextDecoder('utf-8').decode(ret).replace(/\0/g, '') 
-    return ret.getUint8(0, true)
+    	return new TextDecoder('utf-8').decode(ret).replace(/\0/g, '') 
 	} catch (error) {
 		console.error('読み込みに失敗しました: ', error)
 	}
