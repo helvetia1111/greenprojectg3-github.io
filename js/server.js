@@ -28,3 +28,9 @@ export function getSmtpPw() {
   let pw = textSmtpPw.value
   return pw
 }
+
+export function disableServer(dis) {
+  textSmtpServer.disabled = dis
+  textSmtpId.disabled = dis
+  textSmtpPw.disabled = dis
+}
