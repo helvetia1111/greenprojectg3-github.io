@@ -2,6 +2,7 @@ import * as Liquid from './liquid.js'
 import * as Irrigation from './irrigation.js'
 import * as IrrigationErr from './irrigation_err.js'
 import * as RainOrValve from './rain_or_valve.js'
+import * as Alarm from './alarm.js'
 
 const cmdReadSetChUUID = '091272b5-575f-4231-bd87-9c614889aa7d'
 const cmdWriteSetChUUID = 'a54b15b0-6e03-4bd2-ac89-e8009bfee496'
@@ -44,6 +45,7 @@ function disableSet(dis) {
 	btnSetIrrigation.disabled = dis
 	btnSetIrrigationErr.disabled = dis
 	btnSetRainOrValve.disabled = dis
+	btnSetAlarm.disabled = dis
 }
 
 function dispLiquid() {
@@ -257,6 +259,38 @@ function disableRainOrValve(dis) {
 	RainOrValve.disableRainOrValve(dis)
 	btnRainOrValveSet.disabled = dis
 	btnRainOrValveBack.disabled = dis
+}
+
+function dispAlarm() {
+	set1.style.display = 'none'
+  	set2.style.display = 'none'
+  	set3.style.display = 'none'
+  	set4.style.display = 'none'
+  	set5.style.display = 'none'
+
+  	alarm1.style.display = 'block'
+	alarm2.style.display = 'block'
+	alarm3.style.display = 'block'
+	alarm4.style.display = 'block'
+}
+
+function dispIrrigationErrBack() {
+  	set1.style.display = 'block'
+  	set2.style.display = 'block'
+  	set3.style.display = 'block'
+  	set4.style.display = 'block'
+  	set5.style.display = 'block'
+
+  	alarm1.style.display = 'none'
+	alarm2.style.display = 'none'
+	alarm3.style.display = 'none'
+	alarm4.style.display = 'none'
+}
+
+function disableAlarm(dis) {
+	Alarm.disableAlarm(dis)
+	btnAlarmSet.disabled = dis
+	btnAlarmBack.disabled = dis
 }
 
 async function writeCmdRead(cmd) {
