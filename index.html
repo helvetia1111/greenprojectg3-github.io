@@ -788,6 +788,50 @@
 	<div id="mailSet2" style="display: none;">
 		<input value="戻る" type="button" class="backbutton" id="mailSetBack"/>
 	</div>
+
+	<!-- サーバー設定 ----------------------->
+	<div class="base" id="server1" style="display: none;">
+		サーバー設定
+	</div>
+	<div class="text_set" id="server2" style="display: none;">
+		smtpサーバー
+		<input maxlength="31" type="text" id="smtpServer" name="smtpServer" />
+	</div>
+
+	<div class="text_set" id="server3" style="display: none;">
+		smtp認証ID
+		<input maxlength="31" type="text" id="smtpId" name="smtpId" />
+	</div>
+
+	<div class="text_set" id="server4" style="display: none;">
+		ntpサーバー
+		<input max_length="31" type="text" id="ntpServer" name="ntpServer" />
+	</div>
+
+	<div class="text_set" id="server5" style="display: none;">
+		smtp認証PW
+		<input max_length="31" type="text" id="smtpPw" name="smtpPw" />
+	</div>
+
+	<div class="addr_set" id= "server6" style="display: none;">
+		IPアドレス
+		<input type="number" min="0" max="999" step="1" id="ipAddr1" name="ipAddr1" />
+		.
+		<input type="number" min="0" max="999" step="1" id="ipAddr2" name="ipAddr2" />
+		.
+		<input type="number" min="0" max="999" step="1" id="ipAddr3" name="ipAddr3" />
+		.
+		<input type="number" min="0" max="999" step="1" id="ipAddr4" name="ipAddr4" />
+	</div>
+
+	<div class="setbutton" id="server7" style="display: none;">
+		<button name="ope" value="1" type="button" id="setServer">設定</button>
+		<input type="button" value="パスワード" id="serverPassword"/>
+	</div>
+
+	<div id="server8" style="display: none;">
+        <input value="戻る" type="button" class="backbutton" id="serverBack"/>
+	</div>	
 		
     <script type="text/javascript" src="js/scan.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
