@@ -179,7 +179,6 @@ const server4 = document.getElementById("server4")
 const server5 = document.getElementById("server5")
 const server6 = document.getElementById("server6")
 const server7 = document.getElementById("server7")
-const server8 = document.getElementById("server8")
 
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
