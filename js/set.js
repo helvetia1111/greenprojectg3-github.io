@@ -1302,6 +1302,9 @@ btnAlarmSet.addEventListener("click", function(event) {
 		return writeCmdWrite(226) // alm_a
 	})
 	.then(_ => {
+		return writeCmdManual(16) // write sub
+	})
+	.then(_ => {
 		disableAlarm(false)
 		dispAlarmBack()
 	})
