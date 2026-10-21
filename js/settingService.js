@@ -179,7 +179,7 @@ function setSettingService() {
 	})
 }
 
-export async function settingService() {
+export async function setBleService() {
   if (setService && cmdReadSetCh && cmdWriteSetCh && ui8SetCh && ui16SetCh && ui32SetCh && strSetCh) {
 	  return Promise.resolve()
   }
