@@ -3,14 +3,14 @@ const cmdWriteSetChUUID = 'a54b15b0-6e03-4bd2-ac89-e8009bfee496'
 const ui8SetChUUID = '39e5bed1-b05a-4302-8bda-9a78d0e0e387'
 const ui16SetChUUID = '302ad424-9906-44e0-b721-45d85e19abad'
 const ui32SetChUUID = '8045fced-4830-40c2-8e2b-49d2452af5e5'
-const strSetChUUID = '9ad400f5-d46d-4cc0-aeb5-a0dd0e68f90a'
+//const strSetChUUID = '9ad400f5-d46d-4cc0-aeb5-a0dd0e68f90a'
 let setService
 let cmdReadSetCh
 let cmdWriteSetCh
 let ui8SetCh
 let ui16SetCh
 let ui32SetCh
-let strSetCh
+//let strSetCh
 
 export async function writeCmdRead(cmd) {
 	const val = Uint8Array.of(cmd)
@@ -119,6 +119,7 @@ export async function readUi32() {
 	}
 }
 
+/*
 export async function writeStr(str) {
 	const encoder = new TextEncoder()
 	const encoded = encoder.encode(str)
@@ -144,6 +145,7 @@ export async function readStr() {
 		console.error('読み込みに失敗しました: ', error)
 	}
 }
+*/
 
 function setSettingService() {
 	return gattServer.getPrimaryService(setServiceUUID)
@@ -155,32 +157,34 @@ function setSettingService() {
 		cmdReadSetCh = cmdReadCh
     	return setService.getCharacteristic(cmdWriteSetChUUID)
 	})
-  .then(cmdWriteCh => {
+  	.then(cmdWriteCh => {
 		cmdWriteSetCh = cmdWriteCh
     	return setService.getCharacteristic(ui8SetChUUID)
 	})
-  .then(ui8Ch => {
+  	.then(ui8Ch => {
 		ui8SetCh = ui8Ch
     	return setService.getCharacteristic(ui16SetChUUID)
 	})
-  .then(ui16Ch => {
+  	.then(ui16Ch => {
 		ui16SetCh = ui16Ch
     	return setService.getCharacteristic(ui32SetChUUID)
 	})
-  .then(ui32Ch => {
+  	.then(ui32Ch => {
 		ui32SetCh = ui32Ch
-    	return setService.getCharacteristic(strSetChUUID)
+    	//return setService.getCharacteristic(strSetChUUID)
 	})
-  .then(strCh => {
+	/*
+  	.then(strCh => {
 		strSetCh = strCh
 	})
+	*/
 	.catch(error => {
 		console.log('error: ' + error)
 	})
 }
 
 export async function setBleService() {
-  if (setService && cmdReadSetCh && cmdWriteSetCh && ui8SetCh && ui16SetCh && ui32SetCh && strSetCh) {
+  if (setService && cmdReadSetCh && cmdWriteSetCh && ui8SetCh && ui16SetCh && ui32SetCh) {
 	  return Promise.resolve()
   }
 	else {
