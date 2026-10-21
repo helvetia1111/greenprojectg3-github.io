@@ -1,5 +1,6 @@
 import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, setBleService} from './settingService.js'
 import {writeMailCmdRead, writeMailCmdWrite, readStr, writeStr, setBleMailService} from './mailSettingService.js'
+import * as Server from './server.js'
 
 function dispMailSet() {
 	main1.style.display = 'none'
@@ -29,6 +30,37 @@ function disableMailSet(dis) {
 	btnMailSetBack.disabled = dis
 }
 
+function dispServer() {
+	mailSet1.style.display = 'none'
+  	mailSet2.style.display = 'none'
+
+  	server1.style.display = 'block'
+	server2.style.display = 'block'
+	server3.style.display = 'block'
+	server4.style.display = 'block'
+	server5.style.display = 'block'
+	server6.style.display = 'block'
+}
+
+function dispServerBack() {
+  	mailSet1.style.display = 'block'
+  	mailSet2.style.display = 'block'
+
+  	server1.style.display = 'none'
+	server2.style.display = 'none'
+	server3.style.display = 'none'
+	server4.style.display = 'none'
+	server5.style.display = 'none'
+	server6.style.display = 'none'
+}
+
+function disableServer(dis) {
+	Server.disableServer(dis)
+	btnServerSet.disabled = dis
+	btnServerPassword.disabled = dis
+	btnServerBack.disabled = dis
+}
+
 let btnEmail = document.getElementById("email")
 btnEmail.addEventListener("click", function(event) {
 	return setBleService()
@@ -44,6 +76,42 @@ btnEmail.addEventListener("click", function(event) {
 })
 
 let btnSetServer = document.getElementById("setServer")
+btnSetServer.addEventListener("click", function(event) {
+	disableMailSet(true)
+	return writeMailCmdRead(1) //smtp_server
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Server.setSmtpServer(str)
+		return writeMailCmdRead(3) //auth_id
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Server.setSmtpId(str)
+		return writeMailCmdRead(4) //auth_pw
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Server.setSmtpPw(str)
+		disableMailSet(false)
+		dispServer()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableMailSet(false)
+	})
+})
+
+let btnServerSet = document.getElementById("serverSet")
+
+let btnServerPassword = document.getElementById("serverPassword")
+
+let btnServerBack = document.getElementById("serverBack")
 
 let btnSetAddress = document.getElementById("setAddress")
 
