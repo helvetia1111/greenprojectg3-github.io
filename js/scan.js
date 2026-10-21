@@ -5,6 +5,7 @@ const manServiceUUID = 'af27b346-cd12-433e-a838-2e710f66eb60'
 const logServiceUUID = '96df7c53-0429-41c0-a46c-c47654d2e4a3'
 const timeServiceUUID = '052e2673-3d72-42b6-a288-3e9e1ae4d6de'
 const setServiceUUID = 'b4950454-f5b3-47a9-815b-c46238452c90'
+const setMailServiceUUID = 'f81a4bdf-7ab7-46e5-9f0d-4b9ecf3329f8'
 let bleCharacteristic = '929d1c7c-ea65-4b35-96d8-38be71ce4251'
 let bleCh = 'aaa9a54b-f70a-450a-baa2-67d921508d12'
 let typeCh = '5ea393b0-d1da-4eb3-bc00-b622f2d548d5'
@@ -198,7 +199,7 @@ function getDeviceInfo() {
 		filters: [
 			{ namePrefix: deviceName }
 		],
-		optionalServices: [monServiceUUID, bleService, manServiceUUID, logServiceUUID, timeServiceUUID, setServiceUUID]
+		optionalServices: [monServiceUUID, bleService, manServiceUUID, logServiceUUID, timeServiceUUID, setServiceUUID, setMailServiceUUID]
 	}
 	
 	console.log('Requesting any Bluetooth Device...')
