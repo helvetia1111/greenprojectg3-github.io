@@ -1294,6 +1294,22 @@ btnSetAlarm.addEventListener("click", function(event) {
 })
 
 let btnAlarmSet = document.getElementById("alarmSet")
+btnAlarmSet.addEventListener("click", function(event) {
+	disableAlarm(true)
+	let alm = Alarm.getCheckAlarm()
+	return writeUi16(alm)
+	.then(_ => {
+		return writeCmdWrite(226) // alm_a
+	})
+	.then(_ => {
+		disableAlarm(false)
+		dispAlarmBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableAlarm(false)
+	})
+})
 
 let btnAlarmBack = document.getElementById("alarmBack")
 btnAlarmBack.addEventListener("click", function(event) {
