@@ -274,7 +274,7 @@ function dispAlarm() {
 	alarm4.style.display = 'block'
 }
 
-function dispIrrigationErrBack() {
+function dispAlarmBack() {
   	set1.style.display = 'block'
   	set2.style.display = 'block'
   	set3.style.display = 'block'
@@ -1272,4 +1272,30 @@ btnRainOrValveSet.addEventListener("click", function(event) {
 let btnRainOrValveBack = document.getElementById("rainOrValveBack")
 btnRainOrValveBack.addEventListener("click", function(event) {
   dispRainOrValveBack()
+})
+
+// アラーム
+let btnSetAlarm = document.getElementById("setAlarm")
+btnSetAlarm.addEventListener("click", function(event) {
+	disableSet(true)
+	return writeCmdRead(226) // alm_a
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Alarm.setCheckAlarm(ui16)
+		disableSet(false)
+		dispAlarm()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableSet(false)
+	})
+})
+
+let btnAlarmSet = document.getElementById("alarmSet")
+
+let btnAlarmBack = document.getElementById("alarmBack")
+btnAlarmBack.addEventListener("click", function(event) {
+  dispAlarmBack()
 })
