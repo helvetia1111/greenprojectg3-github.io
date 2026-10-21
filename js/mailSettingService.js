@@ -68,11 +68,11 @@ function setSettingService() {
 	})
 	.then(cmdReadCh => {
 		  cmdReadSetCh = cmdReadCh
-    	return setService.getCharacteristic(cmdWriteSetChUUID)
+    	return setMailService.getCharacteristic(cmdWriteSetChUUID)
 	})
   	.then(cmdWriteCh => {
 		  cmdWriteSetCh = cmdWriteCh
-    	return setService.getCharacteristic(strSetChUUID)
+    	return setMailService.getCharacteristic(strSetChUUID)
 	})
   	.then(strCh => {
 		  strSetCh = strCh
