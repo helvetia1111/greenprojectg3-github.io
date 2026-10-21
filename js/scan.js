@@ -171,6 +171,15 @@ const alarm4 = document.getElementById("alarm4")
 const mailSet1 = document.getElementById("mailSet1")
 const mailSet2 = document.getElementById("mailSet2")
 
+const server1 = document.getElementById("server1")
+const server2 = document.getElementById("server2")
+const server3 = document.getElementById("server3")
+const server4 = document.getElementById("server4")
+const server5 = document.getElementById("server5")
+const server6 = document.getElementById("server6")
+const server7 = document.getElementById("server7")
+const server8 = document.getElementById("server8")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
