@@ -10,13 +10,13 @@ const ui8SetChUUID = '39e5bed1-b05a-4302-8bda-9a78d0e0e387'
 const ui16SetChUUID = '302ad424-9906-44e0-b721-45d85e19abad'
 const ui32SetChUUID = '8045fced-4830-40c2-8e2b-49d2452af5e5'
 const strSetChUUID = '9ad400f5-d46d-4cc0-aeb5-a0dd0e68f90a'
-let setService
-let cmdReadSetCh
-let cmdWriteSetCh
-let ui8SetCh
-let ui16SetCh
-let ui32SetCh
-let strSetCh
+var setService
+var cmdReadSetCh
+var cmdWriteSetCh
+var ui8SetCh
+var ui16SetCh
+var ui32SetCh
+var strSetCh
 
 function dispSetting() {
 	main1.style.display = 'none'
