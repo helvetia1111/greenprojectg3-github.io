@@ -2,7 +2,7 @@ const textSmtpServer = document.getElementById('smtpServer')
 const textSmtpId = document.getElementById('smtpId')
 const textSmtpPw = document.getElementById('smtpPw')
 
-export function setStmpServer(smtp) {
+export function setSmtpServer(smtp) {
   textSmtpServer.value = smtp
 }
 
@@ -11,7 +11,7 @@ export function getSmtpServer() {
   return smtp
 }
 
-export function setStmpId(id) {
+export function setSmtpId(id) {
   textSmtpId.value = id
 }
 
@@ -20,7 +20,7 @@ export function getSmtpId() {
   return id
 }
 
-export function setStmpPw(pw) {
+export function setSmtpPw(pw) {
   textSmtpPw.value = pw
 }
 
