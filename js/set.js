@@ -1,5 +1,5 @@
 //import * as SetService from './setService.js'
-import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, writeStr, readStr, setService} from './settingService.js'
+import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, writeStr, readStr, setBleService} from './settingService.js'
 import * as Liquid from './liquid.js'
 import * as Irrigation from './irrigation.js'
 import * as IrrigationErr from './irrigation_err.js'
@@ -493,7 +493,7 @@ btnSetting.addEventListener("click", function(event) {
 		setSettingService()
 	}
 	*/
-	return setService()
+	return setBleService()
 	.then(_ => {
     	dispSetting()
 	})
