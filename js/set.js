@@ -426,9 +426,8 @@ async function readStr() {
 	}
 }
 
-let btnSetting = document.getElementById("setting")
-btnSetting.addEventListener("click", function(event) {
-  return gattServer.getPrimaryService(setServiceUUID)
+function setSettingService() {
+	return gattServer.getPrimaryService(setServiceUUID)
 	.then(service => {
 		setService = service
 		return service.getCharacteristic(cmdReadSetChUUID)
@@ -460,6 +459,16 @@ btnSetting.addEventListener("click", function(event) {
 	.catch(error => {
 		console.log('error: ' + error)
 	})
+}
+
+let btnSetting = document.getElementById("setting")
+btnSetting.addEventListener("click", function(event) {
+  if (setService && cmdReadSetCh && cmdWriteSetCh && ui8SetCh && ui16SetCh && ui32SetCh && strSetCh) {
+	  return Promise.resolve()
+  }
+	else {
+		setSettingService()
+	}
 })
 
 // 液肥制御
