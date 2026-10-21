@@ -163,6 +163,11 @@ const rain_or_valve20 = document.getElementById("rain_or_valve20")
 const rain_or_valve21 = document.getElementById("rain_or_valve21")
 const rain_or_valve22 = document.getElementById("rain_or_valve22")
 
+const alarm1 = document.getElementById("alarm1")
+const alarm2 = document.getElementById("alarm2")
+const alarm3 = document.getElementById("alarm3")
+const alarm4 = document.getElementById("alarm4")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
