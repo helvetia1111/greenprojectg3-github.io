@@ -168,6 +168,9 @@ const alarm2 = document.getElementById("alarm2")
 const alarm3 = document.getElementById("alarm3")
 const alarm4 = document.getElementById("alarm4")
 
+const mailSet1 = document.getElementById("mailSet1")
+const mailSet2 = document.getElementById("mailSet2")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
