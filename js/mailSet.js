@@ -75,10 +75,20 @@ btnEmail.addEventListener("click", function(event) {
 	})
 })
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+async function test() {
+	await sleep(1000)
+	return
+}
+
 let btnSetServer = document.getElementById("setServer")
 btnSetServer.addEventListener("click", function(event) {
 	disableMailSet(true)
 	return writeMailCmdRead(1) //smtp_server
+	.then(_ => {
+		//return readStr()
+		test()
+	})
 	.then(_ => {
 		return readStr()
 	})
