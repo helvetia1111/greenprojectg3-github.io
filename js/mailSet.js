@@ -320,6 +320,7 @@ btnSetAddress.addEventListener("click", function(event) {
 		return readUi16()
 	})
 	.then(ui16 => {
+		console.log('interval: ' + ui16)
 		Mail.setInterval(ui16)
 
 		Mail.mailReadOnly()
