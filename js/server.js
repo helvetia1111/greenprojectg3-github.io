@@ -29,6 +29,26 @@ export function getSmtpPw() {
   return pw
 }
 
+export function serverGate() {
+  var UserInput = prompt('パスワードを入力してください', '');
+  if (UserInput != null) {
+    if (UserInput == 'pass') {
+      textSmtpServer.readOnly = false
+      textSmtpId.readOnly = false
+      textSmtpPw.readOnly = false
+    }
+    else {
+      alert('パスワードが違います')
+    }
+  }
+}
+
+export function serverReadOnly() {
+  textSmtpServer.readOnly = true
+  textSmtpId.readOnly = true
+  textSmtpPw.readOnly = true
+}
+
 export function disableServer(dis) {
   textSmtpServer.disabled = dis
   textSmtpId.disabled = dis
