@@ -77,7 +77,7 @@ btnEmail.addEventListener("click", function(event) {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function test() {
-	await sleep(1000)
+	await sleep(5000)
 	return
 }
 
