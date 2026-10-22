@@ -113,6 +113,8 @@ btnSetServer.addEventListener("click", function(event) {
 	.then(str => {
 		console.log(`pw ${str}`)
 		Server.setSmtpPw(str)
+
+		Server.serverReadOnly()
 		disableMailSet(false)
 		dispServer()
 	})
@@ -123,10 +125,50 @@ btnSetServer.addEventListener("click", function(event) {
 })
 
 let btnServerSet = document.getElementById("serverSet")
+btnServerSet.addEventListener("click", function(event) {
+	disableServer(true)
+	let smtp_server = Server.getSmtpServer()
+	return writeStr(smtp_server)
+	.then(_ => {
+		return writeMailCmdWrite(1) // smtp_server
+	})
+	.then(_ => {
+		let auth_id = Server.getSmtpId()
+		return writeStr(auth_id)
+	})
+	.then(_ => {
+		return writeCmdWrite(3) // auth_id
+	})
+	.then(_ => {
+		let auth_pw = Server.getSmtpPw()
+		return writeStr(auth_pw)
+	})
+	.then(_ => {
+		return writeCmdWrite(4) // auth_pw
+	})
+	.then(_ => {
+		//return writeCmdManual(17) // write server
+		return
+	})
+	.then(_ => {
+		disableServer(false)
+		dispServerBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableServer(false)
+	})
+})
 
 let btnServerPassword = document.getElementById("serverPassword")
+btnServerPassword.addEventListener("click", function(event) {
+  Server.serverGate()
+})
 
 let btnServerBack = document.getElementById("serverBack")
+btnServerBack.addEventListener("click", function(event) {
+  dispServerBack()
+})
 
 let btnSetAddress = document.getElementById("setAddress")
 
