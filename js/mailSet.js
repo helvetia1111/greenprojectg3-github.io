@@ -87,7 +87,7 @@ btnSetServer.addEventListener("click", function(event) {
 	return writeMailCmdRead(1) //smtp_server
 	.then(_ => {
 		//return readStr()
-		test()
+		return test()
 	})
 	.then(_ => {
 		return readStr()
