@@ -1,6 +1,7 @@
 import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, setBleService} from './settingService.js'
 import {writeMailCmdRead, writeMailCmdWrite, readStr, writeStr, setBleMailService} from './mailSettingService.js'
 import * as Server from './server.js'
+import * as Mail from './mail.js'
 
 function dispMailSet() {
 	main1.style.display = 'none'
@@ -90,7 +91,7 @@ function dispAddress() {
 	addrss23.style.display = 'block'
 }
 
-function dispServerBack() {
+function dispAddressBack() {
   	mailSet1.style.display = 'block'
   	mailSet2.style.display = 'block'
 
@@ -119,11 +120,11 @@ function dispServerBack() {
 	address23.style.display = 'none'
 }
 
-function disableServer(dis) {
-	Server.disableServer(dis)
-	btnServerSet.disabled = dis
-	btnServerPassword.disabled = dis
-	btnServerBack.disabled = dis
+function disableAddress(dis) {
+	Mail.disableMail(dis)
+	btnAddressSet.disabled = dis
+	btnAddressPassword.disabled = dis
+	btnAddressBack.disabled = dis
 }
 
 let btnEmail = document.getElementById("email")
@@ -235,6 +236,107 @@ btnServerBack.addEventListener("click", function(event) {
 })
 
 let btnSetAddress = document.getElementById("setAddress")
+btnSetAddress.addEventListener("click", function(event) {
+	disableMailSet(true)
+	return writeMailCmdRead(5) //email_from
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailFrom(str)
+		return writeCmdRead(126) //mix
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Mail.setChecked(ui16)
+		return writeMailCmdRead(6) //email_to[0]
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailTo1(str)
+		return writeMailCmdRead(7) //email_to[1]
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailTo2(str)
+		return writeMailCmdRead(8) //email_to[2]
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailTo3(str)
+		return writeMailCmdRead(9) //email_to[3]
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailTo4(str)
+		return writeMailCmdRead(10) //email_to[4]
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailTo5(str)
+		return writeMailCmdRead(11) //email_to[5]
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailTo6(str)
+		return writeMailCmdRead(12) //email_to[6]
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailTo7(str)
+		return writeMailCmdRead(13) //email_to[7]
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setEmailTo8(str)
+		return writeMailCmdRead(14) //place
+	})
+	.then(_ => {
+		return readStr()
+	})
+	.then(str => {
+		Mail.setPlace(str)
+		return writeCmdRead(1) //interval
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		Mail.setInterval(ui16)
+
+		Mail.mailReadOnly()
+		disableMailSet(false)
+		dispAddress()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableMailSet(false)
+	})
+})
+
+let btnAddressSet = document.getElementById("addressSet")
+
+let btnAddressPassword = document.getElementById("addressPassword")
+
+let btnAddressBack = document.getElementById("addressBack")
 
 let btnMailSetBack = document.getElementById("mailSetBack")
 btnMailSetBack.addEventListener("click", function(event) {
