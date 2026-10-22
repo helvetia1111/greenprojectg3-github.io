@@ -146,11 +146,9 @@ btnServerSet.addEventListener("click", function(event) {
 	.then(_ => {
 		return writeMailCmdWrite(4) // auth_pw
 	})
-	/*
 	.then(_ => {
-		//return writeCmdManual(17) // write server
+		return writeCmdManual(17) // write server
 	})
-	*/
 	.then(_ => {
 		disableServer(false)
 		dispServerBack()
