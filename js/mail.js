@@ -135,7 +135,7 @@ export function getPlace() {
 }
 
 export function setInterval(val) {
-  textIntarval.value = val
+  textInterval.value = val
 }
 
 export function getInterval() {
