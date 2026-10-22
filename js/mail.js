@@ -68,28 +68,28 @@ export function getChecked() {
 }
 
 export function setEmailTo1(to) {
-  textEmailTo1.value = from
+  textEmailTo1.value = to
 }
 export function setEmailTo2(to) {
-  textEmailTo2.value = from
+  textEmailTo2.value = to
 }
 export function setEmailTo3(to) {
-  textEmailTo3.value = from
+  textEmailTo3.value = to
 }
 export function setEmailTo4(to) {
-  textEmailTo4.value = from
+  textEmailTo4.value = to
 }
 export function setEmailTo5(to) {
-  textEmailTo5.value = from
+  textEmailTo5.value = to
 }
 export function setEmailTo6(to) {
-  textEmailTo6.value = from
+  textEmailTo6.value = to
 }
 export function setEmailTo7(to) {
-  textEmailTo7.value = from
+  textEmailTo7.value = to
 }
 export function setEmailTo8(to) {
-  textEmailTo8.value = from
+  textEmailTo8.value = to
 }
 
 export function getEmailTo1() {
