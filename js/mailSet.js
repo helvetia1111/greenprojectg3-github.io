@@ -136,7 +136,7 @@ btnServerSet.addEventListener("click", function(event) {
 		return writeStr(auth_id)
 	})
 	.then(_ => {
-		return writeCmdWrite(3) // auth_id
+		return writeMailCmdWrite(3) // auth_id
 	})
 	.then(_ => {
 		let auth_pw = Server.getSmtpPw()
@@ -144,7 +144,7 @@ btnServerSet.addEventListener("click", function(event) {
 		return writeStr(auth_pw)
 	})
 	.then(_ => {
-		return writeCmdWrite(4) // auth_pw
+		return writeMailCmdWrite(4) // auth_pw
 	})
 	/*
 	.then(_ => {
