@@ -86,12 +86,14 @@ btnSetServer.addEventListener("click", function(event) {
 	disableMailSet(true)
 	return writeMailCmdRead(1) //smtp_server
 	.then(_ => {
-		//return readStr()
-		return test()
+		return readStr()
+		//return test()
 	})
+	/*
 	.then(_ => {
 		return readStr()
 	})
+	*/
 	.then(str => {
 		console.log(`server ${str}`)
 		//Server.setSmtpServer(str)
