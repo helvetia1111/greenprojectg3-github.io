@@ -95,7 +95,6 @@ btnSetServer.addEventListener("click", function(event) {
 	})
 	*/
 	.then(str => {
-		console.log(`server ${str}`)
 		Server.setSmtpServer(str)
 		return writeMailCmdRead(3) //auth_id
 	})
@@ -103,7 +102,6 @@ btnSetServer.addEventListener("click", function(event) {
 		return readStr()
 	})
 	.then(str => {
-		console.log(`id ${str}`)
 		Server.setSmtpId(str)
 		return writeMailCmdRead(4) //auth_pw
 	})
@@ -111,7 +109,6 @@ btnSetServer.addEventListener("click", function(event) {
 		return readStr()
 	})
 	.then(str => {
-		console.log(`pw ${str}`)
 		Server.setSmtpPw(str)
 
 		Server.serverReadOnly()
@@ -128,12 +125,14 @@ let btnServerSet = document.getElementById("serverSet")
 btnServerSet.addEventListener("click", function(event) {
 	disableServer(true)
 	let smtp_server = Server.getSmtpServer()
+	console.log(`smtp ${smtp_server}`)
 	return writeStr(smtp_server)
 	.then(_ => {
 		return writeMailCmdWrite(1) // smtp_server
 	})
 	.then(_ => {
 		let auth_id = Server.getSmtpId()
+		console.log(`id ${auth_id}`)
 		return writeStr(auth_id)
 	})
 	.then(_ => {
@@ -141,15 +140,17 @@ btnServerSet.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		let auth_pw = Server.getSmtpPw()
+		console.log(`pw ${auth_pw}`)
 		return writeStr(auth_pw)
 	})
 	.then(_ => {
 		return writeCmdWrite(4) // auth_pw
 	})
+	/*
 	.then(_ => {
 		//return writeCmdManual(17) // write server
-		return
 	})
+	*/
 	.then(_ => {
 		disableServer(false)
 		dispServerBack()
