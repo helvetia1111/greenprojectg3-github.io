@@ -96,10 +96,9 @@ btnSetServer.addEventListener("click", function(event) {
 	*/
 	.then(str => {
 		console.log(`server ${str}`)
-		//Server.setSmtpServer(str)
-		//return writeMailCmdRead(3) //auth_id
+		Server.setSmtpServer(str)
+		return writeMailCmdRead(3) //auth_id
 	})
-	/*
 	.then(_ => {
 		return readStr()
 	})
@@ -117,7 +116,6 @@ btnSetServer.addEventListener("click", function(event) {
 		disableMailSet(false)
 		dispServer()
 	})
-	*/
 	.catch(error => {
 		console.log('error: ' + error)
 		disableMailSet(false)
