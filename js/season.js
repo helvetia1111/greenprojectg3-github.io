@@ -155,21 +155,21 @@ export function getStartMM4() {
   return mm
 }
 
-export function disableIrrigation(dis) {
+export function disableSeason(dis) {
 	cmbStartMo.disabled = dis
-  cmbStartDa.disabled = dis
-  cmbStopMo.disabled = dis
-  cmbStopDa.disabled = dis
-  checkMixSeason1.disabled = dis
-  checkMixSeason2.disabled = dis
-  checkMixSeason3.disabled = dis
-  checkMixSeason4.disabled = dis
-  cmbStartHH1.disabled = dis
-  cmbStartMM1.disabled = dis
-  cmbStartHH2.disabled = dis
-  cmbStartMM2.disabled = dis
-  cmbStartHH3.disabled = dis
-  cmbStartMM3.disabled = dis
-  cmbStartHH4.disabled = dis
-  cmbStartMM4.disabled = dis
+ 	cmbStartDa.disabled = dis
+  	cmbStopMo.disabled = dis
+  	cmbStopDa.disabled = dis
+  	checkMixSeason1.disabled = dis
+  	checkMixSeason2.disabled = dis
+  	checkMixSeason3.disabled = dis
+  	checkMixSeason4.disabled = dis
+  	cmbStartHH1.disabled = dis
+  	cmbStartMM1.disabled = dis
+  	cmbStartHH2.disabled = dis
+  	cmbStartMM2.disabled = dis
+  	cmbStartHH3.disabled = dis
+  	cmbStartMM3.disabled = dis
+  	cmbStartHH4.disabled = dis
+  	cmbStartMM4.disabled = dis
 }
