@@ -335,7 +335,7 @@ btnSetAddress.addEventListener("click", function(event) {
 
 let btnAddressSet = document.getElementById("addressSet")
 btnAddressSet.addEventListener("click", function(event) {
-	disableAdress(true)
+	disableAddress(true)
 	let email_from = Mail.getEmailFrom()
 	return writeStr(email_from)
 	.then(_ => {
