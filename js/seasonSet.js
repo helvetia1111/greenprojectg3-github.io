@@ -457,10 +457,8 @@ btnSeasonBack.addEventListener("click", function(event) {
 })
 
 let gWeekNum = 0
-const btnSetWeek1 = document.getElementById("setWeek1")
-btnSetWeek1.addEventListener("click", function(event) {
-	disableSeasonSet(true)
-	gWeekNum = 0
+
+function writeWeek1() {
 	if (gSeasonNum == 0) {
 		return writeCmdRead(32) // week1_1
 	}
@@ -473,6 +471,13 @@ btnSetWeek1.addEventListener("click", function(event) {
 	else {
 		return writeCmdRead(104) // week1_4
 	}
+}
+
+const btnSetWeek1 = document.getElementById("setWeek1")
+btnSetWeek1.addEventListener("click", function(event) {
+	disableSeasonSet(true)
+	gWeekNum = 0
+	return writeWeek1()
 	.then(_ => {
 		return readUi8()
 	})
