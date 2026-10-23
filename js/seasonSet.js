@@ -98,6 +98,7 @@ btnSetSeason1.addEventListener("click", function(event) {
 		return readUi8()
 	})
 	.then(ui8 => {
+		console.log(`ui8:${ui8}`)
 		Season.setStartMo(ui8)
 		return writeCmdRead(27) // start_da1
 	})
@@ -105,6 +106,7 @@ btnSetSeason1.addEventListener("click", function(event) {
 		return readUi8()
 	})
 	.then(ui8 => {
+		console.log(`ui8:${ui8}`)
 		Season.setStartDa(ui8)
 		return writeCmdRead(28) // stop_mo1
 	})
