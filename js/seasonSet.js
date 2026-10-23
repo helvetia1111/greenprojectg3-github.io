@@ -570,6 +570,20 @@ btnWeekSet.addEventListener("click", function(event) {
 		}
 	})
 	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdManual(19) // write season1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdManual(20) // write season2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdManual(21) // write season3
+		}
+		else {
+			return writeCmdManual(22) // write season4
+		}
+	})
+	.then(_ => {
 		disableWeekSet(false)
 		dispWeekBack()
 	})
