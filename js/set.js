@@ -482,7 +482,7 @@ function setSettingService() {
 }
 */
 
-let btnSetting = document.getElementById("setting")
+//let btnSetting = document.getElementById("setting")
 btnSetting.addEventListener("click", function(event) {
 	/*
   	if (setService && cmdReadSetCh && cmdWriteSetCh && ui8SetCh && ui16SetCh && ui32SetCh && strSetCh) {
