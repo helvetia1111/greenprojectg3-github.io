@@ -355,7 +355,6 @@ btnAddressSet.addEventListener("click", function(event) {
 	.then(_ => {
 		return writeMailCmdWrite(6) // email_to[0]
 	})
-	/*
 	.then(_ => {
 		let email_to1 = Mail.getEmailTo2()
 		return writeStr(email_to1)
@@ -363,6 +362,7 @@ btnAddressSet.addEventListener("click", function(event) {
 	.then(_ => {
 		return writeMailCmdWrite(7) // email_to[1]
 	})
+	/*
 	.then(_ => {
 		let email_to2 = Mail.getEmailTo3()
 		return writeStr(email_to2)
