@@ -1,5 +1,6 @@
 import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, setBleService} from './settingService.js'
 import * as Season from './season.js'
+import * as Week from './week.js'
 
 function dispSeasonSet() {
 	main1.style.display = 'none'
@@ -154,6 +155,9 @@ function dispWeekBack() {
 }
 
 function disableWeekSet(dis) {
+	Week.disableWeek(dis)
+	btnWeekSet.disabled = dis
+	btnWeekBack.disabled = dis
 }
 
 let gSeasonNum = 0
@@ -454,6 +458,34 @@ btnSeasonBack.addEventListener("click", function(event) {
 
 let gWeekNum = 0
 const btnSetWeek1 = document.getElementById("setWeek1")
+btnSetWeek1.addEventListener("click", function(event) {
+	disableSeasonSet(true)
+	gWeekNum = 0
+	if (gSeasonNum == 0) {
+		return writeCmdRead(32) // week1_1
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(56) // week1_2
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(80) // week1_3
+	}
+	else {
+		return writeCmdRead(104) // week1_4
+	}
+	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Week.setWday(ui8)
+		disableSeasonSet(false)
+		dispWeek()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+    	disableSeasonSet(false)
+	})
+})
 
 const btnSetOpeTime1 = document.getElementById("setOpeTime1")
 
@@ -468,3 +500,7 @@ const btnSetOpeTime3 = document.getElementById("setOpeTime3")
 const btnSetWeek4 = document.getElementById("setWeek4")
 
 const btnSetOpeTime4 = document.getElementById("setOpeTime4")
+
+const btnWeekSet = document.getElementById("weekSet")
+
+const btnWeekBack = document.getElementById("weekBack")
