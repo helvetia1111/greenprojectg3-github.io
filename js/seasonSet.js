@@ -65,6 +65,7 @@ function dispSeasonBack() {
 
 function disableMain(dis) {
 	btnMonitor.disabled = dis
+	btnOperaion.disabled = dis
 	btnSetting.disabled = dis
   	btnEmail.disabled = dis
   	btnSetSeason1.disabled = dis
