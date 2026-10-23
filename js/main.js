@@ -109,7 +109,7 @@ function next() {
 }
 
 
-let btnOperation = document.getElementById("operation")
+const btnOperation = document.getElementById("operation")
 btnOperation.addEventListener("click", function(event) {
 	/*
 	return gattServer.getPrimaryService(manServiceUUID)
