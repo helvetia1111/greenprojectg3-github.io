@@ -372,12 +372,12 @@ btnSeasonSet.addEventListener("click", function(event) {
 		}
 	})
 	.then(_ => {
-		disableLiquid(false)
+		disableSeasonSet(false)
 		dispLiquidBack()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
-		disableLiquid(false)
+		disableSeasonSet(false)
 	})
 })
 
