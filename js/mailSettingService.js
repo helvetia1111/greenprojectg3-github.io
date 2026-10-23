@@ -36,6 +36,19 @@ export async function writeMailCmdWrite(cmd) {
 
 export async function writeStr(str) {
 	if (!str) {
+		try {
+			const arr1 = new Uint8Array(1);
+			if (strSetCh.properties.writeWithoutResponse) {
+				await strSetCh.writeValueWithoutResponse(arr1)
+			}
+			else {
+				await strSetCh.writeValueWithResponse(arr1)
+			}
+		} catch (error) {
+			console.error('書き込みに失敗しました: ', error)
+		}
+	}
+	else {
 		const encoder = new TextEncoder()
 		const encoded = encoder.encode(str)
   
@@ -45,19 +58,6 @@ export async function writeStr(str) {
 			}
 			else {
 				await strSetCh.writeValueWithResponse(encoded)
-			}
-		} catch (error) {
-			console.error('書き込みに失敗しました: ', error)
-		}
-	}
-	else {
-		try {
-			const arr1 = new Uint8Array(1);
-			if (strSetCh.properties.writeWithoutResponse) {
-				await strSetCh.writeValueWithoutResponse(arr1)
-			}
-			else {
-				await strSetCh.writeValueWithResponse(arr1)
 			}
 		} catch (error) {
 			console.error('書き込みに失敗しました: ', error)
