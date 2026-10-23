@@ -90,6 +90,72 @@ function disableSeasonSet(dis) {
 	btnSeasonBack.disabled = dis
 }
 
+function dispWeek() {
+	season1.style.display = 'none'
+  	season2.style.display = 'none'
+  	season3.style.display = 'none'
+ 	season41.style.display = 'none'
+ 	season42.style.display = 'none'
+  	season43.style.display = 'none'
+  	season44.style.display = 'none'
+  	season5.style.display = 'none'
+  	season6.style.display = 'none'
+  	season7.style.display = 'none'
+  	season8.style.display = 'none'
+  	season9.style.display = 'none'
+  	season10.style.display = 'none'
+  	season11.style.display = 'none'
+  	season12.style.display = 'none'
+  	season13.style.display = 'none'
+  	season14.style.display = 'none'
+
+	week1.textContent = `灌水${gWeekNum + 1}曜日`
+	week1.style.display = 'block'
+	week2.style.display = 'block'
+	week3.style.display = 'block'
+	week4.style.display = 'block'
+	week5.style.display = 'block'
+}
+
+function dispWeekBack() {
+	season1.style.display = 'block'
+  	season2.style.display = 'block'
+  	season3.style.display = 'block'
+  	if (gSeasonNum == 0) {
+    	season41.style.display = 'block'
+  	}
+  	else if (gSeasonNum == 1) {
+    	season42.style.display = 'block'
+  	}
+  	else if (gSeasonNum == 2) {
+    	season43.style.display = 'block'
+  	}
+  	else if (gSeasonNum == 3) {
+    	season44.style.display = 'block'
+  	}
+  	if(gType == 0) {
+    	season5.style.display = 'block'
+    	season6.style.display = 'block'
+    	season7.style.display = 'block'
+    	season8.style.display = 'block'
+    	season9.style.display = 'block'
+    	season10.style.display = 'block'
+    	season11.style.display = 'block'
+    	season12.style.display = 'block'
+    	season13.style.display = 'block'
+    	season14.style.display = 'block'
+  	}
+
+	week1.style.display = 'none'
+	week2.style.display = 'none'
+	week3.style.display = 'none'
+	week4.style.display = 'none'
+	week5.style.display = 'none'
+}
+
+function disableWeekSet(dis) {
+}
+
 let gSeasonNum = 0
 btnSetSeason1.addEventListener("click", function(event) {
 	disableMain(true)
@@ -386,6 +452,7 @@ btnSeasonBack.addEventListener("click", function(event) {
   dispSeasonBack()
 })
 
+let gWeekNum = 0
 const btnSetWeek1 = document.getElementById("setWeek1")
 
 const btnSetOpeTime1 = document.getElementById("setOpeTime1")
