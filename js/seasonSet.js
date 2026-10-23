@@ -177,7 +177,7 @@ btnSetSeason1.addEventListener("click", function(event) {
 			return readUi16()
 		}
 	})
-	.then(ui8 => {
+	.then(ui16 => {
 		if (gType == 0) {
 			Season.setStartHH4(ui16 / 60 % 24)
 			Season.setStartMM4(ui16 % 60)
