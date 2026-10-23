@@ -203,6 +203,21 @@ const address21 = document.getElementById("address21")
 const address22 = document.getElementById("address22")
 const address23 = document.getElementById("address23")
 
+const season1 = document.getElementById("season1")
+const season2 = document.getElementById("season2")
+const season3 = document.getElementById("season3")
+const season4 = document.getElementById("season4")
+const season5 = document.getElementById("season5")
+const season6 = document.getElementById("season6")
+const season7 = document.getElementById("season7")
+const season8 = document.getElementById("season8")
+const season9 = document.getElementById("season9")
+const season10 = document.getElementById("season10")
+const season11 = document.getElementById("season11")
+const season12 = document.getElementById("season12")
+const season13 = document.getElementById("season13")
+const season14 = document.getElementById("season14")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
