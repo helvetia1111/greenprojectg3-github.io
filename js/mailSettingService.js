@@ -35,18 +35,33 @@ export async function writeMailCmdWrite(cmd) {
 }
 
 export async function writeStr(str) {
-	const encoder = new TextEncoder()
-	const encoded = encoder.encode(str)
+	if (!str) {
+		const encoder = new TextEncoder()
+		const encoded = encoder.encode(str)
   
-	try {
-		if (strSetCh.properties.writeWithoutResponse) {
-			await strSetCh.writeValueWithoutResponse(encoded)
+		try {
+			if (strSetCh.properties.writeWithoutResponse) {
+				await strSetCh.writeValueWithoutResponse(encoded)
+			}
+			else {
+				await strSetCh.writeValueWithResponse(encoded)
+			}
+		} catch (error) {
+			console.error('書き込みに失敗しました: ', error)
 		}
-		else {
-			await strSetCh.writeValueWithResponse(encoded)
+	}
+	else {
+		try {
+			const arr1 = new Uint8Array(1);
+			if (strSetCh.properties.writeWithoutResponse) {
+				await strSetCh.writeValueWithoutResponse(arr1)
+			}
+			else {
+				await strSetCh.writeValueWithResponse(arr1)
+			}
+		} catch (error) {
+			console.error('書き込みに失敗しました: ', error)
 		}
-	} catch (error) {
-		console.error('書き込みに失敗しました: ', error)
 	}
 }
 
