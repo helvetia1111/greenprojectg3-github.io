@@ -41,28 +41,28 @@ export function setChecked(chk) {
 export function getChecked() {
   let chk = 0
   if (checkChecked1.checked) {
-    chk |= 0x0100
+    chk |= 0x0001
   }
   if (checkChecked2.checked) {
-    chk |= 0x0200
+    chk |= 0x0002
   }
   if (checkChecked3.checked) {
-    chk |= 0x0400
+    chk |= 0x0004
   }
   if (checkChecked4.checked) {
-    chk |= 0x0800
+    chk |= 0x0008
   }
   if (checkChecked5.checked) {
-    chk |= 0x1000
+    chk |= 0x0010
   }
   if (checkChecked6.checked) {
-    chk |= 0x2000
+    chk |= 0x0020
   }
   if (checkChecked7.checked) {
-    chk |= 0x4000
+    chk |= 0x0040
   }
   if (checkChecked8.checked) {
-    chk |= 0x8000
+    chk |= 0x0080
   }
   return chk
 }
