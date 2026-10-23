@@ -1,7 +1,7 @@
 import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, setBleService} from './settingService.js'
 import * as Season from './season.js'
 
-function dispSeasonSet(num) {
+function dispSeasonSet() {
 	main1.style.display = 'none'
 	main2.style.display = 'none'
 	main5.style.display = 'none'
@@ -11,16 +11,16 @@ function dispSeasonSet(num) {
   	season1.style.display = 'block'
   	season2.style.display = 'block'
   	season3.style.display = 'block'
-  	if (num == 0) {
+  	if (gSeasonNum == 0) {
     	season41.style.display = 'block'
   	}
-  	else if (num == 1) {
+  	else if (gSeasonNum == 1) {
     	season42.style.display = 'block'
   	}
-  	else if (num == 2) {
+  	else if (gSeasonNum == 2) {
     	season43.style.display = 'block'
   	}
-  	else if (num == 3) {
+  	else if (gSeasonNum == 3) {
     	season44.style.display = 'block'
   	}
   	if(gType == 0) {
@@ -88,8 +88,10 @@ function disableSeasonSet(dis) {
 	btnSeasonBack.disabled = dis
 }
 
+let gSeasonNum = 0
 btnSetSeason1.addEventListener("click", function(event) {
 	disableMain(true)
+	gSeasonNum = 0
 	return setBleService()
   	.then(_ => {
     	return writeCmdRead(26) // start_mo1
@@ -128,13 +130,13 @@ btnSetSeason1.addEventListener("click", function(event) {
 		return readUi8()
 	})
 	.then(ui8 => {
-		Season.setMixSeason(ui8, 0)
+		Season.setMixSeason(ui8, gSeasonNum)
 		if (gType == 0) {
 			return writeCmdRead(30) // start1_1_or_end
 		}
 		else {
 			disableMain(false)
-    		dispSeasonSet(0)
+    		dispSeasonSet()
 			return Promise.resolve()
 		}
 	})
@@ -184,7 +186,7 @@ btnSetSeason1.addEventListener("click", function(event) {
 			Season.setStartHH4(ui16 / 60 % 24)
 			Season.setStartMM4(ui16 % 60)
     		disableMain(false)
-    		dispSeasonSet(0)
+    		dispSeasonSet()
 		}
 	})
 	.catch(error => {
