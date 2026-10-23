@@ -341,6 +341,7 @@ btnAddressSet.addEventListener("click", function(event) {
 	.then(_ => {
 		return writeMailCmdWrite(5) // email_from
 	})
+	/*
 	.then(_ => {
 		let ch_to = Mail.getChecked()
 		return writeUi16(ch_to)
@@ -418,6 +419,7 @@ btnAddressSet.addEventListener("click", function(event) {
 	.then(_ => {
 		return writeCmdWrite(1) // interval
 	})
+	*/
 	.then(_ => {
 		return writeCmdManual(18) // write mail
 	})
