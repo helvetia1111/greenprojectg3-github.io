@@ -334,10 +334,112 @@ btnSetAddress.addEventListener("click", function(event) {
 })
 
 let btnAddressSet = document.getElementById("addressSet")
+btnAddressSet.addEventListener("click", function(event) {
+	disableAdress(true)
+	let email_from = Mail.getEmailFrom()
+	return writeStr(email_from)
+	.then(_ => {
+		return writeMailCmdWrite(5) // email_from
+	})
+	.then(_ => {
+		let ch_to = Mail.getChecked()
+		return writeUi16(ch_to)
+	})
+	.then(_ => {
+		return writeCmdWrite(227) // ch_to
+	})
+	.then(_ => {
+		let email_to0 = Mail.getEmailTo1()
+		return writeStr(email_to0)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(6) // email_to[0]
+	})
+	.then(_ => {
+		let email_to1 = Mail.getEmailTo2()
+		return writeStr(email_to1)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(7) // email_to[1]
+	})
+	.then(_ => {
+		let email_to2 = Mail.getEmailTo3()
+		return writeStr(email_to2)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(8) // email_to[2]
+	})
+	.then(_ => {
+		let email_to3 = Mail.getEmailTo4()
+		return writeStr(email_to3)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(9) // email_to[3]
+	})
+	.then(_ => {
+		let email_to4 = Mail.getEmailTo5()
+		return writeStr(email_to4)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(10) // email_to[4]
+	})
+	.then(_ => {
+		let email_to5 = Mail.getEmailTo6()
+		return writeStr(email_to5)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(11) // email_to[5]
+	})
+	.then(_ => {
+		let email_to6 = Mail.getEmailTo7()
+		return writeStr(email_to6)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(12) // email_to[6]
+	})
+	.then(_ => {
+		let email_to7 = Mail.getEmailTo8()
+		return writeStr(email_to7)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(13) // email_to[7]
+	})
+	.then(_ => {
+		let place = Mail.getPlace()
+		return writeStr(place)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(14) // place
+	})
+	.then(_ => {
+		let interval = Mail.getInterval()
+		return writeUi16(interval)
+	})
+	.then(_ => {
+		return writeCmdWrite(1) // interval
+	})
+	.then(_ => {
+		return writeCmdManual(18) // write mail
+	})
+	.then(_ => {
+		disableAddress(false)
+		dispAddressBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableServer(false)
+	})
+})
 
 let btnAddressPassword = document.getElementById("addressPassword")
+btnAddressPassword.addEventListener("click", function(event) {
+  	Mail.mailGate()
+})
 
 let btnAddressBack = document.getElementById("addressBack")
+btnAddressBack.addEventListener("click", function(event) {
+  	dispAddressBack()
+})
 
 let btnMailSetBack = document.getElementById("mailSetBack")
 btnMailSetBack.addEventListener("click", function(event) {
