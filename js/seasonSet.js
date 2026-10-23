@@ -8,7 +8,7 @@ function dispSeasonSet() {
 	main3.style.display = 'none'
 	main4.style.display = 'none'
 
-	season1.textContext = `時間設定${gSeasonNum + 1}`
+	season1.textContent = `時間設定${gSeasonNum + 1}`
   	season1.style.display = 'block'
   	season2.style.display = 'block'
   	season3.style.display = 'block'
@@ -201,7 +201,7 @@ const btnSeasonSet = document.getElementById("seasonSet")
 btnSeasonSet.addEventListener("click", function(event) {
 	disableSeasonSet(true)
 	let start_mo = Season.getStartMo()
-	return writeUi8(mix)
+	return writeUi8(start_mo)
 	.then(_ => {
 		if (gSeasonNum == 0) {
 			return writeCmdWrite(26) // start_mo1
@@ -236,7 +236,7 @@ btnSeasonSet.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		let stop_mo = Season.getStopMo()
-		return writeUi8(pump_sel)
+		return writeUi8(stop_mo)
 	})
 	.then(_ => {
 		if (gSeasonNum == 0) {
