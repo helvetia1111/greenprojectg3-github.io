@@ -303,7 +303,7 @@ function readMonitor() {
 	})
 }
 
-let btnMonitor = document.getElementById("monitor")
+//let btnMonitor = document.getElementById("monitor")
 btnMonitor.addEventListener("click", function(event) {
 	return gattServer.getPrimaryService(monServiceUUID)
 	.then(service => {
