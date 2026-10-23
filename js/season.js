@@ -51,19 +51,11 @@ export function getStopDa() {
   return da
 }
 
-export function setMixSeason(check, num) {
-  if (num == 0) {
-    checkMixSeason1.checked = ((check & 0x01) != 0)
-  }
-  else if (num == 1) {
+export function setMixSeason(check) {
+	checkMixSeason1.checked = ((check & 0x01) != 0)
     checkMixSeason2.checked = ((check & 0x02) != 0)
-  }
-  else if (num == 2) {
     checkMixSeason3.checked = ((check & 0x04) != 0)
-  }
-  else if (num == 3) {
     checkMixSeason4.checked = ((check & 0x08) != 0)
-  }
 }
 
 export function getMixSeason() {
