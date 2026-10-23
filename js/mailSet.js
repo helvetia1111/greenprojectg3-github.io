@@ -364,9 +364,11 @@ btnAddressSet.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		let email_to2 = Mail.getEmailTo3()
+		console.log('email_to2: ' + email_to2)
 		return writeStr(email_to2)
 	})
 	.then(_ => {
+		console.log('writeStr... ')
 		return writeMailCmdWrite(8) // email_to[2]
 	})
 	/*
@@ -421,6 +423,7 @@ btnAddressSet.addEventListener("click", function(event) {
 	})
 	*/
 	.then(_ => {
+		console.log('writeCmdWrite... ')
 		return writeCmdManual(18) // write mail
 	})
 	.then(_ => {
