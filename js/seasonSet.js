@@ -594,6 +594,6 @@ btnWeekSet.addEventListener("click", function(event) {
 })
 
 const btnWeekBack = document.getElementById("weekBack")
-btnSeasonBack.addEventListener("click", function(event) {
+btnWeekBack.addEventListener("click", function(event) {
   dispWeekBack()
 })
