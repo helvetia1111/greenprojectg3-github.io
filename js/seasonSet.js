@@ -305,7 +305,7 @@ btnSeasonSet.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		if (gSeasonNum == 0) {
-			return writeCmdWrite(32) // start2_1
+			return writeCmdWrite(31) // start2_1
 		}
 		else if (gSeasonNum == 1) {
 			return writeCmdWrite(55) // start2_2
@@ -373,7 +373,7 @@ btnSeasonSet.addEventListener("click", function(event) {
 	})
 	.then(_ => {
 		disableSeasonSet(false)
-		dispLiquidBack()
+		dispSeasonBack()
 	})
 	.catch(error => {
 		console.log('error: ' + error)
