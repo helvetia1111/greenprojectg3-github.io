@@ -507,5 +507,79 @@ const btnSetWeek4 = document.getElementById("setWeek4")
 const btnSetOpeTime4 = document.getElementById("setOpeTime4")
 
 const btnWeekSet = document.getElementById("weekSet")
+btnWeekSet.addEventListener("click", function(event) {
+	disableWeekSet(true)
+	let wday = Week.getWday()
+	return writeUi8(wday)
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			if (gWeekNum == 0) {
+				return writeCmdWrite(32) // week1_1
+			}
+			else if (gWeekNum == 1) {
+				return writeCmdWrite(33) // week2_1
+			}
+			else if (gWeekNum == 2) {
+				return writeCmdWrite(148) // week3_1
+			}
+			else {
+				return writeCmdWrite(149) // week4_1
+			}
+		}
+		else if (gSeasonNum == 1) {
+			if (gWeekNum == 0) {
+				return writeCmdWrite(56) // week1_2
+			}
+			else if (gWeekNum == 1) {
+				return writeCmdWrite(57) // week2_2
+			}
+			else if (gWeekNum == 2) {
+				return writeCmdWrite(168) // week3_2
+			}
+			else {
+				return writeCmdWrite(169) // week4_2
+			}
+		}
+		else if (gSeasonNum == 2) {
+			if (gWeekNum == 0) {
+				return writeCmdWrite(80) // week1_3
+			}
+			else if (gWeekNum == 1) {
+				return writeCmdWrite(81) // week2_3
+			}
+			else if (gWeekNum == 2) {
+				return writeCmdWrite(188) // week3_3
+			}
+			else {
+				return writeCmdWrite(189) // week4_3
+			}
+		}
+		else {
+			if (gWeekNum == 0) {
+				return writeCmdWrite(104) // week1_4
+			}
+			else if (gWeekNum == 1) {
+				return writeCmdWrite(105) // week2_4
+			}
+			else if (gWeekNum == 2) {
+				return writeCmdWrite(208) // week3_4
+			}
+			else {
+				return writeCmdWrite(209) // week4_4
+			}
+		}
+	})
+	.then(_ => {
+		disableWeekSet(false)
+		dispWeekBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableWeekSet(false)
+	})
+})
 
 const btnWeekBack = document.getElementById("weekBack")
+btnSeasonBack.addEventListener("click", function(event) {
+  dispWeekBack()
+})
