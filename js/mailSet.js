@@ -127,7 +127,7 @@ function disableAddress(dis) {
 	btnAddressBack.disabled = dis
 }
 
-let btnEmail = document.getElementById("email")
+//let btnEmail = document.getElementById("email")
 btnEmail.addEventListener("click", function(event) {
 	return setBleService()
 	.then(_ => {
