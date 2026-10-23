@@ -371,7 +371,6 @@ btnAddressSet.addEventListener("click", function(event) {
 		console.log('writeStr... ')
 		return writeMailCmdWrite(8) // email_to[2]
 	})
-	/*
 	.then(_ => {
 		let email_to3 = Mail.getEmailTo4()
 		return writeStr(email_to3)
@@ -421,7 +420,6 @@ btnAddressSet.addEventListener("click", function(event) {
 	.then(_ => {
 		return writeCmdWrite(1) // interval
 	})
-	*/
 	.then(_ => {
 		console.log('writeCmdWrite... ')
 		return writeCmdManual(18) // write mail
