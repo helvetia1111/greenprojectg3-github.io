@@ -2,6 +2,8 @@ const manCmdChUUID = '3ec0fd25-f1fd-432b-b73e-0a8cfa7cd445'
 let manService
 var manCmdCh
 
+const btnMonitor = document.getElementById("monitor")
+
 function dispOperation() {
 	main1.style.display = 'none'
 	main2.style.display = 'none'
