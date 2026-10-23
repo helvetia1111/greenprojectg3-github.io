@@ -8,6 +8,7 @@ function dispSeasonSet() {
 	main3.style.display = 'none'
 	main4.style.display = 'none'
 
+	season1.textContext = `時間設定${gSeasonNum + 1}`
   	season1.style.display = 'block'
   	season2.style.display = 'block'
   	season3.style.display = 'block'
@@ -131,7 +132,7 @@ btnSetSeason1.addEventListener("click", function(event) {
 		return readUi8()
 	})
 	.then(ui8 => {
-		Season.setMixSeason(ui8, gSeasonNum)
+		Season.setMixSeason(ui8)
 		if (gType == 0) {
 			return writeCmdRead(30) // start1_1_or_end
 		}
@@ -197,8 +198,193 @@ btnSetSeason1.addEventListener("click", function(event) {
 })
 
 const btnSeasonSet = document.getElementById("seasonSet")
+btnSeasonSet.addEventListener("click", function(event) {
+	disableSeasonSet(true)
+	let start_mo = Season.getStartMo()
+	return writeUi8(mix)
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdWrite(26) // start_mo1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdWrite(50) // start_mo2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdWrite(74) // start_mo3
+		}
+		else {
+			return writeCmdWrite(98) // start_mo4
+		}
+	})
+	.then(_ => {
+		let start_da = Season.getStartDa()
+		return writeUi8(start_da)
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdWrite(27) // start_da1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdWrite(51) // start_da2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdWrite(75) // start_da3
+		}
+		else {
+			return writeCmdWrite(99) // start_da4
+		}
+	})
+	.then(_ => {
+		let stop_mo = Season.getStopMo()
+		return writeUi8(pump_sel)
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdWrite(28) // stop_mo1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdWrite(52) // stop_mo2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdWrite(76) // stop_mo3
+		}
+		else {
+			return writeCmdWrite(100) // stop_mo4
+		}
+	})
+	.then(_ => {
+		let stop_da = Season.getStopDa()
+		return writeUi8(stop_da)
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdWrite(29) // stop_da1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdWrite(53) // stop_da2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdWrite(77) // stop_da3
+		}
+		else {
+			return writeCmdWrite(101) // stop_da4
+		}
+	})
+	.then(_ => {
+		let mix_season = Season.getMixSeason()
+		return writeUi8(mix_season)
+	})
+	.then(_ => {
+		return writeCmdWrite(124) // mix_season
+	})
+	.then(_ => {
+		let startHH1 = Season.getStartHH1()
+		let startMM1 = Season.getStartMM1()
+		let start1 = startHH1 * 60 + startMM1
+		return writeUi16(start1)
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdWrite(30) // start1_1_or_end
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdWrite(54) // start1_2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdWrite(78) // start1_3
+		}
+		else {
+			return writeCmdWrite(102) // start1_4
+		}
+	})
+	.then(_ => {
+		let startHH2 = Season.getStartHH2()
+		let startMM2 = Season.getStartMM2()
+		let start2 = startHH2 * 60 + startMM2
+		return writeUi16(start2)
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdWrite(32) // start2_1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdWrite(55) // start2_2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdWrite(79) // start2_3
+		}
+		else {
+			return writeCmdWrite(103) // start2_4
+		}
+	})
+	.then(_ => {
+		let startHH3 = Season.getStartHH3()
+		let startMM3 = Season.getStartMM3()
+		let start3 = startHH3 * 60 + startMM3
+		return writeUi16(start3)
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdWrite(146) // start3_1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdWrite(166) // start3_2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdWrite(186) // start3_3
+		}
+		else {
+			return writeCmdWrite(206) // start3_4
+		}
+	})
+	.then(_ => {
+		let startHH4 = Season.getStartHH4()
+		let startMM4 = Season.getStartMM4()
+		let start4 = startHH4 * 60 + startMM4
+		return writeUi16(start4)
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdWrite(147) // start4_1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdWrite(167) // start4_2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdWrite(187) // start4_3
+		}
+		else {
+			return writeCmdWrite(207) // start4_4
+		}
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdManual(19) // write season1
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdManual(20) // write season2
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdManual(21) // write season3
+		}
+		else {
+			return writeCmdManual(22) // write season4
+		}
+	})
+	.then(_ => {
+		disableLiquid(false)
+		dispLiquidBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableLiquid(false)
+	})
+})
 
 const btnSeasonBack = document.getElementById("seasonBack")
+btnSeasonBack.addEventListener("click", function(event) {
+  dispSeasonBack()
+})
 
 const btnSetWeek1 = document.getElementById("setWeek1")
 
