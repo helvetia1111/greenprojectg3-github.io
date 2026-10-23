@@ -3,6 +3,13 @@ let manService
 var manCmdCh
 
 const btnMonitor = document.getElementById("monitor")
+const btnSetting = document.getElementById("setting")
+const btnEmail = document.getElementById("email")
+let btnSetSeason1 = document.getElementById("setSeason1")
+let btnSetSeason2 = document.getElementById("setSeason2")
+let btnSetSeason3 = document.getElementById("setSeason3")
+let btnSetSeason4 = document.getElementById("setSeason4")
+let btnMessage = document.getElementById("message")
 
 function dispOperation() {
 	main1.style.display = 'none'
