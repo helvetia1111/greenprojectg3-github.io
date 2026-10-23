@@ -1452,7 +1452,39 @@
 	<div id="season14" style="display: none;">
         <input value="戻る" type="button" class="backbutton" id="seasonBack"/>
 	</div>
-		
+
+	<!-- シーズンタイマ曜日 ----------------------->
+	<div class="base" id="week1" style="display: none;">
+		灌水曜日
+	</div>
+	<div class="check" id="week2" style="display: none;">
+		<input type="checkbox" id="mon" name="day" value="1" />
+		<label for="mon">月</label>
+		<input type="checkbox" id="tue" name="day" value="2" />
+		<label for="tue">火</label>
+		<input type="checkbox" id="wed" name="day" value="3" />
+		<label for="wed">水</label>
+		<input type="checkbox" id="thu" name="day" value="4" />
+		<label for="thu">木</label>
+	</div>
+	<div class="check" id="week3" style="display: none;">
+		<input type="checkbox" id="fri" name="day" value="5" />
+		<label for="fri">金</label>
+		<input type="checkbox" id="sat" name="day" value="6" />
+		<label for="sat">土</label>
+		<input type="checkbox" id="sun" name="day" value="7" />
+		<label for="sun">日</label>
+	</div>
+
+	<div class="setbutton" id="week4" style="display: none;">
+		<button name="ope" value="1" type="button" id="weekSet">設定</button>
+		</div>
+	</form>
+
+	<div id="week5" style="display: none;">
+		<button class="backbutton" type="button" name="ope" value="0" id="weekBack">戻る</button>
+	</div>
+	
     <script type="text/javascript" src="js/scan.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/monitor.js"></script>
