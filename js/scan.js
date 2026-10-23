@@ -221,6 +221,12 @@ const season12 = document.getElementById("season12")
 const season13 = document.getElementById("season13")
 const season14 = document.getElementById("season14")
 
+const week1 = document.getElementById("week1")
+const week2 = document.getElementById("week2")
+const week3 = document.getElementById("week3")
+const week4 = document.getElementById("week4")
+const week5 = document.getElementById("week5")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
