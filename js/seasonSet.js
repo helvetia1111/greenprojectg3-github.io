@@ -555,6 +555,110 @@ btnSetSeason3.addEventListener("click", function(event) {
 	})
 })
 
+btnSetSeason4.addEventListener("click", function(event) {
+	disableMain(true)
+	gSeasonNum = 3
+	return setBleService()
+  	.then(_ => {
+    	return writeCmdRead(98) // start_mo4
+  	})
+	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Season.setStartMo(ui8)
+		return writeCmdRead(99) // start_da4
+	})
+  	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Season.setStartDa(ui8)
+		return writeCmdRead(100) // stop_mo4
+	})
+  	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Season.setStopMo(ui8)
+		return writeCmdRead(101) // stop_da4
+	})
+  	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Season.setStopDa(ui8)
+		return writeCmdRead(124) // mix_season
+	})
+  	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Season.setMixSeason(ui8)
+		if (gType == 0) {
+			return writeCmdRead(102) // start1_4
+		}
+		else {
+			disableMain(false)
+    		dispSeasonSet()
+			return Promise.resolve()
+		}
+	})
+  	.then(_ => {
+		if (gType == 0) {
+			return readUi16()
+		}
+	})
+	.then(ui16 => {
+		if (gType == 0) {
+			Season.setStartHH1(ui16 / 60 % 24)
+			Season.setStartMM1(ui16 % 60)
+			return writeCmdRead(103) // start2_4
+		}
+	})
+  	.then(_ => {
+		if (gType == 0) {
+			return readUi16()
+		}
+	})
+	.then(ui16 => {
+		if (gType == 0) {
+			Season.setStartHH2(ui16 / 60 % 24)
+			Season.setStartMM2(ui16 % 60)
+			return writeCmdRead(206) // start3_4
+		}
+	})
+  	.then(_ => {
+		if (gType == 0) {
+			return readUi16()
+		}
+	})
+	.then(ui16 => {
+		if (gType == 0) {
+			Season.setStartHH3(ui16 / 60 % 24)
+			Season.setStartMM3(ui16 % 60)
+			return writeCmdRead(207) // start4_4
+		}
+	})
+  	.then(_ => {
+		if (gType == 0) {
+			return readUi16()
+		}
+	})
+	.then(ui16 => {
+		if (gType == 0) {
+			Season.setStartHH4(ui16 / 60 % 24)
+			Season.setStartMM4(ui16 % 60)
+    		disableMain(false)
+    		dispSeasonSet()
+		}
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+    	disableMain(false)
+	})
+})
+
 const btnSeasonSet = document.getElementById("seasonSet")
 btnSeasonSet.addEventListener("click", function(event) {
 	disableSeasonSet(true)
