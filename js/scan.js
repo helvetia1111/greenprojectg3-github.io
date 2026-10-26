@@ -227,6 +227,17 @@ const week3 = document.getElementById("week3")
 const week4 = document.getElementById("week4")
 const week5 = document.getElementById("week5")
 
+const opeTime1 = document.getElementById("opeTime1")
+const opeTime2 = document.getElementById("opeTime2")
+const opeTime3 = document.getElementById("opeTime3")
+const opeTime4 = document.getElementById("opeTime4")
+const opeTime5 = document.getElementById("opeTime5")
+const opeTime6 = document.getElementById("opeTime6")
+const opeTime7 = document.getElementById("opeTime7")
+const opeTime8 = document.getElementById("opeTime8")
+const opeTime9 = document.getElementById("opeTime9")
+const opeTime10 = document.getElementById("opeTime10")
+
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
 })
