@@ -943,6 +943,72 @@ btnSetWeek4.addEventListener("click", function(event) {
 })
 
 const btnSetOpeTime4 = document.getElementById("setOpeTime4")
+btnSetOpeTime4.addEventListener("click", function(event) {
+	disableSeasonSet(true)
+	gOpeNum = 3
+	return writeOpe4(0)
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime1(ui16)
+		return writeOpe4(1)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime2(ui16)
+		return writeOpe4(2)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime3(ui16)
+		return writeOpe4(3)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime4(ui16)
+		return writeOpe4(4)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime5(ui16)
+		return writeOpe4(5)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime6(ui16)
+		return writeOpe4(6)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime7(ui16)
+		return writeOpe4(7)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime8(ui16)
+		disableSeasonSet(false)
+		dispOpeTime()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+    	disableSeasonSet(false)
+	})
+})
 
 const btnWeekSet = document.getElementById("weekSet")
 btnWeekSet.addEventListener("click", function(event) {
