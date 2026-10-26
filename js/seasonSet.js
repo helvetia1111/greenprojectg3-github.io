@@ -837,6 +837,23 @@ btnSetOpeTime2.addEventListener("click", function(event) {
 })
 
 const btnSetWeek3 = document.getElementById("setWeek3")
+btnSetWeek3.addEventListener("click", function(event) {
+	disableSeasonSet(true)
+	gWeekNum = 2
+	return writeWeek3()
+	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Week.setWday(ui8)
+		disableSeasonSet(false)
+		dispWeek()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+    	disableSeasonSet(false)
+	})
+})
 
 const btnSetOpeTime3 = document.getElementById("setOpeTime3")
 
