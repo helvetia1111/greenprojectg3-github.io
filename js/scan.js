@@ -237,6 +237,7 @@ const opeTime7 = document.getElementById("opeTime7")
 const opeTime8 = document.getElementById("opeTime8")
 const opeTime9 = document.getElementById("opeTime9")
 const opeTime10 = document.getElementById("opeTime10")
+const opeTime11 = document.getElementById("opeTime11")
 
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
