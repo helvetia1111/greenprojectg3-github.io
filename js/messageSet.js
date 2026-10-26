@@ -82,18 +82,6 @@ function dispMailSetBack() {
   	message31.style.display = 'none'
 }
 
-function disableMailSet(dis) {
-	btnMonitor.disabled = dis
-	btnOperation.disabled = dis
-	btnSetting.disabled = dis
-	btnEmail.disabled = dis
- 	btnSetSeason1.disabled = dis
-  	btnSetSeason2.disabled = dis
-  	btnSetSeason3.disabled = dis
-  	btnSetSeason4.disabled = dis
-  	btnMessage.disabled = dis
-}
-
 btnMessage.addEventListener("click", function(event) {
 	disableMain(true)
   	return setBleService()
