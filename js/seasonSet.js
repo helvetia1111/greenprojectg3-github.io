@@ -555,6 +555,51 @@ function writeWeek1() {
 	}
 }
 
+function writeWeek2() {
+	if (gSeasonNum == 0) {
+		return writeCmdRead(33) // week2_1
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(57) // week2_2
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(81) // week2_3
+	}
+	else {
+		return writeCmdRead(105) // week2_4
+	}
+}
+
+function writeWeek3() {
+	if (gSeasonNum == 0) {
+		return writeCmdRead(148) // week3_1
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(168) // week3_2
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(188) // week3_3
+	}
+	else {
+		return writeCmdRead(208) // week3_4
+	}
+}
+
+function writeWeek4() {
+	if (gSeasonNum == 0) {
+		return writeCmdRead(149) // week4_1
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(169) // week4_2
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(189) // week4_3
+	}
+	else {
+		return writeCmdRead(209) // week4_4
+	}
+}
+
 const btnSetWeek1 = document.getElementById("setWeek1")
 btnSetWeek1.addEventListener("click", function(event) {
 	disableSeasonSet(true)
@@ -737,6 +782,23 @@ btnSetOpeTime1.addEventListener("click", function(event) {
 })
 
 const btnSetWeek2 = document.getElementById("setWeek2")
+btnSetWeek2.addEventListener("click", function(event) {
+	disableSeasonSet(true)
+	gWeekNum = 1
+	return writeWeek2()
+	.then(_ => {
+		return readUi8()
+	})
+	.then(ui8 => {
+		Week.setWday(ui8)
+		disableSeasonSet(false)
+		dispWeek()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+    	disableSeasonSet(false)
+	})
+})
 
 const btnSetOpeTime2 = document.getElementById("setOpeTime2")
 
