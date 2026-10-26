@@ -66,6 +66,7 @@ function dispSeasonBack() {
   	season14.style.display = 'none'
 }
 
+/*
 function disableMain(dis) {
 	btnMonitor.disabled = dis
 	btnOperation.disabled = dis
@@ -77,6 +78,7 @@ function disableMain(dis) {
   	btnSetSeason4.disabled = dis
   	btnMessage.disabled = dis
 }
+*/
 
 function disableSeasonSet(dis) {
 	Season.disableSeason(dis)
