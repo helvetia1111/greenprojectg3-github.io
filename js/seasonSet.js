@@ -547,7 +547,7 @@ function writeWeek1() {
 	else if(gSeasonNum == 1) {
 		return writeCmdRead(56) // week1_2
 	}
-	else if(gSeasonNum == 1) {
+	else if(gSeasonNum == 2) {
 		return writeCmdRead(80) // week1_3
 	}
 	else {
@@ -562,7 +562,7 @@ function writeWeek2() {
 	else if(gSeasonNum == 1) {
 		return writeCmdRead(57) // week2_2
 	}
-	else if(gSeasonNum == 1) {
+	else if(gSeasonNum == 2) {
 		return writeCmdRead(81) // week2_3
 	}
 	else {
@@ -577,7 +577,7 @@ function writeWeek3() {
 	else if(gSeasonNum == 1) {
 		return writeCmdRead(168) // week3_2
 	}
-	else if(gSeasonNum == 1) {
+	else if(gSeasonNum == 2) {
 		return writeCmdRead(188) // week3_3
 	}
 	else {
@@ -592,7 +592,7 @@ function writeWeek4() {
 	else if(gSeasonNum == 1) {
 		return writeCmdRead(169) // week4_2
 	}
-	else if(gSeasonNum == 1) {
+	else if(gSeasonNum == 2) {
 		return writeCmdRead(189) // week4_3
 	}
 	else {
@@ -621,18 +621,63 @@ btnSetWeek1.addEventListener("click", function(event) {
 
 let gOpeNum = 0
 
-function writeOpe1() {
+function writeOpe1(index) {
 	if (gSeasonNum == 0) {
-		return writeCmdRead(34) // ope11_or_on[0]
+		return writeCmdRead(34 + index) // ope11_or_on[0]
 	}
 	else if(gSeasonNum == 1) {
-		return writeCmdRead(58) // ope1_2[0]
+		return writeCmdRead(58 + index) // ope1_2[0]
 	}
-	else if(gSeasonNum == 1) {
-		return writeCmdRead(82) // ope1_3[0]
+	else if(gSeasonNum == 2) {
+		return writeCmdRead(82 + index) // ope1_3[0]
 	}
 	else {
-		return writeCmdRead(106) // ope1_4[0]
+		return writeCmdRead(106 + index) // ope1_4[0]
+	}
+}
+
+function writeOpe2(index) {
+	if (gSeasonNum == 0) {
+		return writeCmdRead(42 + index) // ope2_1[0]
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(66 + index) // ope2_2[0]
+	}
+	else if(gSeasonNum == 2) {
+		return writeCmdRead(90 + index) // ope2_3[0]
+	}
+	else {
+		return writeCmdRead(114 + index) // ope2_4[0]
+	}
+}
+
+function writeOpe3(index) {
+	if (gSeasonNum == 0) {
+		return writeCmdRead(150 + index) // ope3_1[0]
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(170 + index) // ope3_2[0]
+	}
+	else if(gSeasonNum == 2) {
+		return writeCmdRead(190 + index) // ope3_3[0]
+	}
+	else {
+		return writeCmdRead(210 + index) // ope3_4[0]
+	}
+}
+
+function writeOpe4(index) {
+	if (gSeasonNum == 0) {
+		return writeCmdRead(158 + index) // ope4_1[0]
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(178 + index) // ope4_2[0]
+	}
+	else if(gSeasonNum == 2) {
+		return writeCmdRead(198 + index) // ope4_3[0]
+	}
+	else {
+		return writeCmdRead(218 + index) // ope4_4[0]
 	}
 }
 
@@ -640,132 +685,55 @@ const btnSetOpeTime1 = document.getElementById("setOpeTime1")
 btnSetOpeTime1.addEventListener("click", function(event) {
 	disableSeasonSet(true)
 	gOpeNum = 0
-	return writeOpe1()
+	return writeOpe1(0)
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
 		SprTime.setSprTime1(ui16)
-		if (gSeasonNum == 0) {
-			return writeCmdRead(35) // ope11_or_on[1]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(59) // ope1_2[1]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(83) // ope1_3[1]
-		}
-		else {
-			return writeCmdRead(107) // ope1_4[1]
-		}
+		return writeOpe1(1)
 	})
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
 		SprTime.setSprTime2(ui16)
-		if (gSeasonNum == 0) {
-			return writeCmdRead(36) // ope11_or_on[2]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(60) // ope1_2[2]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(84) // ope1_3[2]
-		}
-		else {
-			return writeCmdRead(108) // ope1_4[2]
-		}
+		return writeOpe1(2)
 	})
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
 		SprTime.setSprTime3(ui16)
-		if (gSeasonNum == 0) {
-			return writeCmdRead(37) // ope11_or_on[3]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(61) // ope1_2[3]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(85) // ope1_3[3]
-		}
-		else {
-			return writeCmdRead(109) // ope1_4[3]
-		}
+		return writeOpe1(3)
 	})
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
 		SprTime.setSprTime4(ui16)
-		if (gSeasonNum == 0) {
-			return writeCmdRead(38) // ope11_or_on[4]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(62) // ope1_2[4]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(86) // ope1_3[4]
-		}
-		else {
-			return writeCmdRead(110) // ope1_4[4]
-		}
+		return writeOpe1(4)
 	})
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
 		SprTime.setSprTime5(ui16)
-		if (gSeasonNum == 0) {
-			return writeCmdRead(39) // ope11_or_on[5]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(63) // ope1_2[5]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(87) // ope1_3[5]
-		}
-		else {
-			return writeCmdRead(111) // ope1_4[5]
-		}
+		return writeOpe1(5)
 	})
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
 		SprTime.setSprTime6(ui16)
-		if (gSeasonNum == 0) {
-			return writeCmdRead(40) // ope11_or_on[6]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(64) // ope1_2[6]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(88) // ope1_3[6]
-		}
-		else {
-			return writeCmdRead(112) // ope1_4[6]
-		}
+		return writeOpe1(6)
 	})
 	.then(_ => {
 		return readUi16()
 	})
 	.then(ui16 => {
 		SprTime.setSprTime7(ui16)
-		if (gSeasonNum == 0) {
-			return writeCmdRead(41) // ope11_or_on[7]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(65) // ope1_2[7]
-		}
-		else if(gSeasonNum == 1) {
-			return writeCmdRead(89) // ope1_3[7]
-		}
-		else {
-			return writeCmdRead(113) // ope1_4[7]
-		}
+		return writeOpe1(7)
 	})
 	.then(_ => {
 		return readUi16()
@@ -801,6 +769,72 @@ btnSetWeek2.addEventListener("click", function(event) {
 })
 
 const btnSetOpeTime2 = document.getElementById("setOpeTime2")
+btnSetOpeTime2.addEventListener("click", function(event) {
+	disableSeasonSet(true)
+	gOpeNum = 1
+	return writeOpe2(0)
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime1(ui16)
+		return writeOpe2(1)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime2(ui16)
+		return writeOpe2(2)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime3(ui16)
+		return writeOpe2(3)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime4(ui16)
+		return writeOpe2(4)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime5(ui16)
+		return writeOpe2(5)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime6(ui16)
+		return writeOpe2(6)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime7(ui16)
+		return writeOpe2(7)
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime8(ui16)
+		disableSeasonSet(false)
+		dispOpeTime()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+    	disableSeasonSet(false)
+	})
+})
 
 const btnSetWeek3 = document.getElementById("setWeek3")
 
