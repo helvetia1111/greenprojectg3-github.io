@@ -191,6 +191,7 @@ function dispOpeTime() {
 	opeTime8.style.display = 'block'
 	opeTime9.style.display = 'block'
 	opeTime10.style.display = 'block'
+	opeTime11.style.display = 'block'
 }
 
 function dispOpeTimeBack() {
@@ -232,6 +233,7 @@ function dispOpeTimeBack() {
 	opeTime8.style.display = 'none'
 	opeTime9.style.display = 'none'
 	opeTime10.style.display = 'none'
+	opeTime11.style.display = 'none'
 }
 
 function disableOpeTimeSet(dis) {
