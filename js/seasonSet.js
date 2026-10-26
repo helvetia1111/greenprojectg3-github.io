@@ -1,6 +1,7 @@
 import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, setBleService} from './settingService.js'
 import * as Season from './season.js'
 import * as Week from './week.js'
+import * as SprTime from './sprTime.js'
 
 function dispSeasonSet() {
 	main1.style.display = 'none'
@@ -158,6 +159,85 @@ function disableWeekSet(dis) {
 	Week.disableWeek(dis)
 	btnWeekSet.disabled = dis
 	btnWeekBack.disabled = dis
+}
+
+function dispOpeTime() {
+	season1.style.display = 'none'
+  	season2.style.display = 'none'
+  	season3.style.display = 'none'
+ 	season41.style.display = 'none'
+ 	season42.style.display = 'none'
+  	season43.style.display = 'none'
+  	season44.style.display = 'none'
+  	season5.style.display = 'none'
+  	season6.style.display = 'none'
+  	season7.style.display = 'none'
+  	season8.style.display = 'none'
+  	season9.style.display = 'none'
+  	season10.style.display = 'none'
+  	season11.style.display = 'none'
+  	season12.style.display = 'none'
+  	season13.style.display = 'none'
+  	season14.style.display = 'none'
+
+	opeTime1.textContent = `灌水${gOpeNum + 1}曜日`
+	opeTime1.style.display = 'block'
+	opeTime2.style.display = 'block'
+	opeTime3.style.display = 'block'
+	opeTime4.style.display = 'block'
+	opeTime5.style.display = 'block'
+	opeTime6.style.display = 'block'
+	opeTime7.style.display = 'block'
+	opeTime8.style.display = 'block'
+	opeTime9.style.display = 'block'
+	opeTime10.style.display = 'block'
+}
+
+function dispOpeTimeBack() {
+	season1.style.display = 'block'
+  	season2.style.display = 'block'
+  	season3.style.display = 'block'
+  	if (gSeasonNum == 0) {
+    	season41.style.display = 'block'
+  	}
+  	else if (gSeasonNum == 1) {
+    	season42.style.display = 'block'
+  	}
+  	else if (gSeasonNum == 2) {
+    	season43.style.display = 'block'
+  	}
+  	else if (gSeasonNum == 3) {
+    	season44.style.display = 'block'
+  	}
+  	if(gType == 0) {
+    	season5.style.display = 'block'
+    	season6.style.display = 'block'
+    	season7.style.display = 'block'
+    	season8.style.display = 'block'
+    	season9.style.display = 'block'
+    	season10.style.display = 'block'
+    	season11.style.display = 'block'
+    	season12.style.display = 'block'
+    	season13.style.display = 'block'
+    	season14.style.display = 'block'
+  	}
+
+	opeTime1.style.display = 'none'
+	opeTime2.style.display = 'none'
+	opeTime3.style.display = 'none'
+	opeTime4.style.display = 'none'
+	opeTime5.style.display = 'none'
+	opeTime6.style.display = 'none'
+	opeTime7.style.display = 'none'
+	opeTime8.style.display = 'none'
+	opeTime9.style.display = 'none'
+	opeTime10.style.display = 'none'
+}
+
+function disableOpeTimeSet(dis) {
+	SprTime.disableSprTime(dis)
+	btnSprTimeSet.disabled = dis
+	btnSprTimeBack.disabled = dis
 }
 
 let gSeasonNum = 0
@@ -492,7 +572,167 @@ btnSetWeek1.addEventListener("click", function(event) {
 	})
 })
 
+let gOpeNum = 0
+
+function writeOpe1() {
+	if (gSeasonNum == 0) {
+		return writeCmdRead(34) // ope11_or_on[0]
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(58) // ope1_2[0]
+	}
+	else if(gSeasonNum == 1) {
+		return writeCmdRead(82) // ope1_3[0]
+	}
+	else {
+		return writeCmdRead(106) // ope1_4[0]
+	}
+}
+
 const btnSetOpeTime1 = document.getElementById("setOpeTime1")
+btnSetOpeTime1.addEventListener("click", function(event) {
+	disableSeasonSet(true)
+	gOpeNum = 0
+	return writeOpe1()
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime1(ui16)
+		if (gSeasonNum == 0) {
+			return writeCmdRead(35) // ope11_or_on[1]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(59) // ope1_2[1]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(83) // ope1_3[1]
+		}
+		else {
+			return writeCmdRead(107) // ope1_4[1]
+		}
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime2(ui16)
+		if (gSeasonNum == 0) {
+			return writeCmdRead(36) // ope11_or_on[2]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(60) // ope1_2[2]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(84) // ope1_3[2]
+		}
+		else {
+			return writeCmdRead(108) // ope1_4[2]
+		}
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime3(ui16)
+		if (gSeasonNum == 0) {
+			return writeCmdRead(37) // ope11_or_on[3]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(61) // ope1_2[3]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(85) // ope1_3[3]
+		}
+		else {
+			return writeCmdRead(109) // ope1_4[3]
+		}
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime4(ui16)
+		if (gSeasonNum == 0) {
+			return writeCmdRead(38) // ope11_or_on[4]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(62) // ope1_2[4]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(86) // ope1_3[4]
+		}
+		else {
+			return writeCmdRead(110) // ope1_4[4]
+		}
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime5(ui16)
+		if (gSeasonNum == 0) {
+			return writeCmdRead(39) // ope11_or_on[5]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(63) // ope1_2[5]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(87) // ope1_3[5]
+		}
+		else {
+			return writeCmdRead(111) // ope1_4[5]
+		}
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime6(ui16)
+		if (gSeasonNum == 0) {
+			return writeCmdRead(40) // ope11_or_on[6]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(64) // ope1_2[6]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(88) // ope1_3[6]
+		}
+		else {
+			return writeCmdRead(112) // ope1_4[6]
+		}
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime7(ui16)
+		if (gSeasonNum == 0) {
+			return writeCmdRead(41) // ope11_or_on[7]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(65) // ope1_2[7]
+		}
+		else if(gSeasonNum == 1) {
+			return writeCmdRead(89) // ope1_3[7]
+		}
+		else {
+			return writeCmdRead(113) // ope1_4[7]
+		}
+	})
+	.then(_ => {
+		return readUi16()
+	})
+	.then(ui16 => {
+		SprTime.setSprTime8(ui16)
+		disableSeasonSet(false)
+		dispOpeTime()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+    	disableSeasonSet(false)
+	})
+})
 
 const btnSetWeek2 = document.getElementById("setWeek2")
 
@@ -597,3 +837,7 @@ const btnWeekBack = document.getElementById("weekBack")
 btnWeekBack.addEventListener("click", function(event) {
   dispWeekBack()
 })
+
+const btnSprTimeSet = document.getElementById("sprTimeSet")
+
+const btnSprTimeBack = document.getElementById("sprTimeBack")
