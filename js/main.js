@@ -39,6 +39,18 @@ function dispBackOperation() {
 	operation3.style.display = 'none'
 }
 
+function disableMain(dis) {
+	btnMonitor.disabled = dis
+	btnOperation.disabled = dis
+	btnSetting.disabled = dis
+  	btnEmail.disabled = dis
+  	btnSetSeason1.disabled = dis
+  	btnSetSeason2.disabled = dis
+  	btnSetSeason3.disabled = dis
+  	btnSetSeason4.disabled = dis
+  	btnMessage.disabled = dis
+}
+
 async function writeCmdManual(cmd) {
 	const val = Uint8Array.of(cmd)
 	try {
