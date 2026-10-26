@@ -840,6 +840,147 @@ btnWeekBack.addEventListener("click", function(event) {
   dispWeekBack()
 })
 
+function sprTimeSet(index) {
+	if (gSeasonNum == 0) {
+		if (gOpeNum == 0) {
+			return writeCmdWrite(34 + index) // ope11_or_on[0]
+		}
+		else if (gOpeNum == 1) {
+			return writeCmdWrite(42 + index) // ope2_1[0]
+		}
+		else if (gOpeNum == 2) {
+			return writeCmdWrite(150 + index) // ope3_1[0]
+		}
+		else {
+			return writeCmdWrite(158 + index) // ope4_1[0]
+		}
+	}
+	else if (gSeasonNum == 1) {
+		if (gOpeNum == 0) {
+			return writeCmdWrite(58 + index) // ope1_2[0]
+		}
+		else if (gOpeNum == 1) {
+			return writeCmdWrite(66 + index) // ope2_2[0]
+		}
+		else if (gOpeNum == 2) {
+			return writeCmdWrite(170 + index) // ope3_2[0]
+		}
+		else {
+			return writeCmdWrite(178 + index) // ope4_2[0]
+		}
+	}
+	else if (gSeasonNum == 2) {
+		if (gOpeNum == 0) {
+			return writeCmdWrite(82 + index) // ope1_3[0]
+		}
+		else if (gOpeNum == 1) {
+			return writeCmdWrite(90 + index) // ope2_3[0]
+		}
+		else if (gOpeNum == 2) {
+			return writeCmdWrite(190 + index) // ope3_3[0]
+		}
+		else {
+			return writeCmdWrite(198 + index) // ope4_3[0]
+		}
+	}
+	else {
+		if (gOpeNum == 0) {
+			return writeCmdWrite(106 + index) // ope1_4[0]
+		}
+		else if (gOpeNum == 1) {
+			return writeCmdWrite(114 + index) // ope2_4[0]
+		}
+		else if (gOpeNum == 2) {
+			return writeCmdWrite(210 + index) // ope3_4[0]
+		}
+		else {
+			return writeCmdWrite(218 + index) // ope4_4[0]
+		}
+	}
+}
+
 const btnSprTimeSet = document.getElementById("sprTimeSet")
+btnSprTimeSet.addEventListener("click", function(event) {
+	disableOpeTimeSet(true)
+	let time1 = SprTime.getSprTime1()
+	return writeUi16(time1)
+	.then(_ => {
+		return sprTimeSet(0)
+	})
+	.then(_ => {
+		let time2 = SprTime.getSprTime2()
+		return writeUi16(time2)
+	})
+	.then(_ => {
+		return sprTimeSet(1)
+	})
+	.then(_ => {
+		let time3 = SprTime.getSprTime3()
+		return writeUi16(time3)
+	})
+	.then(_ => {
+		return sprTimeSet(2)
+	})
+	.then(_ => {
+		let time4 = SprTime.getSprTime4()
+		return writeUi16(time4)
+	})
+	.then(_ => {
+		return sprTimeSet(3)
+	})
+	.then(_ => {
+		let time5 = SprTime.getSprTime5()
+		return writeUi16(time5)
+	})
+	.then(_ => {
+		return sprTimeSet(4)
+	})
+	.then(_ => {
+		let time6 = SprTime.getSprTime6()
+		return writeUi16(time6)
+	})
+	.then(_ => {
+		return sprTimeSet(5)
+	})
+	.then(_ => {
+		let time7 = SprTime.getSprTime7()
+		return writeUi16(time7)
+	})
+	.then(_ => {
+		return sprTimeSet(6)
+	})
+	.then(_ => {
+		let time8 = SprTime.getSprTime8()
+		return writeUi16(time8)
+	})
+	.then(_ => {
+		return sprTimeSet(7)
+	})
+	.then(_ => {
+		if (gSeasonNum == 0) {
+			return writeCmdManual(23) // write season1_ope
+		}
+		else if (gSeasonNum == 1) {
+			return writeCmdManual(24) // write season2_ope
+		}
+		else if (gSeasonNum == 2) {
+			return writeCmdManual(25) // write season3_ope
+		}
+		else {
+			return writeCmdManual(26) // write season4_ope
+		}
+	})
+	.then(_ => {
+		disableOpeTimeSet(false)
+		dispOpeTimeBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableOpeTimeSet(false)
+	})
+})
 
 const btnSprTimeBack = document.getElementById("sprTimeBack")
+btnSprTimeBack.addEventListener("click", function(event) {
+  dispOpeTimeBack()
+})
