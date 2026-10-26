@@ -180,7 +180,7 @@ function dispOpeTime() {
   	season13.style.display = 'none'
   	season14.style.display = 'none'
 
-	//opeTime1.textContent = `灌水${gOpeNum + 1}曜日`
+	opeTime1.textContent = `灌水${gOpeNum + 1}曜日`
 	opeTime1.style.display = 'block'
 	opeTime2.style.display = 'block'
 	opeTime3.style.display = 'block'
