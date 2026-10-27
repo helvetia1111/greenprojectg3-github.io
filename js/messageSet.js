@@ -40,6 +40,8 @@ function dispMessage() {
   	message29.style.display = 'block'
   	message30.style.display = 'block'
   	message31.style.display = 'block'
+	message32.style.display = 'block'
+	message33.style.display = 'block'
 }
 
 function dispMessageBack() {
@@ -80,6 +82,8 @@ function dispMessageBack() {
   	message29.style.display = 'none'
   	message30.style.display = 'none'
   	message31.style.display = 'none'
+	message32.style.display = 'none'
+	message33.style.display = 'none'
 }
 
 function disableMessage(dis) {
