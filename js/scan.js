@@ -270,6 +270,8 @@ const message28 = document.getElementById("message28")
 const message29 = document.getElementById("message29")
 const message30 = document.getElementById("message30")
 const message31 = document.getElementById("message31")
+const message32 = document.getElementById("message32")
+const message33 = document.getElementById("message33")
 
 document.querySelector('#btnScan').addEventListener('click', function() {
 	if (isWebBluetoothEnabled()) { scanBle() }
