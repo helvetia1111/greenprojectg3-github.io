@@ -42,7 +42,7 @@ function dispMessage() {
   	message31.style.display = 'block'
 }
 
-function dispMailSetBack() {
+function dispMessageBack() {
 	main1.style.display = 'block'
 	main2.style.display = 'block'
 	main5.style.display = 'block'
@@ -80,6 +80,12 @@ function dispMailSetBack() {
   	message29.style.display = 'none'
   	message30.style.display = 'none'
   	message31.style.display = 'none'
+}
+
+function disableMessage(dis) {
+	Message.disableMess(dis)
+	btnMessageSet.disabled = dis
+	btnMessageBack.disabled = dis
 }
 
 btnMessage.addEventListener("click", function(event) {
@@ -208,4 +214,135 @@ btnMessage.addEventListener("click", function(event) {
 		console.log('error: ' + error)
     	disableMain(false)
 	})
+})
+
+let btnMessageSet = document.getElementById("messageSet")
+btnMessageSet.addEventListener("click", function(event) {
+	disableMessage(true)
+	let mess = Message.getMessChecked()
+	return writeUi16(mess)
+	.then(_ => {
+		return writeCmdWrite(20) // message
+	})
+	.then(_ => {
+		let off = Message.getMessOff()
+		return writeStr(off)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(20) // msg[0]
+	})
+	.then(_ => {
+		let on = Message.getMessOn()
+		return writeStr(on)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(21) // msg[1]
+	})
+	.then(_ => {
+		let empty = Message.getMessEmpty()
+		return writeStr(empty)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(22) // msg[2]
+	})
+	.then(_ => {
+		let inErr = Message.getMessInErr()
+		return writeStr(inErr)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(23) // msg[3]
+	})
+	.then(_ => {
+		let spr1 = Message.getMessSpr1()
+		return writeStr(spr1)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(24) // msg[4]
+	})
+	.then(_ => {
+		let spr2 = Message.getMessSpr2()
+		return writeStr(spr2)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(25) // msg[5]
+	})
+	.then(_ => {
+		let spr3 = Message.getMessSpr3()
+		return writeStr(spr3)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(26) // msg[6]
+	})
+	.then(_ => {
+		let spr4 = Message.getMessSpr4()
+		return writeStr(spr4)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(27) // msg[7]
+	})
+	.then(_ => {
+		let spr5 = Message.getMessSpr5()
+		return writeStr(spr5)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(28) // msg[8]
+	})
+	.then(_ => {
+		let spr6 = Message.getMessSpr6()
+		return writeStr(spr6)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(29) // msg[9]
+	})
+	.then(_ => {
+		let spr7 = Message.getMessSpr7()
+		return writeStr(spr7)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(30) // msg[10]
+	})
+	.then(_ => {
+		let spr8 = Message.getMessSpr8()
+		return writeStr(spr8)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(31) // msg[11]
+	})
+	.then(_ => {
+		let beforeErr = Message.getMessBeforeErr()
+		return writeStr(beforeErr)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(32) // msg[12]
+	})
+	.then(_ => {
+		let ad = Message.getMessAd()
+		return writeStr(ad)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(33) // msg[13]
+	})
+	.then(_ => {
+		let sprErr = Message.getMessSprErr()
+		return writeStr(sprErr)
+	})
+	.then(_ => {
+		return writeMailCmdWrite(34) // msg[14]
+	})
+	.then(_ => {
+		return writeCmdManual(27) // write message
+	})
+	.then(_ => {
+		disableMessage(false)
+		dispMessageBack()
+	})
+	.catch(error => {
+		console.log('error: ' + error)
+		disableMessage(false)
+	})
+})
+
+let btnMessageBack = document.getElementById("messageBack")
+btnMessageBack.addEventListener("click", function(event) {
+  dispMessageBack()
 })
