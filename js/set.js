@@ -1,5 +1,6 @@
 //import * as SetService from './setService.js'
 import {writeCmdRead, writeCmdWrite, writeUi8, readUi8, writeUi16, readUi16, writeUi32, readUi32, setBleService} from './settingService.js'
+import {writeMailCmdRead, writeMailCmdWrite, readStr, writeStr, setBleMailService} from './mailSettingService.js'
 import * as Liquid from './liquid.js'
 import * as Irrigation from './irrigation.js'
 import * as IrrigationErr from './irrigation_err.js'
@@ -495,6 +496,9 @@ btnSetting.addEventListener("click", function(event) {
 	*/
 	return setBleService()
 	.then(_ => {
+    	return setBleMailService()
+	})
+	.then(_ => {
     	dispSetting()
 	})
 	.catch(error => {
@@ -685,7 +689,7 @@ btnSetIrrigation.addEventListener("click", function(event) {
 		else {
 			Irrigation.setStartTime(val)
 		}
-		Irrigation.irrigationReadOnly()
+		Irrigation.irrigationReadOnly(true)
 		disableSet(false)
 		dispIrrigation()
 	})
@@ -792,9 +796,28 @@ btnIrrigationSet.addEventListener("click", function(event) {
 	})
 })
 
+function async irrigationGate() {
+	var UserInput = prompt('パスワードを入力してください', '');
+	try {
+  		if (UserInput != null) {
+			await writeStr(UserInput)
+	  		let ret = await readUi8()
+    		if (ret == 1) {
+				Irrigation.irrigationReadOnly(false)
+    		}
+    		else {
+      			alert('パスワードが違います')
+   			}
+  		}
+	}
+	catch (error) {
+		console.error('パスワードが違います: ', error)
+	}
+}
+
 let btnIrrigationPassword = document.getElementById("irrigationPassword")
 btnIrrigationPassword.addEventListener("click", function(event) {
-  Irrigation.irrigationGate()
+  irrigationGate()
 })
 
 let btnIrrigationBack = document.getElementById("irrigationBack")
