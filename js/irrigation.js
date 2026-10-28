@@ -125,11 +125,11 @@ export function irrigationGate() {
   }
 }
 
-export function irrigationReadOnly() {
-  textFlowLMin.readOnly = true
-  textFlowHz.readOnly = true
-  textBeforeRatio.readOnly = true
-  textBeforeTheoretical.readOnly = true
+export function irrigationReadOnly(val) {
+  textFlowLMin.readOnly = val
+  textFlowHz.readOnly = val
+  textBeforeRatio.readOnly = val
+  textBeforeTheoretical.readOnly = val
 }
 
 export function disableIrrigation(dis) {
