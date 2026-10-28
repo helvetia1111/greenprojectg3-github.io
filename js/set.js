@@ -801,7 +801,9 @@ async function irrigationGate() {
 	try {
   		if (UserInput != null) {
 			await writeStr(UserInput)
+			console.log('UserInput: ' + UserInput)
 	  		let ret = await readUi8()
+			console.log('ret: ' + ret)
     		if (ret == 1) {
 				Irrigation.irrigationReadOnly(false)
     		}
