@@ -177,7 +177,7 @@ btnSetServer.addEventListener("click", function(event) {
 	.then(str => {
 		Server.setSmtpPw(str)
 
-		Server.serverReadOnly()
+		Server.serverReadOnly(true)
 		disableMailSet(false)
 		dispServer()
 	})
@@ -225,9 +225,43 @@ btnServerSet.addEventListener("click", function(event) {
 	})
 })
 
+async function mailGate(num) {
+	var UserInput = prompt('パスワードを入力してください', '');
+	try {
+  		if (UserInput != null) {
+			await writeStr(UserInput)
+			console.log('UserInput: ' + UserInput)
+			await writeMailCmdWrite(35)
+	  		let ret = await readUi8()
+			console.log('ret: ' + ret)
+    		if (ret == 1) {
+				if (num == 0) {
+					Server.serverReadOnly(false)
+				}
+				else {
+					Mail.mailReadOnly(false)
+				}
+    		}
+    		else {
+				if (num == 0) {
+					Server.serverReadOnly(true)
+				}
+				else {
+					Mail.mailReadOnly(true)
+				}
+      			alert('パスワードが違います')
+   			}
+  		}
+	}
+	catch (error) {
+		console.error('パスワードが違います: ', error)
+	}
+}
+
 let btnServerPassword = document.getElementById("serverPassword")
 btnServerPassword.addEventListener("click", function(event) {
-  Server.serverGate()
+  //Server.serverGate()
+	mailGate(0)
 })
 
 let btnServerBack = document.getElementById("serverBack")
@@ -323,7 +357,7 @@ btnSetAddress.addEventListener("click", function(event) {
 		console.log('interval: ' + ui16)
 		Mail.setInterval(ui16)
 
-		Mail.mailReadOnly()
+		Mail.mailReadOnly(true)
 		disableMailSet(false)
 		dispAddress()
 	})
@@ -436,7 +470,8 @@ btnAddressSet.addEventListener("click", function(event) {
 
 let btnAddressPassword = document.getElementById("addressPassword")
 btnAddressPassword.addEventListener("click", function(event) {
-  	Mail.mailGate()
+  	//Mail.mailGate()
+	mailGate(1)
 })
 
 let btnAddressBack = document.getElementById("addressBack")
