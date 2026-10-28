@@ -809,6 +809,7 @@ async function irrigationGate() {
 				Irrigation.irrigationReadOnly(false)
     		}
     		else {
+				Irrigation.irrigationReadOnly(true)
       			alert('パスワードが違います')
    			}
   		}
