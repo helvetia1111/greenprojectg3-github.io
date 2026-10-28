@@ -796,7 +796,7 @@ btnIrrigationSet.addEventListener("click", function(event) {
 	})
 })
 
-function async irrigationGate() {
+async function irrigationGate() {
 	var UserInput = prompt('パスワードを入力してください', '');
 	try {
   		if (UserInput != null) {
