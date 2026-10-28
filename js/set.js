@@ -802,6 +802,7 @@ async function irrigationGate() {
   		if (UserInput != null) {
 			await writeStr(UserInput)
 			console.log('UserInput: ' + UserInput)
+			await writeMailCmdWrite(35)
 	  		let ret = await readUi8()
 			console.log('ret: ' + ret)
     		if (ret == 1) {
