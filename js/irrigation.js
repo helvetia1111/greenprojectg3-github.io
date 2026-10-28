@@ -110,23 +110,6 @@ export function getStartTime() {
   return parseInt(time, 10)
 }
 
-/*
-export function irrigationGate() {
-  var UserInput = prompt('パスワードを入力してください', '');
-  if (UserInput != null) {
-    if (UserInput == 'pass') {
-      textFlowLMin.readOnly = false
-      textFlowHz.readOnly = false
-      textBeforeRatio.readOnly = false
-      textBeforeTheoretical.readOnly = false
-    }
-    else {
-      alert('パスワードが違います')
-    }
-  }
-}
-*/
-
 export function irrigationReadOnly(val) {
   textFlowLMin.readOnly = val
   textFlowHz.readOnly = val
