@@ -143,6 +143,7 @@ export function getInterval() {
   return parseInt(val, 10)
 }
 
+/*
 export function mailGate() {
   var UserInput = prompt('パスワードを入力してください', '');
   if (UserInput != null) {
@@ -157,12 +158,13 @@ export function mailGate() {
     }
   }
 }
+*/
 
-export function mailReadOnly() {
-  textEmailFrom.readOnly = true
-  textEmailTo1.readOnly = true
-  textEmailTo2.readOnly = true
-  textEmailTo3.readOnly = true
+export function mailReadOnly(val) {
+  textEmailFrom.readOnly = val
+  textEmailTo1.readOnly = val
+  textEmailTo2.readOnly = val
+  textEmailTo3.readOnly = val
 }
 
 export function disableMail(dis) {
