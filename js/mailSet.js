@@ -230,10 +230,8 @@ async function mailGate(num) {
 	try {
   		if (UserInput != null) {
 			await writeStr(UserInput)
-			console.log('UserInput: ' + UserInput)
 			await writeMailCmdWrite(35)
 	  		let ret = await readUi8()
-			console.log('ret: ' + ret)
     		if (ret == 1) {
 				if (num == 0) {
 					Server.serverReadOnly(false)
